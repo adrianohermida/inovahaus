@@ -460,7 +460,7 @@ a:hover {
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-prev:hover,
 .nav-arrow-b .owl-arrow .owl-nav .owl-next:hover {
-  background-color: #26a356;
+  background-color: #0057B7;
 }
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-next {
@@ -586,7 +586,7 @@ a:hover {
 }
 
 .btn.btn-b-n:hover {
-  background-color: #26a356;
+  background-color: #0057B7;
   color: #ffffff;
 }
 
@@ -1994,7 +1994,7 @@ a:hover {
 --------------------------------------------------------------*/
 .form-as #sendmessage {
   color: #0057B7;
-  border: 1px solid #26a356;
+  border: 1px solid #0057B7;
   display: none;
   text-align: center;
   padding: 15px;
@@ -2062,7 +2062,7 @@ a:hover {
 .php-email-form .sent-message {
   display: none;
   color: #fff;
-  background: #18d26e;
+  background: #0057B7;
   text-align: center;
   padding: 15px;
   font-weight: 600;
@@ -2082,7 +2082,7 @@ a:hover {
   width: 24px;
   height: 24px;
   margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
+  border: 3px solid #0057B7;
   border-top-color: #eee;
   animation: animate-loading 1s linear infinite;
 }
