@@ -8,7 +8,7 @@
   <meta property="og:title" content="Entenda os Leilões">
   <meta property="og:description" content="O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.">
   <meta property="og:image" content=".../assets/img/slide-3.jpg">
-  <meta property="og:url" content="https://seusite.com/blogpost">
+  <meta id="og-url" property="og:url" content="">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Entenda os Leilões">
   <meta name="twitter:description" content="O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.">
@@ -171,10 +171,10 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item " href="property-single.html">Property Single</a>
-              <a class="dropdown-item active" href="blog-single.html">Blog Single</a>
-              <a class="dropdown-item " href="agents-grid.html">Agents Grid</a>
-              <a class="dropdown-item " href="agent-single.html">Agent Single</a>
+              <a class="dropdown-item " href=".../property-single.html">Property Single</a>
+              <a class="dropdown-item active" href=".../blog-single.html">Blog Single</a>
+              <a class="dropdown-item " href=".../agents-grid.html">Agents Grid</a>
+              <a class="dropdown-item " href=".../agent-single.html">Agent Single</a>
             </div>
           </li>
           <li class="nav-item">
@@ -558,6 +558,14 @@
         updateMetaTag('name="twitter:image"', blogImage);
       });
       </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var metaOgUrl = document.getElementById('og-url');
+    metaOgUrl.setAttribute('content', window.location.href);
+  });
+</script>
+
 
 </body>
 
