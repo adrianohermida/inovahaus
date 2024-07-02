@@ -194,59 +194,58 @@
 
   <main id="main">
 
-    <!-- ======= Intro Single ======= -->
-    <section class="intro-single">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-8">
-            <div class="title-single-box">
-              <h1 class="title-single">Entenda os Leilões de Imóveis</h1>
-              <span class="color-text-a">O investimento mais seguro.</span>
-            </div>
-          </div>
-          <div class="col-md-12 col-lg-4">
-            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="#">Home</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Tudo sobre Leilões
-                </li>
-              </ol>
-            </nav>
-          </div>
+ <!-- ======= Intro Single ======= -->
+ <section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single" id="blog-title"></h1>
+          <span class="color-text-a" id="blog-subtitle"></span>
         </div>
       </div>
-    </section><!-- End Intro Single-->
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Tudo sobre Leilões
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
 
-  <!-- ======= Blog Single ======= -->
-  <section class="news-single nav-arrow-b">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="news-img-box">
-            <img src="" alt="" class="img-fluid" id="blog-image">
-          </div>
+<section class="news-single nav-arrow-b">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="news-img-box">
+          <img src="" alt="" class="img-fluid" id="blog-image">
         </div>
-        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-          <div class="post-information">
-            <ul class="list-inline text-center color-a">
-              <li class="list-inline-item mr-2">
-                <strong>Autoria: </strong>
-                <span class="color-text-a" id="blog-author"></span>
-              </li>
-              <li class="list-inline-item mr-2">
-                <strong>Categoria: </strong>
-                <span class="color-text-a" id="blog-category"></span>
-              </li>
-              <li class="list-inline-item">
-                <strong>Data: </strong>
-                <span class="color-text-a" id="blog-date"></span>
-              </li>
-            </ul>
-          </div>
-          <div class="post-content color-text-a">
+      </div>
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <div class="post-information">
+          <ul class="list-inline text-center color-a">
+            <li class="list-inline-item mr-2">
+              <strong>Autoria: </strong>
+              <span class="color-text-a" id="blog-author"></span>
+            </li>
+            <li class="list-inline-item mr-2">
+              <strong>Categoria: </strong>
+              <span class="color-text-a" id="blog-category"></span>
+            </li>
+            <li class="list-inline-item">
+              <strong>Data: </strong>
+              <span class="color-text-a" id="blog-date"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="post-content color-text-a">
             <h2>Entenda os Leilões de Imóveis</h2>
             <p class="post-intro">
               O investimetno mais seguro.
@@ -487,75 +486,76 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      // Configurações dinâmicas
-      const blogConfig = {
-        title: "Entenda os leilões",
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Configurações dinâmicas
+    const blogConfig = {
+      title: "Entenda os leilões",
         subtitle: "Saiba porque este é o investimento mais seguro.",
         author: "Dr. Adriano Hermida Maia",
         category: "Artigo",
         description: "O leilão é um dos processos de venda de bens mais antigos de que se tem notícia. A mercadoria é ofertada a um certo número de compradores interessados, e aquele que oferecer o maior valor leva a mercadoria.",
         imageUrl: "/assets/img/slide-3.webp"
-      };
+    };
 
-      // Obtendo a data atual
-      const today = new Date();
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      const formattedDate = today.toLocaleDateString('pt-BR', options);
+    // Obtendo a data atual
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('pt-BR', options);
 
-      // Definindo meta tags dinamicamente
-      document.getElementById('page-title').innerText = blogConfig.title;
-      document.getElementById('blog-title').innerText = blogConfig.title;
-      document.getElementById('blog-subtitle').innerText = blogConfig.subtitle;
-      document.getElementById('blog-author').innerText = blogConfig.author;
-      document.getElementById('blog-category').innerText = blogConfig.category;
-      document.getElementById('blog-date').innerText = formattedDate;
-      document.getElementById('blog-image').src = blogConfig.imageUrl;
-      document.querySelector('meta[property="og:title"]').setAttribute('content', blogConfig.title);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', blogConfig.description);
-      document.querySelector('meta[property="og:image"]').setAttribute('content', blogConfig.imageUrl);
-      document.querySelector('meta[name="twitter:title"]').setAttribute('content', blogConfig.title);
-      document.querySelector('meta[name="twitter:description"]').setAttribute('content', blogConfig.description);
-      document.querySelector('meta[name="twitter:image"]').setAttribute('content', blogConfig.imageUrl);
-      document.getElementById('og-url').setAttribute('content', window.location.href);
+    // Definindo meta tags dinamicamente
+    document.getElementById('page-title').innerText = blogConfig.title;
+    document.getElementById('blog-title').innerText = blogConfig.title;
+    document.getElementById('blog-subtitle').innerText = blogConfig.subtitle;
+    document.getElementById('blog-author').innerText = blogConfig.author;
+    document.getElementById('blog-category').innerText = blogConfig.category;
+    document.getElementById('blog-date').innerText = formattedDate;
+    document.getElementById('blog-image').src = blogConfig.imageUrl;
+    document.querySelector('meta[property="og:title"]').setAttribute('content', blogConfig.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', blogConfig.description);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', blogConfig.imageUrl);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', blogConfig.title);
+    document.querySelector('meta[name="twitter:description"]').setAttribute('content', blogConfig.description);
+    document.querySelector('meta[name="twitter:image"]').setAttribute('content', blogConfig.imageUrl);
+    document.getElementById('og-url').setAttribute('content', window.location.href);
 
-      // Função para extrair palavras-chave do texto
-      function extractKeywords(text) {
-        var words = text.split(/\W+/);
-        var frequency = {};
-        words.forEach(function(word) {
-          if (word.length > 3) {
-            if (!frequency[word]) {
-              frequency[word] = 0;
-            }
-            frequency[word]++;
+    // Função para extrair palavras-chave do texto
+    function extractKeywords(text) {
+      var words = text.split(/\W+/);
+      var frequency = {};
+      words.forEach(function(word) {
+        if (word.length > 3) {
+          if (!frequency[word]) {
+            frequency[word] = 0;
           }
-        });
-        var sorted = Object.keys(frequency).sort(function(a, b) {
-          return frequency[b] - frequency[a];
-        });
-        return sorted.slice(0, 10).join(", ");
-      }
+          frequency[word]++;
+        }
+      });
+      var sorted = Object.keys(frequency).sort(function(a, b) {
+        return frequency[b] - frequency[a];
+      });
+      return sorted.slice(0, 10).join(", ");
+    }
 
-      // Extraindo palavras-chave do conteúdo da página
-      var contentText = document.body.innerText;
-      var keywords = extractKeywords(contentText);
-      document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+    // Extraindo palavras-chave do conteúdo da página
+    var contentText = document.body.innerText;
+    var keywords = extractKeywords(contentText);
+    document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
 
-      // Configura os links de compartilhamento
-      var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href);
-      var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(blogConfig.title) + "&url=" + encodeURIComponent(window.location.href);
-      var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(window.location.href);
-      var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(blogConfig.title) + "%20" + encodeURIComponent(window.location.href);
+    // Configura os links de compartilhamento
+    var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href);
+    var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(blogConfig.title) + "&url=" + encodeURIComponent(window.location.href);
+    var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(window.location.href);
+    var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(blogConfig.title) + "%20" + encodeURIComponent(window.location.href);
 
-      // Define os atributos href dos ícones de compartilhamento
-      document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
-      document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
-      document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
-      document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
-    });
-  </script>
+    // Define os atributos href dos ícones de compartilhamento
+    document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
+    document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
+    document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
+    document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
+  });
+</script>
 
 </body>
 
