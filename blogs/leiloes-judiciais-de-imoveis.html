@@ -193,33 +193,32 @@
 
   <main id="main">
 
-    <!-- ======= Intro Single ======= -->
-    <section class="intro-single">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-lg-8">
-            <div class="title-single-box">
-              <h1 class="title-single">Leilão de Imóveis: Regras e Procedimentos</h1>
-              <span class="color-text-a">Entenda as regras e procedimentos para a arrematação de imóveis em leilões judiciais.</span>
-            </div>
-          </div>
-          <div class="col-md-12 col-lg-4">
-            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="#">Home</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  Tudo sobre Leilões
-                </li>
-              </ol>
-            </nav>
-          </div>
+ <!-- ======= Intro Single ======= -->
+ <section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single" id="blog-title"></h1>
+          <span class="color-text-a" id="blog-subtitle"></span>
         </div>
       </div>
-    </section><!-- End Intro Single-->
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Tudo sobre Leilões
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
 
-<!-- ======= Blog Single ======= -->
 <section class="news-single nav-arrow-b">
   <div class="container">
     <div class="row">
@@ -547,6 +546,7 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       // Configurações dinâmicas
@@ -556,7 +556,7 @@
         author: "Dr. Adriano Hermida Maia",
         category: "Artigo",
         description: "O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.",
-        imageUrl: "https://seusite.com/assets/img/slide-3.jpg"
+        imageUrl: "/assets/img/slide-3.jpg"
       };
 
       // Obtendo a data atual
@@ -616,7 +616,7 @@
       document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
     });
   </script>
-  
+
 </body>
 
 </html>
