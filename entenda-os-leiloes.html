@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entenda os Leilões</title>
+  <meta property="og:title" content="Entenda os Leilões">
+  <meta property="og:description" content="O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.">
+  <meta property="og:image" content="https://seusite.com/assets/img/slide-3.jpg">
+  <meta property="og:url" content="https://seusite.com/blogpost">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Entenda os Leilões">
+  <meta name="twitter:description" content="O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.">
+  <meta name="twitter:image" content="https://seusite.com/assets/img/slide-3.jpg">
+  <link rel="stylesheet" href="path/to/your/css/styles.css">
+  <!-- Outros meta tags e recursos -->
+</head>
+
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">Garages</label>
+              <select class="form-control form-select form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->>
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link " href="index.html">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="about.html">About</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="property-grid.html">Property</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="blog-grid.html">Blog</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="property-single.html">Property Single</a>
+              <a class="dropdown-item active" href="blog-single.html">Blog Single</a>
+              <a class="dropdown-item " href="agents-grid.html">Agents Grid</a>
+              <a class="dropdown-item " href="agent-single.html">Agent Single</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">Book Cover Deisgn</h1>
+              <span class="color-text-a">News Single.</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Book Cover Deisgn
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+  <!-- ======= Blog Single ======= -->
+  <section class="news-single nav-arrow-b">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="news-img-box">
+            <img src="assets/img/slide-3.jpg" alt="" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+          <div class="post-information">
+            <ul class="list-inline text-center color-a">
+              <li class="list-inline-item mr-2">
+                <strong>Author: </strong>
+                <span class="color-text-a">Morgan Jimenez</span>
+              </li>
+              <li class="list-inline-item mr-2">
+                <strong>Category: </strong>
+                <span class="color-text-a">Real Estate</span>
+              </li>
+              <li class="list-inline-item">
+                <strong>Date: </strong>
+                <span class="color-text-a">19 Apr. 2023</span>
+              </li>
+            </ul>
+          </div>
+          <div class="post-content color-text-a">
+            <h2>Entenda os Leilões</h2>
+            <p class="post-intro">
+              O leilão é um dos processos de venda de bens mais antigos de que se tem notícia. A mercadoria é ofertada a um certo número de compradores interessados, e aquele que oferecer o maior valor leva a mercadoria.
+            </p>
+            <p>
+              No caso dos leilões de imóveis, há um grande número de oportunidades para fazer bons negócios. Imóveis podem ser arrematados por preços significativamente abaixo do valor de mercado, tornando-se uma excelente opção de investimento. No entanto, muitos investidores encontram dificuldades para entrar neste mercado devido à complexidade dos processos envolvidos, que incluem pesquisa, análise, e arrematação dos bens.
+            </p>
+            <h3>Tipos de Leilões de Imóveis</h3>
+            <p>
+              Existem diferentes tipos de leilões de imóveis, cada um com suas próprias características e procedimentos:
+            </p>
+            <ul>
+              <li><strong>Leilões Judiciais:</strong> Realizados por determinação judicial para saldar dívidas de processos judiciais. Estes leilões são considerados muito seguros, pois o bem é vendido com respaldo jurídico. Os imóveis geralmente são arrematados por valores abaixo do mercado, proporcionando grandes oportunidades de lucro.</li>
+              <li><strong>Leilões Extrajudiciais:</strong> Conduzidos por instituições financeiras que retomam imóveis de mutuários inadimplentes. Apesar da agilidade na transferência do imóvel para o nome do arrematante, os preços podem não ser tão atraentes quanto nos leilões judiciais.</li>
+              <li><strong>Concorrências Públicas:</strong> Modalidade onde bens públicos são vendidos a interessados através de um processo licitatório. É uma excelente oportunidade para quem busca imóveis com potencial de valorização.</li>
+            </ul>
+            <h3>A Complexidade dos Leilões</h3>
+            <p>
+              Entrar no mercado de leilões de imóveis pode ser desafiador. A complexidade reside na necessidade de:
+            </p>
+            <ul>
+              <li><strong>Pesquisa de Oportunidades:</strong> Encontrar imóveis que sejam bons investimentos requer tempo e acesso a informações precisas.</li>
+              <li><strong>Análise Detalhada:</strong> É fundamental analisar a viabilidade econômica do imóvel, seu estado de conservação, e verificar se há dívidas ou restrições legais associadas.</li>
+              <li><strong>Arrematação e Regularização:</strong> O processo de arrematação deve ser bem conduzido para evitar surpresas. Além disso, a regularização do imóvel arrematado pode envolver uma série de procedimentos legais e burocráticos.</li>
+            </ul>
+            <h3>Como a Inovahaus Imóveis Pode Ajudar</h3>
+            <p>
+              A Inovahaus Imóveis oferece serviços especializados para facilitar todo o processo de arrematação de imóveis em leilões, incluindo:
+            </p>
+            <ul>
+              <li><strong>Pesquisa e Identificação de Oportunidades:</strong> Utilizando nossa expertise, identificamos as melhores oportunidades de investimento para nossos clientes.</li>
+              <li><strong>Análise de Viabilidade:</strong> Realizamos uma análise detalhada de cada imóvel, considerando todos os fatores que podem impactar seu valor e potencial de retorno.</li>
+              <li><strong>Acompanhamento na Arrematação:</strong> Fornecemos todo o suporte necessário durante o processo de arrematação, garantindo que nossos clientes façam um negócio seguro e lucrativo.</li>
+              <li><strong>Regularização do Imóvel:</strong> Cuidamos de todos os procedimentos necessários para regularizar o imóvel, desde a retirada de débitos até a transferência de domínio.</li>
+            </ul>
+            <p>
+              Investir em imóveis através de leilões pode ser extremamente lucrativo, mas requer conhecimento e preparação. A Inovahaus Imóveis está aqui para oferecer o suporte necessário em todas as etapas do processo, garantindo que você aproveite ao máximo as oportunidades disponíveis. Entre em contato conosco e descubra como podemos transformar seu investimento imobiliário em uma experiência segura e bem-sucedida.
+            </p>
+          </div>
+          <div class="post-footer">
+            <div class="post-share">
+              <span>Compartilhar: </span>
+              <ul class="list-inline socials">
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">
+                    <i class="bi bi-facebook" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://twitter.com/intent/tweet?text=Confira%20este%20artigo%20incr%C3%ADvel&url=" target="_blank">
+                    <i class="bi bi-twitter" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank">
+                    <i class="bi bi-linkedin" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://api.whatsapp.com/send?text=Confira%20este%20artigo%20incr%C3%ADvel%20" target="_blank">
+                    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Blog Single -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">EstateAgency</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                Enim minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat duis
+                sed aute irure.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> contact@example.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +54 356 945234
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">EstateAgency</span> All Rights Reserved.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Obtém a URL atual da página
+      var blogURL = window.location.href;
+    
+      // Configura os links de compartilhamento
+      var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(blogURL);
+      var twitterShareLink = "https://twitter.com/intent/tweet?text=Confira%20este%20artigo%20incr%C3%ADvel&url=" + encodeURIComponent(blogURL);
+      var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(blogURL);
+      var whatsappShareLink = "https://api.whatsapp.com/send?text=Confira%20este%20artigo%20incr%C3%ADvel%20" + encodeURIComponent(blogURL);
+    
+      // Define os atributos href dos ícones de compartilhamento
+      document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
+      document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
+      document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
+      document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
+    });
+    </script>
+
+    
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Obtém as informações do blog
+      var blogTitle = document.querySelector('meta[property="og:title"]').getAttribute("content");
+      var blogDescription = document.querySelector('meta[property="og:description"]').getAttribute("content");
+      var blogImage = document.querySelector('meta[property="og:image"]').getAttribute("content");
+      var blogURL = window.location.href; // Pega a URL atual da página
+    
+      // Configura os links de compartilhamento
+      var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(blogURL);
+      var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(blogTitle) + "&url=" + encodeURIComponent(blogURL);
+      var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(blogURL);
+      var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(blogTitle) + "%20" + encodeURIComponent(blogURL);
+    
+      // Define os atributos href dos ícones de compartilhamento
+      document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
+      document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
+      document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
+      document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
+    });
+    </script>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Informações do blog
+        var blogTitle = document.querySelector('h2').innerText;
+        var blogDescription = document.querySelector('.post-intro').innerText;
+        var blogImage = document.querySelector('.news-img-box img').src;
+        var blogURL = window.location.href; // Pega a URL atual da página
+      
+        // Função para criar ou atualizar meta tags
+        function updateMetaTag(property, content) {
+          let metaTag = document.querySelector(`meta[${property}]`);
+          if (!metaTag) {
+            metaTag = document.createElement('meta');
+            metaTag.setAttribute(property.split('=')[0], property.split('=')[1]);
+            document.head.appendChild(metaTag);
+          }
+          metaTag.setAttribute('content', content);
+        }
+      
+        // Atualiza ou cria os meta tags
+        updateMetaTag('property="og:title"', blogTitle);
+        updateMetaTag('property="og:description"', blogDescription);
+        updateMetaTag('property="og:image"', blogImage);
+        updateMetaTag('property="og:url"', blogURL);
+        updateMetaTag('name="twitter:card"', 'summary_large_image');
+        updateMetaTag('name="twitter:title"', blogTitle);
+        updateMetaTag('name="twitter:description"', blogDescription);
+        updateMetaTag('name="twitter:image"', blogImage);
+      });
+      </script>
+
+</body>
+
+</html>
