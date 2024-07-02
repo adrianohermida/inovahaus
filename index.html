@@ -751,7 +751,7 @@
     </section><!-- End Agents Section -->
 
     <!-- ======= Latest News Section ======= -->
-    <section class="section-news section-t8">
+<!--    <section class="section-news section-t8">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -793,7 +793,7 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div>
 
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
@@ -817,7 +817,7 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div>
 
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
@@ -841,7 +841,7 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div>
 
             <div class="carousel-item-c swiper-slide">
               <div class="card-box-b card-shadow news-box">
@@ -865,15 +865,45 @@
                   </div>
                 </div>
               </div>
-            </div><!-- End carousel item -->
+            </div>
 
           </div>
         </div>
 
         <div class="news-carousel-pagination carousel-pagination"></div>
       </div>
-    </section><!-- End Latest News Section -->
-<!-- ======= Testimonials Section ======= -->
+    </section>->
+
+      <!-- ======= Latest News Section ======= -->
+  <section class="section-news section-t8">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content-between">
+            <div class="title-box">
+              <h2 class="title-a">Últimos posts no blog</h2>
+            </div>
+            <div class="title-link">
+              <a href="blog-grid.html">Todos os posts
+                <span class="bi bi-chevron-right"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="news-carousel" class="swiper">
+        <div class="swiper-wrapper" id="carousel-content">
+          <!-- Conteúdo gerado dinamicamente -->
+        </div>
+      </div>
+
+      <div class="news-carousel-pagination carousel-pagination"></div>
+    </div>
+  </section><!-- End Latest News Section -->
+    
+    
+    <!-- ======= Testimonials Section ======= -->
 <!--
     <section class="section-testimonials section-t8 nav-arrow-a">  
       <div class="container">
@@ -1109,9 +1139,81 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Carregar o arquivo JSON
+      fetch('/assets/vendor/blogs-list/blogs.json')
+        .then(response => response.json())
+        .then(blogPosts => {
+          // Seleciona o contêiner do carrossel
+          const carouselContent = document.getElementById('carousel-content');
+
+          // Gera o conteúdo do carrossel dinamicamente
+          blogPosts.forEach(post => {
+            const carouselItem = document.createElement('div');
+            carouselItem.className = 'carousel-item-c swiper-slide';
+
+            carouselItem.innerHTML = `
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+                  <img src="${post.imageUrl}" alt="" class="img-b img-fluid">
+                </div>
+                <div class="card-overlay">
+                  <div class="card-header-b">
+                    <div class="card-category-b">
+                      <a href="${post.link}" class="category-b">${post.category}</a>
+                    </div>
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                        <a href="${post.link}">${post.title}</a>
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b">${post.date}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            carouselContent.appendChild(carouselItem);
+          });
+
+          // Inicializa o Swiper
+          new Swiper('.swiper', {
+            loop: true,
+            pagination: {
+              el: '.news-carousel-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
+            },
+            slidesPerView: 1,
+            spaceBetween: 10,
+            breakpoints: {
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 40
+              }
+            }
+          });
+        })
+        .catch(error => console.error('Error loading blog posts:', error));
+    });
+  </script>
 
 </body>
 
