@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>EstateAgency Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta id="og-url" property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="../assets/vendor/animate.css/animate.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+    <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -175,7 +189,8 @@
 
   <main id="main">
 
-    <!-- ======= Intro Single ======= -->
+<!-- ======= Intro Single ======= -->
+<!--
     <section class="intro-single">
       <div class="container">
         <div class="row">
@@ -202,9 +217,9 @@
           </div>
         </div>
       </div>
-    </section><!-- End Intro Single-->
+    </section>-->
 
-    <!-- ======= Property Single ======= -->
+<!-- End Intro Single
     <section class="property-single nav-arrow-b">
       <div class="container">
         <div class="row justify-content-center">
@@ -385,16 +400,16 @@
                   </p>
                   <ul class="list-unstyled">                    
                     <li class="d-flex justify-content-between">
-                      <strong>Inscrição Profissional: </strong>
-                      <span class="color-text-a">4526/ CRECI AM 18ª Região</span>
+                      <strong>~CRECI: </strong>
+                      <span class="color-text-a">4526/ AM 18ª Região</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>CNAI</strong>
                       <span class="color-text-a">17638</span>
                     </li>
                     <li class="d-flex justify-content-between">
-                      <strong>Agenda disponível:</strong>
-                      <span class="color-text-a">annabella@example.com</span>
+                      <strong>Agenda:</strong>
+                      <span class="color-text-a">ver horários disponíveis</span>
                     </li>
                   </ul>
                   <div class="socials-a">
@@ -458,7 +473,212 @@
           </div>
         </div>
       </div>
-    </section><!-- End Property Single-->
+    </section>-->
+
+     <!-- ======= Intro Single ======= -->
+  <section class="intro-single">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="title-single-box">
+            <h1 class="title-single" id="title-single"></h1>
+            <span class="color-text-a" id="neighborhood"></span>
+            <div class="title-single-box">
+              <h1 class="title-single" id="title-single"></h1>
+              <span class="color-text-a" id="neighborhood"></span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="property-grid.html">Oportunidades</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-title"></li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+  
+    <!-- ======= Property Single ======= -->
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div id="property-single-carousel" class="swiper">
+              <div class="swiper-wrapper">
+                <!-- Imagens do carrossel serão inseridas aqui pelo script -->
+              </div>
+            </div>
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="row justify-content-between">
+              <div class="col-md-5 col-lg-4">
+                <div class="property-price d-flex justify-content-center foo">
+                  <div class="card-header-c d-flex">
+                    <div class="card-box-ico">
+                      <span class="bi bi-cash">R$</span>
+                    </div>
+                    <div class="card-title-c align-self-center">
+                      <h5 class="title-c" id="minimum-bid"></h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-summary">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">Resumo</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list">
+                      <!-- Resumo do imóvel será preenchido pelo script -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Descrição da Imóvel</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-description">
+                  <p class="description color-text-a" id="property-description"></p>
+                </div>
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Comodidades do bem</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin" id="amenities-list">
+                    <!-- Lista de comodidades será preenchida pelo script -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-video-tab" data-bs-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-plans-tab" data-bs-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Planta Baixa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-map-tab" data-bs-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Localização</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                <iframe src="" width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen id="property-video"></iframe>
+              </div>
+              <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                <img src="" alt="" class="img-fluid" id="property-floor-plan">
+              </div>
+              <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                <iframe src="" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen id="property-map"></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Contato do Corretor</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+                <img src="" alt="" class="img-fluid" id="agent-image">
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="property-agent">
+                  <h4 class="title-agent" id="agent-name"></h4>
+                  <p class="color-text-a" id="agent-bio"></p>
+                  <ul class="list-unstyled" id="agent-info">
+                    <!-- Informações do corretor serão preenchidas pelo script -->
+                  </ul>
+                  <div class="socials-a">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-4">
+                <div class="property-contact">
+                  <form class="form-a">
+                    <div class="row">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Nome e sobrenome *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="phone" class="form-control form-control-lg form-control-a" id="inputphone" placeholder="Celular *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <textarea id="textMessage" class="form-control" placeholder="Deixe sua mensagem*" name="message" cols="45" rows="8" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-a">Enviar mensagem</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Property Single-->  
 
   </main><!-- End #main -->
 
@@ -618,6 +838,116 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Configurações dinâmicas para o imóvel
+      const propertyData = {
+        title: "304 Blaster Up",
+        address: "304 Blaster Up, Chicago, IL 606543",
+        neighborhood: "Chicago, IL",
+        minimumBid: "15000",
+        propertyId: "1134",
+        origin: "Justiça do Trabalho",
+        type: "House",
+        status: "Disponível",
+        condition: "Desocupado",
+        nextAuction: "Leilão agendado",
+        area: "340m²",
+        bedrooms: 4,
+        bathrooms: 2,
+        garages: 1,
+        condoFee: "1",
+        debts: "1",
+        description: "Descrição detalhada da propriedade, incluindo informações sobre o estado, particularidades e outras características importantes.",
+        amenities: ["Varanda", "Cozinha externa", "Possui piscina", "Closets", "Piso de porcelanato"],
+        images: ["assets/img/slide-1.jpg", "assets/img/slide-2.jpg"],
+        videoUrl: "https://player.vimeo.com/video/73221098",
+        floorPlanUrl: "assets/img/plan2.jpg",
+        locationUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834",
+        agent: {
+          name: "Camila Maia",
+          bio: "Corretora e avaliadora de imóveis altamente qualificada, com mais de 10 anos de experiência no mercado imobiliário. É responsável pela identificação das melhores oportunidades em leilões judiciais e extrajudiciais, além de oferecer um atendimento personalizado e orientado para os resultados.",
+          license: "4526/ CRECI AM 18ª Região",
+          cnai: "17638",
+          email: "camilamaia@inovahaus.com.br",
+          imageUrl: "assets/img/agent-4.jpg"
+        }
+      };
+
+      // Função para formatar data
+      function formatDate(date) {
+        const day = date.getDate().toString().padStart(2, '0');
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
+
+      // Obtém a data atual
+      const currentDate = new Date();
+      const formattedDate = formatDate(currentDate);
+
+      // Atualiza o título da página
+      document.getElementById('page-title').innerText = propertyData.title;
+
+// Preenche os campos dinâmicos
+      document.getElementById('title-single').innerText = propertyData.title;
+      document.getElementById('neighborhood').innerText = propertyData.neighborhood;
+      document.getElementById('breadcrumb-title').innerText = propertyData.title;
+      document.getElementById('minimum-bid').innerText = `Lance mínimo: R$ ${propertyData.minimumBid}`;
+      document.querySelector('.summary-list ul').innerHTML = `
+        <li class="d-flex justify-content-between"><strong>Código Imóvel:</strong><span>${propertyData.propertyId}</span></li>
+        <li class="d-flex justify-content-between"><strong>Última atualização:</strong><span>${formattedDate}</span></li>
+        <li class="d-flex justify-content-between"><strong>Origem:</strong><span>${propertyData.origin}</span></li>
+        <li class="d-flex justify-content-between"><strong>Endereço:</strong><span>${propertyData.address}</span></li>
+        <li class="d-flex justify-content-between"><strong>Tipo de imóvel:</strong><span>${propertyData.type}</span></li>
+        <li class="d-flex justify-content-between"><strong>Aquisição:</strong><span>${propertyData.status}</span></li>
+        <li class="d-flex justify-content-between"><strong>Situação:</strong><span>${propertyData.condition}</span></li>
+        <li class="d-flex justify-content-between"><strong>Próximo leilão:</strong><span>${propertyData.nextAuction}</span></li>
+        <li class="d-flex justify-content-between"><strong>Área:</strong><span>${propertyData.area}</span></li>
+        <li class="d-flex justify-content-between"><strong>Nº Quartos:</strong><span>${propertyData.bedrooms}</span></li>
+        <li class="d-flex justify-content-between"><strong>Banheiros:</strong><span>${propertyData.bathrooms}</span></li>
+        <li class="d-flex justify-content-between"><strong>Vagas de garagem:</strong><span>${propertyData.garages}</span></li>
+        <li class="d-flex justify-content-between"><strong>Taxa de Condomínio:</strong><span>${propertyData.condoFee}</span></li>
+        <li class="d-flex justify-content-between"><strong>Débitos pelo arrematante:</strong><span>${propertyData.debts}</span></li>
+      `;
+      document.getElementById('property-description').innerText = propertyData.description;
+      document.getElementById('amenities-list').innerHTML = propertyData.amenities.map(amenity => `<li>${amenity}</li>`).join('');
+
+      // Carrossel de imagens
+      const swiperWrapper = document.querySelector('.swiper-wrapper');
+      swiperWrapper.innerHTML = propertyData.images.map(image => `<div class="carousel-item-b swiper-slide"><img src="${image}" alt=""></div>`).join('');
+
+      // Vídeo
+      document.getElementById('property-video').src = propertyData.videoUrl;
+
+      // Planta baixa
+      document.getElementById('property-floor-plan').src = propertyData.floorPlanUrl;
+
+      // Localização
+      document.getElementById('property-map').src = propertyData.locationUrl;
+
+      // Informações do agente
+      document.getElementById('agent-name').innerText = propertyData.agent.name;
+      document.getElementById('agent-bio').innerText = propertyData.agent.bio;
+      document.getElementById('agent-info').innerHTML = `
+        <li class="d-flex justify-content-between"><strong>Inscrição Profissional: </strong><span class="color-text-a">${propertyData.agent.license}</span></li>
+        <li class="d-flex justify-content-between"><strong>CNAI:</strong><span class="color-text-a">${propertyData.agent.cnai}</span></li>
+        <li class="d-flex justify-content-between"><strong>Agenda disponível:</strong><span class="color-text-a">${propertyData.agent.email}</span></li>
+      `;
+      document.getElementById('agent-image').src = propertyData.agent.imageUrl;
+
+      // Atualiza meta tags
+      document.querySelector('meta[property="og:title"]').setAttribute('content', propertyData.title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', propertyData.description);
+      document.querySelector('meta[property="og:image"]').setAttribute('content', propertyData.images[0]);
+      document.querySelector('meta[id="og-url"]').setAttribute('content', window.location.href);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', propertyData.title);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', propertyData.description);
+      document.querySelector('meta[name="twitter:image"]').setAttribute('content', propertyData.images[0]);
+      document.querySelector('meta[name="keywords"]').setAttribute('content', 'leilão de imóveis, arrematação, investimentos imobiliários');
+    });
+  </script>
 
 </body>
 
