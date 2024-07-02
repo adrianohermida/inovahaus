@@ -1,4 +1,4 @@
-Thanks for downloading this template!
+..Thanks for downloading this template!
 
 Template Name: EstateAgency
 Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
