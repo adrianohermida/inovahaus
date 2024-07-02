@@ -234,15 +234,15 @@
             <ul class="list-inline text-center color-a">
               <li class="list-inline-item mr-2">
                 <strong>Autoria: </strong>
-                <span class="color-text-a">Dr. Adriano Hermida Maia</span>
+                <span class="color-text-a" id="blog-author"></span>
               </li>
               <li class="list-inline-item mr-2">
                 <strong>Categoria: </strong>
-                <span class="color-text-a">Artigo</span>
+                <span class="color-text-a" id="blog-category"></span>
               </li>
               <li class="list-inline-item">
                 <strong>Data: </strong>
-                <span class="color-text-a">01 de julho de 2024.</span>
+                <span class="color-text-a" id="blog-date"></span>
               </li>
             </ul>
           </div>
@@ -490,39 +490,36 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Obtém a URL atual da página
-      var blogURL = window.location.href;
-    
-      // Configura os links de compartilhamento
-      var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(blogURL);
-      var twitterShareLink = "https://twitter.com/intent/tweet?text=Confira%20este%20artigo%20incr%C3%ADvel&url=" + encodeURIComponent(blogURL);
-      var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(blogURL);
-      var whatsappShareLink = "https://api.whatsapp.com/send?text=Confira%20este%20artigo%20incr%C3%ADvel%20" + encodeURIComponent(blogURL);
-    
-      // Define os atributos href dos ícones de compartilhamento
-      document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
-      document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
-      document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
-      document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
-    });
-    </script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
       // Configurações dinâmicas
-      var title = "Entenda os Leilões";
-      var description = "O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.";
-      var imageUrl = "/assets/img/slide-3.webp";
-      var blogURL = window.location.href; // Pega a URL atual da página
+      const blogConfig = {
+        title: "Leilão de Imóveis: Regras e Procedimentos",
+        subtitle: "Entenda as regras e procedimentos para a arrematação de imóveis em leilões judiciais.",
+        author: "Dr. Adriano Hermida Maia",
+        category: "Artigo",
+        description: "O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.",
+        imageUrl: "https://seusite.com/assets/img/slide-3.jpg"
+      };
+
+      // Obtendo a data atual
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = today.toLocaleDateString('pt-BR', options);
 
       // Definindo meta tags dinamicamente
-      document.getElementById('page-title').innerText = title;
-      document.querySelector('meta[property="og:title"]').setAttribute('content', title);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', description);
-      document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
-      document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
-      document.querySelector('meta[name="twitter:description"]').setAttribute('content', description);
-      document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
-      document.getElementById('og-url').setAttribute('content', blogURL);
+      document.getElementById('page-title').innerText = blogConfig.title;
+      document.getElementById('blog-title').innerText = blogConfig.title;
+      document.getElementById('blog-subtitle').innerText = blogConfig.subtitle;
+      document.getElementById('blog-author').innerText = blogConfig.author;
+      document.getElementById('blog-category').innerText = blogConfig.category;
+      document.getElementById('blog-date').innerText = formattedDate;
+      document.getElementById('blog-image').src = blogConfig.imageUrl;
+      document.querySelector('meta[property="og:title"]').setAttribute('content', blogConfig.title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', blogConfig.description);
+      document.querySelector('meta[property="og:image"]').setAttribute('content', blogConfig.imageUrl);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', blogConfig.title);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', blogConfig.description);
+      document.querySelector('meta[name="twitter:image"]').setAttribute('content', blogConfig.imageUrl);
+      document.getElementById('og-url').setAttribute('content', window.location.href);
 
       // Função para extrair palavras-chave do texto
       function extractKeywords(text) {
@@ -548,10 +545,10 @@
       document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
 
       // Configura os links de compartilhamento
-      var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(blogURL);
-      var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "&url=" + encodeURIComponent(blogURL);
-      var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(blogURL);
-      var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(title) + "%20" + encodeURIComponent(blogURL);
+      var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href);
+      var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(blogConfig.title) + "&url=" + encodeURIComponent(window.location.href);
+      var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(window.location.href);
+      var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(blogConfig.title) + "%20" + encodeURIComponent(window.location.href);
 
       // Define os atributos href dos ícones de compartilhamento
       document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
