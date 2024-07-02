@@ -2,17 +2,19 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entenda os Leilões</title>
-  <meta property="og:title" content="Entenda os Leilões">
-  <meta property="og:description" content="O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.">
-  <meta property="og:image" content=".../assets/img/slide-3.jpg">
-  <meta id="og-url" property="og:url" content="">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Entenda os Leilões">
-  <meta name="twitter:description" content="O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.">
-  <meta name="twitter:image" content=".../assets/img/slide-3.jpg">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta id="og-url" property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="keywords" content="">  
   <link rel="stylesheet" href=".../path/to/your/css/styles.css">
   <!-- Outros meta tags e recursos -->
 </head>
@@ -504,68 +506,60 @@
       document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
     });
     </script>
-
-
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // Obtém as informações do blog
-      var blogTitle = document.querySelector('meta[property="og:title"]').getAttribute("content");
-      var blogDescription = document.querySelector('meta[property="og:description"]').getAttribute("content");
-      var blogImage = document.querySelector('meta[property="og:image"]').getAttribute("content");
+      // Configurações dinâmicas
+      var title = "Entenda os Leilões";
+      var description = "O leilão é um dos processos de venda de bens mais antigos de que se tem notícia.";
+      var imageUrl = "https://seusite.com/assets/img/slide-3.jpg";
       var blogURL = window.location.href; // Pega a URL atual da página
-    
+
+      // Definindo meta tags dinamicamente
+      document.getElementById('page-title').innerText = title;
+      document.querySelector('meta[property="og:title"]').setAttribute('content', title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', description);
+      document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', title);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', description);
+      document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+      document.getElementById('og-url').setAttribute('content', blogURL);
+
+      // Função para extrair palavras-chave do texto
+      function extractKeywords(text) {
+        var words = text.split(/\W+/);
+        var frequency = {};
+        words.forEach(function(word) {
+          if (word.length > 3) {
+            if (!frequency[word]) {
+              frequency[word] = 0;
+            }
+            frequency[word]++;
+          }
+        });
+        var sorted = Object.keys(frequency).sort(function(a, b) {
+          return frequency[b] - frequency[a];
+        });
+        return sorted.slice(0, 10).join(", ");
+      }
+
+      // Extraindo palavras-chave do conteúdo da página
+      var contentText = document.body.innerText;
+      var keywords = extractKeywords(contentText);
+      document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+
       // Configura os links de compartilhamento
       var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(blogURL);
-      var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(blogTitle) + "&url=" + encodeURIComponent(blogURL);
+      var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(title) + "&url=" + encodeURIComponent(blogURL);
       var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(blogURL);
-      var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(blogTitle) + "%20" + encodeURIComponent(blogURL);
-    
+      var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(title) + "%20" + encodeURIComponent(blogURL);
+
       // Define os atributos href dos ícones de compartilhamento
       document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
       document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
       document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
       document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
     });
-    </script>
-    
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        // Informações do blog
-        var blogTitle = document.querySelector('h2').innerText;
-        var blogDescription = document.querySelector('.post-intro').innerText;
-        var blogImage = document.querySelector('.news-img-box img').src;
-        var blogURL = window.location.href; // Pega a URL atual da página
-      
-        // Função para criar ou atualizar meta tags
-        function updateMetaTag(property, content) {
-          let metaTag = document.querySelector(`meta[${property}]`);
-          if (!metaTag) {
-            metaTag = document.createElement('meta');
-            metaTag.setAttribute(property.split('=')[0], property.split('=')[1]);
-            document.head.appendChild(metaTag);
-          }
-          metaTag.setAttribute('content', content);
-        }
-      
-        // Atualiza ou cria os meta tags
-        updateMetaTag('property="og:title"', blogTitle);
-        updateMetaTag('property="og:description"', blogDescription);
-        updateMetaTag('property="og:image"', blogImage);
-        updateMetaTag('property="og:url"', blogURL);
-        updateMetaTag('name="twitter:card"', 'summary_large_image');
-        updateMetaTag('name="twitter:title"', blogTitle);
-        updateMetaTag('name="twitter:description"', blogDescription);
-        updateMetaTag('name="twitter:image"', blogImage);
-      });
-      </script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var metaOgUrl = document.getElementById('og-url');
-    metaOgUrl.setAttribute('content', window.location.href);
-  });
-</script>
-
+  </script>
 
 </body>
 
