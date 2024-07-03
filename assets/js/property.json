@@ -1,0 +1,36 @@
+[
+    {
+      "propertyId": "1134",
+      "title": "304 Blaster Up",
+      "neighborhood": "Downtown",
+      "city": "Chicago",
+      "state": "IL",
+      "minimumBid": 15000,
+      "origin": "Justiça do Trabalho",
+      "type": "House",
+      "status": "Disponível",
+      "condition": "Desocupado",
+      "nextAuction": "Leilão agendado",
+      "area": 340,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "garages": 1,
+      "condoFee": 500,
+      "debts": 1000,
+      "description": "Descrição detalhada da propriedade, incluindo informações sobre o estado, particularidades e outras características importantes.",
+      "amenities": ["Varanda", "Cozinha externa", "Possui piscina", "Closets", "Piso de porcelanato"],
+      "images": ["assets/img/slide-1.jpg", "assets/img/slide-2.jpg"],
+      "videoUrl": "https://player.vimeo.com/video/73221098",
+      "floorPlanUrl": "assets/img/plan2.jpg",
+      "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834",
+      "agent": {
+        "imageUrl": "assets/img/agent-4.jpg",
+        "name": "Camila Maia",
+        "bio": "Corretora e avaliadora de imóveis altamente qualificada, com mais de 10 anos de experiência no mercado imobiliário. É responsável pela identificação das melhores oportunidades em leilões judiciais e extrajudiciais, além de oferecer um atendimento personalizado e orientado para os resultados.",
+        "registration": "4526/ CRECI AM 18ª Região",
+        "cnai": "17638",
+        "email": "annabella@example.com"
+      }
+    }
+  ]
+  
