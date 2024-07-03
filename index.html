@@ -33,7 +33,7 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  <style>
+<!--<style>
 .img-box-b {
   position: relative;
   width: 100%;
@@ -56,7 +56,7 @@
   }
 }
 
-  </style>
+  </style>-->
 
 </head>
 
@@ -294,10 +294,10 @@
           <div class="col-md-12">
             <div class="title-wrap d-flex justify-content-between">
               <div class="title-box">
-                <h2 class="title-a">Imóveis em Leilões</h2>
+                <h2 class="title-a">No Leilão</h2>
               </div>
               <div class="title-link">
-                <a href="property-grid.html">Todos as oportunidades
+                <a href="property-grid.html">Ver todos
                   <span class="bi bi-chevron-right"></span>
                 </a>
               </div>
@@ -514,7 +514,7 @@
       <div class="col-md-12">
         <div class="title-wrap d-flex justify-content-between">
           <div class="title-box">
-            <h2 class="title-a">Nossos Serviços</h2>
+            <h2 class="title-a">Serviços</h2>
           </div>
         </div>
       </div>
@@ -527,7 +527,7 @@
               <span class="bi bi-handbag"></span> <!-- Ícone de mão para arrematação -->
             </div>
             <div class="card-title-c align-self-center">
-              <h2 class="title-c">Arrematação</h2>
+              <h2 class="title-c">Compra</h2>
             </div>
           </div>
           <div class="card-body-c">
@@ -900,35 +900,6 @@
       </div>
     </section>
 
-<!-- ======= Latest News Section ======= -->
-<section class="section-news section-t8">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="title-wrap d-flex justify-content-between">
-          <div class="title-box">
-            <h2 class="title-a">Últimos posts no blog</h2>
-          </div>
-          <div class="title-link">
-            <a href="blog-grid.html">Todos os posts
-              <span class="bi bi-chevron-right"></span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="news-carousel" class="swiper">
-      <div class="swiper-wrapper">
-        <!-- Os itens do carrossel serão gerados dinamicamente pelo JavaScript -->
-      </div>
-    </div>
-
-    <div class="news-carousel-pagination carousel-pagination"></div>
-  </div>
-</section>
-<!-- End Latest News Section -->
- 
     
     <!-- ======= Testimonials Section ======= -->
 <!--
@@ -1169,43 +1140,6 @@
   
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-
-  <script>
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('/assets/js/blogs.json')
-    .then(response => response.json())
-    .then(blogs => {
-      const carouselWrapper = document.querySelector('#news-carousel .swiper-wrapper');
-      blogs.forEach(blog => {
-        const carouselItem = document.createElement('div');
-        carouselItem.className = 'carousel-item-c swiper-slide';
-        carouselItem.innerHTML = `
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="${blog.imageUrl}" alt="${blog.title}" class="img-b img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="${blog.link}" class="category-b">${blog.category}</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="${blog.link}">${blog.title}</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">${blog.date}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-        carouselWrapper.appendChild(carouselItem);
-      });
-    });
-});
-  </script>
 
 </body>
 

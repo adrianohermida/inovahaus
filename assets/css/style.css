@@ -1365,7 +1365,7 @@ a:hover {
 
 .card-info .card-info-title {
   font-size: 1rem;
-  color: #313131;
+  color: #ffffff;
 }
 
 @media (min-width: 768px) {
@@ -1498,7 +1498,7 @@ a:hover {
   font-size: 0.9rem;
   background-color: #0057B7;
   padding: 0.3rem 0.7rem;
-  color: #313131;
+  color: #ffffff;
   letter-spacing: 0.03em;
   border-radius: 50px;
   text-decoration: none;
