@@ -254,83 +254,88 @@
 
 
 <script>
+  
 document.addEventListener("DOMContentLoaded", function() {
   fetch('assets/js/property.json')
     .then(response => response.json())
-    .then(data => {
-      // Função para preencher as opções do formulário
-      const fillOptions = (selectId, options) => {
-        const selectElement = document.getElementById(selectId);
-        options.forEach(option => {
-          const optElement = document.createElement('option');
-          optElement.value = option;
-          optElement.textContent = option;
-          selectElement.appendChild(optElement);
+    .then(properties => {
+      const typeSelect = document.getElementById('type');
+      const stateSelect = document.getElementById('state');
+      const citySelect = document.getElementById('city');
+      const neighborhoodSelect = document.getElementById('neighborhood');
+      const bedroomsSelect = document.getElementById('bedrooms');
+      const garagesSelect = document.getElementById('garages');
+      const bathroomsSelect = document.getElementById('bathrooms');
+      const categorySelect = document.getElementById('category');
+      const priceSelect = document.getElementById('price');
+
+      // Função para popular um select com opções únicas
+      const populateSelect = (select, values) => {
+        const uniqueValues = [...new Set(values)];
+        uniqueValues.forEach(value => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = value;
+          select.appendChild(option);
         });
       };
 
-      const types = [...new Set(data.map(property => property.type))];
-      const states = [...new Set(data.map(property => property.state))];
-      const cities = [...new Set(data.map(property => property.city))];
-      const neighborhoods = [...new Set(data.map(property => property.neighborhood))];
-      const bedrooms = [...new Set(data.map(property => property.bedrooms))];
-      const garages = [...new Set(data.map(property => property.garages))];
-      const bathrooms = [...new Set(data.map(property => property.bathrooms))];
-      const categories = [...new Set(data.map(property => property.category))];
+      // Popular os selects com os dados dos imóveis
+      populateSelect(typeSelect, properties.map(property => property.type));
+      populateSelect(stateSelect, properties.map(property => property.state));
+      populateSelect(citySelect, properties.map(property => property.city));
+      populateSelect(neighborhoodSelect, properties.map(property => property.neighborhood));
+      populateSelect(bedroomsSelect, properties.map(property => property.bedrooms));
+      populateSelect(garagesSelect, properties.map(property => property.garages));
+      populateSelect(bathroomsSelect, properties.map(property => property.bathrooms));
+      populateSelect(categorySelect, properties.map(property => property.category));
 
-      fillOptions('type', types);
-      fillOptions('state', states);
-      fillOptions('city', cities);
-      fillOptions('neighborhood', neighborhoods);
-      fillOptions('bedrooms', bedrooms);
-      fillOptions('garages', garages);
-      fillOptions('bathrooms', bathrooms);
-      fillOptions('category', categories);
+      // Média ponderada dos preços mínimos
+      const prices = properties.map(property => property.minimumBid);
+      const totalPrices = prices.reduce((total, price) => total + price, 0);
+      const averagePrice = totalPrices / prices.length;
+      const priceRanges = [
+        Math.floor(averagePrice * 0.5),
+        Math.floor(averagePrice * 0.75),
+        Math.floor(averagePrice),
+        Math.floor(averagePrice * 1.25),
+        Math.floor(averagePrice * 1.5)
+      ];
 
-      // Calcular média ponderada dos preços
-      const minimumBids = data.map(property => property.minimumBid);
-      const averagePrice = minimumBids.reduce((acc, curr) => acc + curr, 0) / minimumBids.length;
-      const priceOptions = [
-        averagePrice * 0.5, 
-        averagePrice * 0.75, 
-        averagePrice, 
-        averagePrice * 1.25
-      ].map(price => `R$ ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
-      fillOptions('price', priceOptions);
+      priceRanges.forEach(price => {
+        const option = document.createElement('option');
+        option.value = price;
+        option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
+        priceSelect.appendChild(option);
+      });
 
-      // Processar resultados da busca
+      // Filtrar imóveis com base na pesquisa
       document.getElementById('property-search-form').addEventListener('submit', function(event) {
         event.preventDefault();
+        const keyword = document.getElementById('keyword').value.toLowerCase();
+        const type = typeSelect.value;
+        const state = stateSelect.value;
+        const city = citySelect.value;
+        const neighborhood = neighborhoodSelect.value;
+        const bedrooms = bedroomsSelect.value;
+        const garages = garagesSelect.value;
+        const bathrooms = bathroomsSelect.value;
+        const category = categorySelect.value;
+        const price = priceSelect.value;
 
-        const filters = {
-          keyword: document.getElementById('keyword').value.toLowerCase(),
-          type: document.getElementById('type').value,
-          state: document.getElementById('state').value,
-          city: document.getElementById('city').value,
-          neighborhood: document.getElementById('neighborhood').value,
-          bedrooms: document.getElementById('bedrooms').value,
-          garages: document.getElementById('garages').value,
-          bathrooms: document.getElementById('bathrooms').value,
-          price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')),
-          category: document.getElementById('category').value
-        };
-
-        const filteredProperties = data.filter(property => {
-          return (
-            (!filters.keyword || property.title.toLowerCase().includes(filters.keyword)) &&
-            (!filters.type || property.type === filters.type) &&
-            (!filters.state || property.state === filters.state) &&
-            (!filters.city || property.city === filters.city) &&
-            (!filters.neighborhood || property.neighborhood === filters.neighborhood) &&
-            (!filters.bedrooms || property.bedrooms == filters.bedrooms) &&
-            (!filters.garages || property.garages == filters.garages) &&
-            (!filters.bathrooms || property.bathrooms == filters.bathrooms) &&
-            (!filters.price || property.minimumBid <= filters.price) &&
-            (!filters.category || property.category === filters.category)
-          );
+        const filteredProperties = properties.filter(property => {
+          return (keyword === "" || property.title.toLowerCase().includes(keyword)) &&
+            (type === "" || property.type === type) &&
+            (state === "" || property.state === state) &&
+            (city === "" || property.city === city) &&
+            (neighborhood === "" || property.neighborhood === neighborhood) &&
+            (bedrooms === "" || property.bedrooms == bedrooms) &&
+            (garages === "" || property.garages == garages) &&
+            (bathrooms === "" || property.bathrooms == bathrooms) &&
+            (category === "" || property.category === category) &&
+            (price === "" || property.minimumBid <= price);
         });
 
-        // Redirecionar para property-grid.html com os resultados filtrados
         localStorage.setItem('filteredProperties', JSON.stringify(filteredProperties));
         window.location.href = 'property-grid.html';
       });
