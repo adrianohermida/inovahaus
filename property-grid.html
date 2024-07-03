@@ -530,6 +530,177 @@
       </div>
     </section>-->
 
+    <!-- ======= Property Grid ======= -->
+<section class="property-grid grid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="grid-option">
+          <form>
+            <select class="custom-select" id="category-filter">
+              <option selected>Todas as Categorias</option>
+            </select>
+          </form>
+        </div>
+      </div>
+      <div id="property-results" class="row"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <nav class="pagination-a">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">
+                <span class="bi bi-chevron-left"></span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">3</a>
+            </li>
+            <li class="page-item next">
+              <a class="page-link" href="#">
+                <span class="bi bi-chevron-right"></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Property Grid Single-->
+
+<script>document.addEventListener("DOMContentLoaded", function() {
+  const filteredProperties = JSON.parse(localStorage.getItem('filteredProperties'));
+  const propertyResults = document.getElementById('property-results');
+
+  if (filteredProperties && filteredProperties.length > 0) {
+    filteredProperties.forEach(property => {
+      const propertyCard = `
+        <div class="col-md-4">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="${property.image}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="property-single.html?propertyId=${property.propertyId}">${property.title}</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">Lance mínimo | R$ ${property.minimumBid.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                  </div>
+                  <a href="property-single.html?propertyId=${property.propertyId}" class="link-a">Clique aqui para ver
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Área</h4>
+                      <span>${property.area} m²</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Quartos</h4>
+                      <span>${property.bedrooms}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Banheiros</h4>
+                      <span>${property.bathrooms}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Garagens</h4>
+                      <span>${property.garages}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      propertyResults.insertAdjacentHTML('beforeend', propertyCard);
+    });
+  } else {
+    propertyResults.innerHTML = '<p class="text-center">Nenhum imóvel encontrado com os critérios de busca.</p>';
+  }
+
+  // Preencher o filtro de categoria
+  const categories = [...new Set(filteredProperties.map(property => property.category))];
+  const categoryFilter = document.getElementById('category-filter');
+  categories.forEach(category => {
+    const option = document.createElement('option');
+    option.value = category;
+    option.textContent = category;
+    categoryFilter.appendChild(option);
+  });
+
+  // Filtrar por categoria
+  categoryFilter.addEventListener('change', function() {
+    const selectedCategory = this.value;
+    const filteredByCategory = filteredProperties.filter(property => property.category === selectedCategory || selectedCategory === 'Todas as Categorias');
+    propertyResults.innerHTML = '';
+    filteredByCategory.forEach(property => {
+      const propertyCard = `
+        <div class="col-md-4">
+          <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+              <img src="${property.image}" alt="" class="img-a img-fluid">
+            </div>
+            <div class="card-overlay">
+              <div class="card-overlay-a-content">
+                <div class="card-header-a">
+                  <h2 class="card-title-a">
+                    <a href="property-single.html?propertyId=${property.propertyId}">${property.title}</a>
+                  </h2>
+                </div>
+                <div class="card-body-a">
+                  <div class="price-box d-flex">
+                    <span class="price-a">Lance mínimo | R$ ${property.minimumBid.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                  </div>
+                  <a href="property-single.html?propertyId=${property.propertyId}" class="link-a">Clique aqui para ver
+                    <span class="bi bi-chevron-right"></span>
+                  </a>
+                </div>
+                <div class="card-footer-a">
+                  <ul class="card-info d-flex justify-content-around">
+                    <li>
+                      <h4 class="card-info-title">Área</h4>
+                      <span>${property.area} m²</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Quartos</h4>
+                      <span>${property.bedrooms}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Banheiros</h4>
+                      <span>${property.bathrooms}</span>
+                    </li>
+                    <li>
+                      <h4 class="card-info-title">Garagens</h4>
+                      <span>${property.garages}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      propertyResults.insertAdjacentHTML('beforeend', propertyCard);
+    });
+  });
+});
+</script>
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->

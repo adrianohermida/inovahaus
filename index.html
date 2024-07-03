@@ -250,10 +250,11 @@
       </div>
     </form>
   </div>
-</div>
+</div><!-- End Property Search Section -->
+
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
   fetch('assets/js/property.json')
     .then(response => response.json())
     .then(data => {
@@ -289,7 +290,12 @@
       // Calcular média ponderada dos preços
       const minimumBids = data.map(property => property.minimumBid);
       const averagePrice = minimumBids.reduce((acc, curr) => acc + curr, 0) / minimumBids.length;
-      const priceOptions = [averagePrice * 0.5, averagePrice * 0.75, averagePrice, averagePrice * 1.25].map(price => `R$ ${price.toLocaleString()}`);
+      const priceOptions = [
+        averagePrice * 0.5, 
+        averagePrice * 0.75, 
+        averagePrice, 
+        averagePrice * 1.25
+      ].map(price => `R$ ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`);
       fillOptions('price', priceOptions);
 
       // Processar resultados da busca
@@ -324,65 +330,15 @@
           );
         });
 
-        // Exibir resultados
-        const resultsContainer = document.querySelector('.property-results');
-        resultsContainer.innerHTML = ''; // Limpar resultados anteriores
-
-        filteredProperties.forEach(property => {
-          const propertyCard = `
-            <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="${property.image}" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="#">${property.title}</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">Lance mínimo | R$ ${property.minimumBid.toLocaleString()}</span>
-                      </div>
-                      <a href="property-single.html" class="link-a">Clique aqui para ver
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Área</h4>
-                          <span>${property.area} m²</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Quartos</h4>
-                          <span>${property.bedrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Banheiros</h4>
-                          <span>${property.bathrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garagens</h4>
-                          <span>${property.garages}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-          resultsContainer.insertAdjacentHTML('beforeend', propertyCard);
-        });
+        // Redirecionar para property-grid.html com os resultados filtrados
+        localStorage.setItem('filteredProperties', JSON.stringify(filteredProperties));
+        window.location.href = 'property-grid.html';
       });
     });
 });
 </script>
 <!-- End Property Search Section -->
- 
+
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
