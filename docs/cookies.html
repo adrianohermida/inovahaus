@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta id="og-url" property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="keywords" content="">  
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <!-- Outros meta tags e recursos -->
+</head>
+
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: EstateAgency
+  * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>All City</option>
+                <option>Alabama</option>
+                <option>Arizona</option>
+                <option>California</option>
+                <option>Colorado</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">Garages</label>
+              <select class="form-control form-select form-control-a" id="garages">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+                <option>04</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+                <option>03</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>$50,000</option>
+                <option>$100,000</option>
+                <option>$150,000</option>
+                <option>$200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->>
+
+
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="index.html">Inovahaus<span class="color-b">Imóveis</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Início</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="about.html">Sobre</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="property-grid.html">Oportunidades</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="blog-grid.html">Blog</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " href="contact.html">Contato</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+ <!-- ======= Intro Single ======= -->
+ <section class="intro-single">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8">
+        <div class="title-single-box">
+          <h1 class="title-single" id="blog-title"></h1>
+          <span class="color-text-a" id="blog-subtitle"></span>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Tudo sobre Leilões
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section><!-- End Intro Single-->
+
+<section class="news-single nav-arrow-b">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="news-img-box">
+          <img src="" alt="" class="img-fluid" id="blog-image">
+        </div>
+      </div>
+      <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+   
+        <div class="post-content color-text-a">
+          <h2>Política de Cookies</h2>
+          <p class="post-intro">
+              Inovahaus Imóveis
+          </p>
+          <p>Esta Política de Cookies explica como a Inovahaus Imóveis utiliza cookies e tecnologias similares para reconhecer você quando visita nosso site. Ela explica o que são essas tecnologias e por que as usamos, bem como seus direitos de controlar o uso delas.</p>
+          
+          <h3>O que são cookies?</h3>
+          <p>Cookies são pequenos arquivos de dados que são colocados no seu computador ou dispositivo móvel quando você visita um site. Os cookies são amplamente utilizados pelos proprietários de sites para fazer seus sites funcionarem, ou para trabalharem de maneira mais eficiente, além de fornecer informações de relatórios.</p>
+          
+          <h3>Por que usamos cookies?</h3>
+          <p>Usamos cookies por vários motivos. Alguns cookies são necessários por razões técnicas para que nosso site funcione, e nos referimos a esses como cookies "essenciais" ou "estritamente necessários". Outros cookies também nos permitem rastrear e direcionar os interesses de nossos usuários para melhorar a experiência no site. Terceiros também servem cookies através do nosso site para publicidade, análise e outros fins.</p>
+          
+          <h3>Tipos de cookies que usamos</h3>
+          <ul>
+              <li><strong>Cookies essenciais:</strong> Esses cookies são estritamente necessários para fornecer a você serviços disponíveis em nosso site e para usar alguns de seus recursos, como acesso a áreas seguras.</li>
+              <li><strong>Cookies de desempenho e funcionalidade:</strong> Esses cookies são usados para melhorar o desempenho e a funcionalidade do nosso site, mas não são essenciais para seu uso. No entanto, sem esses cookies, certas funcionalidades podem ficar indisponíveis.</li>
+              <li><strong>Cookies de análise e personalização:</strong> Esses cookies coletam informações que são usadas de forma agregada para nos ajudar a entender como nosso site está sendo usado ou a eficácia de nossas campanhas de marketing, ou para nos ajudar a personalizar nosso site para você.</li>
+              <li><strong>Cookies de publicidade:</strong> Esses cookies são usados para tornar as mensagens publicitárias mais relevantes para você. Eles realizam funções como impedir que o mesmo anúncio reapareça continuamente, garantindo que os anúncios sejam exibidos corretamente para os anunciantes e, em alguns casos, selecionando anúncios baseados em seus interesses.</li>
+          </ul>
+      
+          <h3>Como você pode controlar os cookies?</h3>
+          <p>Você tem o direito de decidir se aceita ou rejeita cookies. Você pode exercer suas preferências de cookies ajustando as configurações no seu navegador. Como os meios pelos quais você pode recusar cookies através dos controles do navegador variam de navegador para navegador, você deve visitar o menu de ajuda do seu navegador para obter mais informações.</p>
+          
+          <p>Além disso, a maioria das redes de publicidade oferece a você uma maneira de optar por não receber publicidade direcionada. Se você quiser saber mais informações, visite <a href="http://www.aboutads.info/choices/">http://www.aboutads.info/choices/</a> ou <a href="http://www.youronlinechoices.com">http://www.youronlinechoices.com</a>.</p>
+      
+          <h3>Mais informações</h3>
+          <p>Se você tiver dúvidas sobre o uso de cookies ou outras tecnologias, envie um e-mail para contato@inovahaus.com.br ou entre em contato pelo telefone +55 92 9497-9987.</p>
+      </div>
+      
+      <div class="post-footer">
+          <div class="post-share">
+              <span>Compartilhar: </span>
+              <ul class="list-inline socials">
+                  <li class="list-inline-item">
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                      </a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="https://twitter.com/intent/tweet?text=Confira%20este%20artigo%20incr%C3%ADvel&url=" target="_blank">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                      </a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="https://www.linkedin.com/shareArticle?mini=true&url=" target="_blank">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                      </a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="https://api.whatsapp.com/send?text=Confira%20este%20artigo%20incr%C3%ADvel%20" target="_blank">
+                          <i class="bi bi-whatsapp" aria-hidden="true"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      
+
+  </main><!-- End #main -->
+    
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Inovahaus Imóveis</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                A Inovahaus Imóveis oferece serviços imobiliários especializados em arrematação, avaliação e regularização de imóveis, garantindo segurança e eficiência em cada etapa do processo. Nossa missão é proporcionar a melhor experiência em investimentos imobiliários através de leilões.</p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Telefone:</span> contato@inovahaus.com.br
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +55 92 9497-9987
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Oportunidades</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Leilões Judiciais</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Concorrências Públicas</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Venda Direta</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Alienações Particulares</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">Links</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Código de Ética</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Prevenção à Lavagem de dinheiro</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Política de Privacidade</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Termos de uso</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Cookies</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="/index.html">Início</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/about.html">Sobre</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/property-grid.html">Oportunidades</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/blog-grid.html">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="/contact.html">Contato</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">Inovahaus Imóveis</span> Todos os direitos reservados.
+            </p>
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/assets/js/main.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Configurações dinâmicas
+    const blogConfig = {
+    title: "Política de Privacidade",
+    subtitle: "Entenda como protegemos suas informações.",
+    author: "Dr. Adriano Hermida Maia",
+    category: "Informativo",
+    description: "A Inovahaus Imóveis oferece serviços imobiliários especializados em arrematação, avaliação e regularização de imóveis, garantindo segurança e eficiência em cada etapa do processo. Nossa missão é proporcionar a melhor experiência em investimentos imobiliários através de leilões.",
+    imageUrl: "/assets/img/slide-3.webp"
+};
+
+
+    // Obtendo a data atual
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = today.toLocaleDateString('pt-BR', options);
+
+    // Definindo meta tags dinamicamente
+    document.getElementById('page-title').innerText = blogConfig.title;
+    document.getElementById('blog-title').innerText = blogConfig.title;
+    document.getElementById('blog-subtitle').innerText = blogConfig.subtitle;
+    document.getElementById('blog-author').innerText = blogConfig.author;
+    document.getElementById('blog-category').innerText = blogConfig.category;
+    document.getElementById('blog-date').innerText = formattedDate;
+    document.getElementById('blog-image').src = blogConfig.imageUrl;
+    document.querySelector('meta[property="og:title"]').setAttribute('content', blogConfig.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', blogConfig.description);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', blogConfig.imageUrl);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', blogConfig.title);
+    document.querySelector('meta[name="twitter:description"]').setAttribute('content', blogConfig.description);
+    document.querySelector('meta[name="twitter:image"]').setAttribute('content', blogConfig.imageUrl);
+    document.getElementById('og-url').setAttribute('content', window.location.href);
+
+    // Função para extrair palavras-chave do texto
+    function extractKeywords(text) {
+      var words = text.split(/\W+/);
+      var frequency = {};
+      words.forEach(function(word) {
+        if (word.length > 3) {
+          if (!frequency[word]) {
+            frequency[word] = 0;
+          }
+          frequency[word]++;
+        }
+      });
+      var sorted = Object.keys(frequency).sort(function(a, b) {
+        return frequency[b] - frequency[a];
+      });
+      return sorted.slice(0, 10).join(", ");
+    }
+
+    // Extraindo palavras-chave do conteúdo da página
+    var contentText = document.body.innerText;
+    var keywords = extractKeywords(contentText);
+    document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+
+    // Configura os links de compartilhamento
+    var facebookShareLink = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href);
+    var twitterShareLink = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(blogConfig.title) + "&url=" + encodeURIComponent(window.location.href);
+    var linkedinShareLink = "https://www.linkedin.com/shareArticle?mini=true&url=" + encodeURIComponent(window.location.href);
+    var whatsappShareLink = "https://api.whatsapp.com/send?text=" + encodeURIComponent(blogConfig.title) + "%20" + encodeURIComponent(window.location.href);
+
+    // Define os atributos href dos ícones de compartilhamento
+    document.querySelector('.bi-facebook').parentElement.setAttribute("href", facebookShareLink);
+    document.querySelector('.bi-twitter').parentElement.setAttribute("href", twitterShareLink);
+    document.querySelector('.bi-linkedin').parentElement.setAttribute("href", linkedinShareLink);
+    document.querySelector('.bi-whatsapp').parentElement.setAttribute("href", whatsappShareLink);
+  });
+</script>
+
+</body>
+
+</html>
