@@ -47,99 +47,194 @@
 
 <body>
 
-  <!-- ======= Property Search Section ======= -->
-  <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  <div class="box-collapse">
-    <div class="title-box-d">
-      <h3 class="title-d">Search Property</h3>
-    </div>
-    <span class="close-box-collapse right-boxed bi bi-x"></span>
-    <div class="box-collapse-wrap form">
-      <form class="form-a">
-        <div class="row">
-          <div class="col-md-12 mb-2">
-            <div class="form-group">
-              <label class="pb-2" for="Type">Keyword</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="Type">Type</label>
-              <select class="form-control form-select form-control-a" id="Type">
-                <option>All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="city">City</label>
-              <select class="form-control form-select form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="bedrooms">Bedrooms</label>
-              <select class="form-control form-select form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="garages">Garages</label>
-              <select class="form-control form-select form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="bathrooms">Bathrooms</label>
-              <select class="form-control form-select form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="price">Min Price</label>
-              <select class="form-control form-select form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Search Property</button>
+<!-- ======= Property Search Section ======= -->
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+  <div class="title-box-d">
+    <h3 class="title-d">Buscar Imóvel</h3>
+  </div>
+  <span class="close-box-collapse right-boxed bi bi-x"></span>
+  <div class="box-collapse-wrap form">
+    <form class="form-a" id="property-search-form">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <div class="form-group">
+            <label class="pb-2" for="keyword">Palavra-chave</label>
+            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Palavra-chave" id="keyword">
           </div>
         </div>
-      </form>
-    </div>
-  </div><!-- End Property Search Section -->>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="type">Tipo</label>
+            <select class="form-control form-select form-control-a" id="type">
+              <option value="">Todos os Tipos</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="state">Estado (UF)</label>
+            <select class="form-control form-select form-control-a" id="state">
+              <option value="">Todos os Estados</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="city">Cidade</label>
+            <select class="form-control form-select form-control-a" id="city">
+              <option value="">Todas as Cidades</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="neighborhood">Bairro</label>
+            <select class="form-control form-select form-control-a" id="neighborhood">
+              <option value="">Todos os Bairros</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="bedrooms">Quartos</label>
+            <select class="form-control form-select form-control-a" id="bedrooms">
+              <option value="">Qualquer</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="garages">Garagens</label>
+            <select class="form-control form-select form-control-a" id="garages">
+              <option value="">Qualquer</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="bathrooms">Banheiros</label>
+            <select class="form-control form-select form-control-a" id="bathrooms">
+              <option value="">Qualquer</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="price">Preço Mínimo (R$)</label>
+            <select class="form-control form-select form-control-a" id="price">
+              <option value="">Sem Limite</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="category">Categoria</label>
+            <select class="form-control form-select form-control-a" id="category">
+              <option value="">Todas as Categorias</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-b">Buscar Imóvel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div><!-- End Property Search Section -->
+
+
+<script>
+  
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('assets/js/property.json')
+    .then(response => response.json())
+    .then(properties => {
+      const typeSelect = document.getElementById('type');
+      const stateSelect = document.getElementById('state');
+      const citySelect = document.getElementById('city');
+      const neighborhoodSelect = document.getElementById('neighborhood');
+      const bedroomsSelect = document.getElementById('bedrooms');
+      const garagesSelect = document.getElementById('garages');
+      const bathroomsSelect = document.getElementById('bathrooms');
+      const categorySelect = document.getElementById('category');
+      const priceSelect = document.getElementById('price');
+
+      // Função para popular um select com opções únicas
+      const populateSelect = (select, values) => {
+        const uniqueValues = [...new Set(values)];
+        uniqueValues.forEach(value => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = value;
+          select.appendChild(option);
+        });
+      };
+
+      // Popular os selects com os dados dos imóveis
+      populateSelect(typeSelect, properties.map(property => property.type));
+      populateSelect(stateSelect, properties.map(property => property.state));
+      populateSelect(citySelect, properties.map(property => property.city));
+      populateSelect(neighborhoodSelect, properties.map(property => property.neighborhood));
+      populateSelect(bedroomsSelect, properties.map(property => property.bedrooms));
+      populateSelect(garagesSelect, properties.map(property => property.garages));
+      populateSelect(bathroomsSelect, properties.map(property => property.bathrooms));
+      populateSelect(categorySelect, properties.map(property => property.category));
+
+      // Média ponderada dos preços mínimos
+      const prices = properties.map(property => property.minimumBid);
+      const totalPrices = prices.reduce((total, price) => total + price, 0);
+      const averagePrice = totalPrices / prices.length;
+      const priceRanges = [
+        Math.floor(averagePrice * 0.5),
+        Math.floor(averagePrice * 0.75),
+        Math.floor(averagePrice),
+        Math.floor(averagePrice * 1.25),
+        Math.floor(averagePrice * 1.5)
+      ];
+
+      priceRanges.forEach(price => {
+        const option = document.createElement('option');
+        option.value = price;
+        option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
+        priceSelect.appendChild(option);
+      });
+
+      // Filtrar imóveis com base na pesquisa
+      document.getElementById('property-search-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const keyword = document.getElementById('keyword').value.toLowerCase();
+        const type = typeSelect.value;
+        const state = stateSelect.value;
+        const city = citySelect.value;
+        const neighborhood = neighborhoodSelect.value;
+        const bedrooms = bedroomsSelect.value;
+        const garages = garagesSelect.value;
+        const bathrooms = bathroomsSelect.value;
+        const category = categorySelect.value;
+        const price = priceSelect.value;
+
+        const filteredProperties = properties.filter(property => {
+          return (keyword === "" || property.title.toLowerCase().includes(keyword)) &&
+            (type === "" || property.type === type) &&
+            (state === "" || property.state === state) &&
+            (city === "" || property.city === city) &&
+            (neighborhood === "" || property.neighborhood === neighborhood) &&
+            (bedrooms === "" || property.bedrooms == bedrooms) &&
+            (garages === "" || property.garages == garages) &&
+            (bathrooms === "" || property.bathrooms == bathrooms) &&
+            (category === "" || property.category === category) &&
+            (price === "" || property.minimumBid <= price);
+        });
+
+        localStorage.setItem('filteredProperties', JSON.stringify(filteredProperties));
+        window.location.href = 'property-grid.html';
+      });
+    });
+});
+</script>
+<!-- End Property Search Section -->
 
 
   <!-- ======= Header/Navbar ======= -->
@@ -150,29 +245,29 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">CamilaMaia<span class="color-b">Imóveis</span></a>
+      <a class="navbar-brand text-brand" href="/index.html">CamilaMaia<span class="color-b">Imóveis</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
 
           <li class="nav-item">
-            <a class="nav-link active" href="index.html">Início</a>
+            <a class="nav-link active" href="/index.html">Início</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="about.html">Sobre</a>
+            <a class="nav-link " href="/about.html">Sobre</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="property-grid.html">Oportunidades</a>
+            <a class="nav-link " href="/property-grid.html">Oportunidades</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="blog-grid.html">Blog</a>
+            <a class="nav-link " href="/blog-grid.html">Blog</a>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link " href="contact.html">Contato</a>
+            <a class="nav-link " href="/contact.html">Contato</a>
           </li>
         </ul>
       </div>
@@ -238,31 +333,29 @@
           </ul>
         </div>
         <div class="post-content color-text-a">
-            <h2>Entenda os Leilões de Imóveis</h2>
+            <h2>Prazo para Purgar a Mora em Leilões de Alienação Fiduciária
+/h2>
             <p class="post-intro">
-              O investimetno mais seguro.
+              Saiba quando a arrematação não pode ser desfeita.
             </p>
-            <p>O leilão é um dos processos de venda de bens mais antigos de que se tem notícia. A mercadoria é ofertada a um certo número de compradores interessados, e aquele que oferecer o maior valor leva a mercadoria.</p>
-              <p>No caso dos leilões de imóveis, há um grande número de oportunidades para fazer bons negócios. Imóveis podem ser arrematados por preços significativamente abaixo do valor de mercado, tornando-se uma excelente opção de investimento. No entanto, muitos investidores encontram dificuldades para entrar neste mercado devido à complexidade dos processos envolvidos, que incluem pesquisa, análise, e arrematação dos bens.
-            </p>
-            <h3>Tipos de Leilões de Imóveis</h3>
+            <p>A alienação fiduciária é um mecanismo amplamente utilizado no Brasil para garantir o cumprimento de obrigações, especialmente em contratos de financiamento imobiliário. Trata-se de uma forma de garantia na qual o devedor, denominado fiduciante, transfere ao credor, chamado fiduciário, a propriedade resolúvel de um bem, geralmente imóvel, até que a dívida seja quitada. Neste contexto, o prazo para purgar a mora (isto é, regularizar a dívida pendente) assume grande importância, especialmente quando se aproxima a data do leilão do imóvel.
+
+</p>
+            <h3>O Que é Purgar a Mora?
+            </h3>
             <p>
-              Existem diferentes tipos de leilões de imóveis, cada um com suas próprias características e procedimentos:
+              Purgar a mora significa que o devedor tem a oportunidade de regularizar a sua situação financeira antes que o bem seja definitivamente alienado em um leilão. Esta regularização envolve o pagamento das parcelas vencidas, acrescidas de juros, multas e outros encargos contratuais. Este mecanismo permite ao devedor evitar a perda do imóvel e recuperar a plena propriedade do bem.
             </p>
-            <ul>
-              <li><strong>Leilões Judiciais:</strong> Realizados por determinação judicial para saldar dívidas de processos judiciais. Estes leilões são considerados muito seguros, pois o bem é vendido com respaldo jurídico. Os imóveis geralmente são arrematados por valores abaixo do mercado, proporcionando grandes oportunidades de lucro.</li>
-              <li><strong>Leilões Extrajudiciais:</strong> Conduzidos por instituições financeiras que retomam imóveis de mutuários inadimplentes. Apesar da agilidade na transferência do imóvel para o nome do arrematante, os preços podem não ser tão atraentes quanto nos leilões judiciais.</li>
-              <li><strong>Concorrências Públicas:</strong> Modalidade onde bens públicos são vendidos a interessados através de um processo licitatório. É uma excelente oportunidade para quem busca imóveis com potencial de valorização.</li>
-            </ul>
-            <h3>A Complexidade dos Leilões</h3>
+            <h3>Prazo para Purgar a Mora
+            </h3>
             <p>
-              Entrar no mercado de leilões de imóveis pode ser desafiador. A complexidade reside na necessidade de:
+              No caso da alienação fiduciária, o prazo para purgar a mora, no caso de imóveis, é de 15 dias corridos após receber a notificação que concede o prazo para a comprovação de pagamento do débito cobrado ou negociar o débito. Se o imóvel pertencem ao Programa Minha Casa, Minha Vida, o prazo é de 45 dias.
             </p>
-            <ul>
-              <li><strong>Pesquisa de Oportunidades:</strong> Encontrar imóveis que sejam bons investimentos requer tempo e acesso a informações precisas.</li>
-              <li><strong>Análise Detalhada:</strong> É fundamental analisar a viabilidade econômica do imóvel, seu estado de conservação, e verificar se há dívidas ou restrições legais associadas.</li>
-              <li><strong>Arrematação e Regularização:</strong> O processo de arrematação deve ser bem conduzido para evitar surpresas. Além disso, a regularização do imóvel arrematado pode envolver uma série de procedimentos legais e burocráticos.</li>
-            </ul>
+            <h3>Considerações finais
+            </h3>
+            <p>
+              A purgação da mora é um direito importante do devedor em processos de alienação fiduciária, oferecendo uma última chance para evitar a perda do imóvel. É crucial que o comprar interessado em arrematar um bem imóvel, seja diligente em obter informações atualizadas sobre a situação do bem. Portanto, é recomendável que o devedor busque orientação especializada com uma assessoria imobiliaria ou advogado especialista para garantir um arrematação segura, evitando prejuízos irreparáveis e protegendo seu patrimônio de forma eficaz.
+            </p>
             <h3>Como a Camila Maia Imóveis Pode Ajudar</h3>
             <p>
               A Camila Maia Imóveis oferece serviços especializados para facilitar todo o processo de arrematação de imóveis em leilões, incluindo:
@@ -472,9 +565,9 @@
   document.addEventListener("DOMContentLoaded", function() {
     // Configurações dinâmicas
     const blogConfig = {
-      title: "Entenda os leilões",
-        subtitle: "Saiba porque este é o investimento mais seguro.",
-        author: "Dr. Adriano Hermida Maia",
+      title: "Prazo para Purgar a Mora em Leilões de Alienação Fiduciária",
+        subtitle: "Saiba quando o a arrematação não pode ser desfeita.",
+        author: "Camila Maia Corretora de Imóveis",
         category: "Artigo",
         description: "O leilão é um dos processos de venda de bens mais antigos de que se tem notícia. A mercadoria é ofertada a um certo número de compradores interessados, e aquele que oferecer o maior valor leva a mercadoria.",
         imageUrl: "/assets/img/slide-3.webp"
