@@ -768,8 +768,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 </li>
                 <li class="breadcrumb-item">
                   <a href="/property-grid.html">Oportunidades</a>
+                  <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-title"></li>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-title"></li>
               </ol>
             </nav>
           </div>
@@ -1228,40 +1228,45 @@ document.addEventListener("DOMContentLoaded", function() {
     </script>
   <script>    
     document.addEventListener("DOMContentLoaded", function () {
-      // Configurações dinâmicas para o imóvel
-      const propertyData = {
-        title: "304 Blaster Up",
-        address: "304 Blaster Up, Centro",
-        city: "São Paulo",
-        state: "SP",
-        neighborhood: "Centro",
-        minimumBid: "15000",
-        propertyId: "1134",
-        origin: "Justiça do Trabalho",
-        type: "Casa",
-        category:"Leilão Judicial",
-        status: "Disponível",
-        condition: "Desocupado",
-        nextAuction: "Leilão agendado",
-        area: "340m²",
-        bedrooms: 4,
-        bathrooms: 2,
-        garages: 1,
-        condoFee: "1",
-        debts: "1",
-        description: "Descrição detalhada da propriedade, incluindo informações sobre o estado, particularidades e outras características importantes.",
-        amenities: ["Varanda", "Cozinha externa", "Possui piscina", "Closets", "Piso de porcelanato"],
-        images: ["/assets/img/slide-1.jpg", "/assets/img/slide-2.jpg"],
-        videoUrl: "https://player.vimeo.com/video/73221098",
-        floorPlanUrl: "/assets/img/planta-baixa.webp",
-        locationUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834",
-        agent: {
-          name: "Camila Maia",
-          bio: "Corretora e avaliadora de imóveis com mais de 10 anos de experiência, especializada em identificar oportunidades em leilões judiciais e extrajudiciais. Oferece um atendimento personalizado focado em compra, venda e locação de imóveis, sempre garantindo os melhores resultados.",
-          license: "4526/ CRECI AM 18ª Região",
-          cnai: "17638",
-          email: "camilamaia@inovahaus.com.br",
-          imageUrl: "/assets/img/agent-1.jpg"
+  // Configurações dinâmicas para o imóvel
+  const propertyData = {
+    title: "Apartamento 102, Residencial Firenze",
+    address: "Av. Darcy Vargas, 129",
+    city: "Manaus",
+    state: "AM",
+    neighborhood: "Parque Dez de Novembro",
+    minimumBid: "200.000,00",
+    propertyId: "202000123599",
+    origin: "TRT11",
+    type: "Apartamento",
+    category: "Leilão Judicial",
+    status: "Disponível",
+    condition: "Desocupado",
+    nextAuction: "15/07/2024, 10:30",
+    area: "115,05m² (útil) + 58,89m² (comum) + 12,50m² (garagem) = 186,44m²",
+    bedrooms: 3,
+    bathrooms: 2,
+    garages: 1,
+    condoFee: "***",
+    debts: "R$ 8.228,80 (IPTU) + R$ 33.773,48 (condomínio) + R$ 33.773,48 de condomínio",
+    description: "Imóvel localizado no Residencial Firenze, Av. Darcy Vargas, nº 129, Manaus. Apartamento no primeiro pavimento, com 115,05m² de área útil, 58,89m² de área comum e 12,50m² de vaga de garagem, totalizando 186,44m² de área construída. Composto de sala de estar/jantar, três quartos (sendo uma suíte), banheiro social, copa/cozinha, área de serviço, banheiro de empregada, quarto de serviço e duas varandas. Desocupado e trancado, necessitando de pintura e limpeza. Avaliação em R$ 400.000,00. Débitos de IPTU: R$ 8.228,80 e taxas condominiais: R$ 33.773,48. Lance a partir de R$ 200.000,00 e requer credenciaament prévio. Dúvidas? Entre em contato.",
+    amenities: ["Varandas", "Quarto de serviço", "Copa/cozinha"],
+    images: [
+      "/assets/img/property/202000123599/1.png",
+      "/assets/img/property/202000123599/2.png",
+      "/assets/img/property/202000123599/3.png",
+      "/assets/img/property/202000123599/4.png",
+    ],
+    videoUrl: "https://player.vimeo.com/video/73221098",
+    floorPlanUrl: "/assets/img/planta-baixa.webp",
+    locationUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.0056916034305!2d-60.028767127234694!3d-3.093143740265982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c1aa43b64b575%3A0x58a56fca5791752b!2sCondom%C3%ADnio%20Residencial%20Firenze%20-%20Av.%20Darcy%20Vargas%2C%20129%20-%20Parque%20Dez%20de%20Novembro%2C%20Manaus%20-%20AM%2C%2069010-160!5e0!3m2!1spt-BR!2sbr!4v1720475858587!5m2!1spt-BR!2sbr",
+    agent: {
+      name: "Camila Maia",
+      bio: "Corretora e avaliadora de imóveis com mais de 10 anos de experiência, especializada em identificar oportunidades em leilões judiciais e extrajudiciais. Oferece um atendimento personalizado focado em compra, venda e locação de imóveis, sempre garantindo os melhores resultados.",
+      license: "4526/ CRECI AM 18ª Região",
+      cnai: "17638",
+      email: "camilamaia@inovahaus.com.br",
+      imageUrl: "/assets/img/agent-1.jpg"
         }
       };
 
@@ -1338,6 +1343,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
   </script>
+
+
+<a id="robbu-whatsapp-button" target="_blank" href="https://api.whatsapp.com/send?phone=5592994979987">
+    <div class="rwb-tooltip">Olá, como podemos ajudar?</div>
+    <img src="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-icon.svg">
+</a>
 
 </body>
 
