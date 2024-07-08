@@ -798,7 +798,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="property-price d-flex justify-content-center foo">
                   <div class="card-header-c d-flex">
                     <div class="card-box-ico">
-                      <span class="bi bi-cash">R$</span>
+                      <span class="bi bi-cash"></span>
                     </div>
                     <div class="card-title-c align-self-center">
                       <h5 class="title-c" id="minimum-bid"></h5>
@@ -1173,7 +1173,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     document.getElementById('title-single').innerText = propertyData.title;
             document.getElementById('neighborhood').innerText = `${propertyData.neighborhood}, ${propertyData.city} - ${propertyData.state}`;
             document.getElementById('breadcrumb-title').innerText = propertyData.title;
-            document.getElementById('minimum-bid').innerText = `Lance mínimo: R$ ${propertyData.minimumBid}`;
+            document.getElementById('minimum-bid').innerText = `Valor ${propertyData.minimumBid}`;
             document.querySelector('.summary-list ul').innerHTML = `
               <li class="d-flex justify-content-between"><strong>Código Imóvel:</strong><span>${propertyData.propertyId}</span></li>
               <li class="d-flex justify-content-between"><strong>Última atualização:</strong><span>${formattedDate}</span></li>
