@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>EstateAgency Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title"></title>
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta id="og-url" property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="../assets/vendor/animate.css/animate.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+    <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -36,9 +48,8 @@
 
 <body>
 
-  <!-- ======= Property Search Section ======= -->
+<!--  <!-- ======= Property Search Section
   <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
   <div class="box-collapse">
     <div class="title-box-d">
       <h3 class="title-d">Search Property</h3>
@@ -128,8 +139,288 @@
         </div>
       </form>
     </div>
-  </div><!-- End Property Search Section -->>
+  </div>-->
 
+
+<!-- ======= Property Search Section ======= -->
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+  <div class="title-box-d">
+    <h3 class="title-d">Buscar Imóvel</h3>
+  </div>
+  <span class="close-box-collapse right-boxed bi bi-x"></span>
+  <div class="box-collapse-wrap form">
+    <form class="form-a" id="property-search-form">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <div class="form-group">
+            <label class="pb-2" for="keyword">Palavra-chave</label>
+            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Palavra-chave" id="keyword">
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="type">Tipo</label>
+            <select class="form-control form-select form-control-a" id="type">
+              <option value="">Todos os Tipos</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="state">Estado (UF)</label>
+            <select class="form-control form-select form-control-a" id="state">
+              <option value="">Todos os Estados</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="city">Cidade</label>
+            <select class="form-control form-select form-control-a" id="city">
+              <option value="">Todas as Cidades</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="neighborhood">Bairro</label>
+            <select class="form-control form-select form-control-a" id="neighborhood">
+              <option value="">Todos os Bairros</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="bedrooms">Quartos</label>
+            <select class="form-control form-select form-control-a" id="bedrooms">
+              <option value="">Qualquer</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="garages">Garagens</label>
+            <select class="form-control form-select form-control-a" id="garages">
+              <option value="">Qualquer</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="bathrooms">Banheiros</label>
+            <select class="form-control form-select form-control-a" id="bathrooms">
+              <option value="">Qualquer</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="price">Preço Mínimo (R$)</label>
+            <select class="form-control form-select form-control-a" id="price">
+              <option value="">Sem Limite</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <div class="form-group mt-3">
+            <label class="pb-2" for="category">Categoria</label>
+            <select class="form-control form-select form-control-a" id="category">
+              <option value="">Todas as Categorias</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button type="submit" class="btn btn-b">Buscar Imóvel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('assets/js/property.json')
+      .then(response => response.json())
+      .then(properties => {
+        const typeSelect = document.getElementById('type');
+        const stateSelect = document.getElementById('state');
+        const citySelect = document.getElementById('city');
+        const neighborhoodSelect = document.getElementById('neighborhood');
+        const bedroomsSelect = document.getElementById('bedrooms');
+        const garagesSelect = document.getElementById('garages');
+        const bathroomsSelect = document.getElementById('bathrooms');
+        const categorySelect = document.getElementById('category');
+        const priceSelect = document.getElementById('price');
+  
+        // Função para popular um select com opções únicas
+        const populateSelect = (select, values) => {
+          const uniqueValues = [...new Set(values)];
+          uniqueValues.forEach(value => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+          });
+        };
+  
+        // Popular os selects com os dados dos imóveis
+        populateSelect(typeSelect, properties.map(property => property.type));
+        populateSelect(stateSelect, properties.map(property => property.state));
+        populateSelect(citySelect, properties.map(property => property.city));
+        populateSelect(neighborhoodSelect, properties.map(property => property.neighborhood));
+        populateSelect(bedroomsSelect, properties.map(property => property.bedrooms));
+        populateSelect(garagesSelect, properties.map(property => property.garages));
+        populateSelect(bathroomsSelect, properties.map(property => property.bathrooms));
+        populateSelect(categorySelect, properties.map(property => property.category));
+  
+        // Média ponderada dos preços mínimos
+        const prices = properties.map(property => property.minimumBid);
+        const totalPrices = prices.reduce((total, price) => total + price, 0);
+        const averagePrice = totalPrices / prices.length;
+        const priceRanges = [
+          Math.floor(averagePrice * 0.5),
+          Math.floor(averagePrice * 0.75),
+          Math.floor(averagePrice),
+          Math.floor(averagePrice * 1.25),
+          Math.floor(averagePrice * 1.5)
+        ];
+  
+        priceRanges.forEach(price => {
+          const option = document.createElement('option');
+          option.value = price;
+          option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
+          priceSelect.appendChild(option);
+        });
+  
+        // Filtrar imóveis com base na pesquisa
+        document.getElementById('property-search-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          const keyword = document.getElementById('keyword').value.toLowerCase();
+          const type = typeSelect.value;
+          const state = stateSelect.value;
+          const city = citySelect.value;
+          const neighborhood = neighborhoodSelect.value;
+          const bedrooms = bedroomsSelect.value;
+          const garages = garagesSelect.value;
+          const bathrooms = bathroomsSelect.value;
+          const category = categorySelect.value;
+          const price = priceSelect.value;
+  
+          const filteredProperties = properties.filter(property => {
+            return (keyword === "" || property.title.toLowerCase().includes(keyword)) &&
+              (type === "" || property.type === type) &&
+              (state === "" || property.state === state) &&
+              (city === "" || property.city === city) &&
+              (neighborhood === "" || property.neighborhood === neighborhood) &&
+              (bedrooms === "" || property.bedrooms == bedrooms) &&
+              (garages === "" || property.garages == garages) &&
+              (bathrooms === "" || property.bathrooms == bathrooms) &&
+              (category === "" || property.category === category) &&
+              (price === "" || property.minimumBid <= price);
+          });
+  
+          localStorage.setItem('filteredProperties', JSON.stringify(filteredProperties));
+          window.location.href = 'property-grid.html';
+        });
+      });
+  });
+  </script>
+  
+  <!-- End Property Search Section -->
+
+
+<script>  
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('assets/js/property.json')
+    .then(response => response.json())
+    .then(properties => {
+      const typeSelect = document.getElementById('type');
+      const stateSelect = document.getElementById('state');
+      const citySelect = document.getElementById('city');
+      const neighborhoodSelect = document.getElementById('neighborhood');
+      const bedroomsSelect = document.getElementById('bedrooms');
+      const garagesSelect = document.getElementById('garages');
+      const bathroomsSelect = document.getElementById('bathrooms');
+      const categorySelect = document.getElementById('category');
+      const priceSelect = document.getElementById('price');
+
+      // Função para popular um select com opções únicas
+      const populateSelect = (select, values) => {
+        const uniqueValues = [...new Set(values)];
+        uniqueValues.forEach(value => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = value;
+          select.appendChild(option);
+        });
+      };
+
+      // Popular os selects com os dados dos imóveis
+      populateSelect(typeSelect, properties.map(property => property.type));
+      populateSelect(stateSelect, properties.map(property => property.state));
+      populateSelect(citySelect, properties.map(property => property.city));
+      populateSelect(neighborhoodSelect, properties.map(property => property.neighborhood));
+      populateSelect(bedroomsSelect, properties.map(property => property.bedrooms));
+      populateSelect(garagesSelect, properties.map(property => property.garages));
+      populateSelect(bathroomsSelect, properties.map(property => property.bathrooms));
+      populateSelect(categorySelect, properties.map(property => property.category));
+
+      // Média ponderada dos preços mínimos
+      const prices = properties.map(property => property.minimumBid);
+      const totalPrices = prices.reduce((total, price) => total + price, 0);
+      const averagePrice = totalPrices / prices.length;
+      const priceRanges = [
+        Math.floor(averagePrice * 0.5),
+        Math.floor(averagePrice * 0.75),
+        Math.floor(averagePrice),
+        Math.floor(averagePrice * 1.25),
+        Math.floor(averagePrice * 1.5)
+      ];
+
+      priceRanges.forEach(price => {
+        const option = document.createElement('option');
+        option.value = price;
+        option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
+        priceSelect.appendChild(option);
+      });
+
+      // Filtrar imóveis com base na pesquisa
+      document.getElementById('property-search-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const keyword = document.getElementById('keyword').value.toLowerCase();
+        const type = typeSelect.value;
+        const state = stateSelect.value;
+        const city = citySelect.value;
+        const neighborhood = neighborhoodSelect.value;
+        const bedrooms = bedroomsSelect.value;
+        const garages = garagesSelect.value;
+        const bathrooms = bathroomsSelect.value;
+        const category = categorySelect.value;
+        const price = priceSelect.value;
+
+        const filteredProperties = properties.filter(property => {
+          return (keyword === "" || property.title.toLowerCase().includes(keyword)) &&
+            (type === "" || property.type === type) &&
+            (state === "" || property.state === state) &&
+            (city === "" || property.city === city) &&
+            (neighborhood === "" || property.neighborhood === neighborhood) &&
+            (bedrooms === "" || property.bedrooms == bedrooms) &&
+            (garages === "" || property.garages == garages) &&
+            (bathrooms === "" || property.bathrooms == bathrooms) &&
+            (category === "" || property.category === category) &&
+            (price === "" || property.minimumBid <= price);
+        });
+
+        localStorage.setItem('filteredProperties', JSON.stringify(filteredProperties));
+        window.location.href = 'property-grid.html';
+      });
+    });
+});
+</script>
+<!-- End Property Search Section -->
+ 
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
@@ -138,38 +429,29 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">Estate<span class="color-b">Agency</span></a>
+      <a class="navbar-brand text-brand" href="/index.html">CamilaMaia<span class="color-b">Imóveis</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
 
           <li class="nav-item">
-            <a class="nav-link " href="index.html">Home</a>
+            <a class="nav-link active" href="/index.html">Início</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="about.html">About</a>
+            <a class="nav-link " href="/about.html">Sobre</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="property-grid.html">Property</a>
+            <a class="nav-link " href="/property-grid.html">Oportunidades</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="blog-grid.html">Blog</a>
+            <a class="nav-link " href="/blog-grid.html">Blog</a>
           </li>
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item active" href="property-single.html">Property Single</a>
-              <a class="dropdown-item " href="blog-single.html">Blog Single</a>
-              <a class="dropdown-item " href="agents-grid.html">Agents Grid</a>
-              <a class="dropdown-item " href="agent-single.html">Agent Single</a>
-            </div>
-          </li>
+          
           <li class="nav-item">
-            <a class="nav-link " href="contact.html">Contact</a>
+            <a class="nav-link " href="/contact.html">Contato</a>
           </li>
         </ul>
       </div>
@@ -179,6 +461,296 @@
       </button>
 
     </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main id="main">
+
+<!-- ======= Intro Single ======= -->
+<!--
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">304 Blaster Up</h1>
+              <span class="color-text-a">Chicago, IL 606543</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="property-grid.html">Oportunidades</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  304 Blaster Up
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>-->
+
+<!-- End Intro Single
+    <section class="property-single nav-arrow-b">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div id="property-single-carousel" class="swiper">
+              <div class="swiper-wrapper">
+                <div class="carousel-item-b swiper-slide">
+                  <img src="assets/img/slide-1.jpg" alt="">
+                </div>
+                <div class="carousel-item-b swiper-slide">
+                  <img src="assets/img/slide-2.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div class="property-single-carousel-pagination carousel-pagination"></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+
+            <div class="row justify-content-between">
+              <div class="col-md-5 col-lg-4">
+                <div class="property-price d-flex justify-content-center foo">
+                  <div class="card-header-c d-flex">
+                    <div class="card-box-ico">
+                      <span class="bi bi-cash">R$</span>
+                    </div>
+                    <div class="card-title-c align-self-center">
+                      <h5 class="title-c">15000</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-summary">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="title-box-d section-t4">
+                        <h3 class="title-d">Resumo</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="summary-list">
+                    <ul class="list">
+                      <li class="d-flex justify-content-between">
+                        <strong>Código Imóvel:</strong>
+                        <span>1134</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Origem:</strong>
+                        <span>Justiça do Trabalho</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Endereço:</strong>
+                        <span>Chicago, IL 606543</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Tipo de imóvel:</strong>
+                        <span>House</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Status de aquisição:</strong>
+                        <span>Disponível</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Situação:</strong>
+                        <span>Desocupado</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Próximo leilão:</strong>
+                        <span>Leilão agendado</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Area:</strong>
+                        <span>340m
+                          <sup>2</sup>
+                        </span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Nº Quartos:</strong>
+                        <span>4</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Banheiros:</strong>
+                        <span>2</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Vagas de garagem:</strong>
+                        <span>1</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Taxa de Condomínio:</strong>
+                        <span>1</span>
+                      </li>
+                      <li class="d-flex justify-content-between">
+                        <strong>Débitos pelo arrematante:</strong>
+                        <span>1</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-7 col-lg-7 section-md-t3">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Descrição da Imóvel</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="property-description">
+                  <p class="description color-text-a">
+                    Descrição detalhada da propriedade, incluindo informações sobre o estado, particularidades e outras características importantes.
+                  </p>
+                  <p class="description color-text-a no-margin">
+                    Descrição detalhada da propriedade, incluindo informações sobre o estado, particularidades e outras características importantes.
+                  </p>
+                </div>
+                <div class="row section-t3">
+                  <div class="col-sm-12">
+                    <div class="title-box-d">
+                      <h3 class="title-d">Comodidades do bem</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="amenities-list color-text-a">
+                  <ul class="list-a no-margin">
+                    <li>Varanday</li>
+                    <li>Cozinha externa</li>
+                    <li>Possui piscina</li>
+                    <li>Closets</li>
+                    <li>Piso de porcelanato</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1">
+            <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-video-tab" data-bs-toggle="pill" href="#pills-video" role="tab" aria-controls="pills-video" aria-selected="true">Video</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-plans-tab" data-bs-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans" aria-selected="false">Planta Baixa</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="pills-map-tab" data-bs-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map" aria-selected="false">Localização</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
+                <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              </div>
+              <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
+                <img src="assets/img/plan2.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834" width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row section-t3">
+              <div class="col-sm-12">
+                <div class="title-box-d">
+                  <h3 class="title-d">Contato do Corretor</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-4">
+                <img src="assets/img/agent-1.jpg" alt="" class="img-fluid">
+              </div>
+              <div class="col-md-6 col-lg-4">
+                <div class="property-agent">
+                  <h4 class="title-agent">Camila Maia</h4>
+                  <p class="color-text-a">
+                    Corretora e avaliadora de imóveis com mais de 10 anos de experiência, especializada em identificar oportunidades em leilões judiciais e extrajudiciais. Oferece um atendimento personalizado focado em compra, venda e locação de imóveis, sempre garantindo os melhores resultados. 
+                  </p>
+                  <ul class="list-unstyled">                    
+                    <li class="d-flex justify-content-between">
+                      <strong>~CRECI: </strong>
+                      <span class="color-text-a">4526/ AM 18ª Região</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>CNAI</strong>
+                      <span class="color-text-a">17638</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Agenda:</strong>
+                      <span class="color-text-a">ver horários disponíveis</span>
+                    </li>
+                  </ul>
+                  <div class="socials-a">
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-facebook" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-twitter" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-instagram" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#">
+                          <i class="bi bi-linkedin" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-4">
+                <div class="property-contact">
+                  <form class="form-a">
+                    <div class="row">
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Nome e sobrenome *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <input type="phone" class="form-control form-control-lg form-control-a" id="inputphone" placeholder="Celular *" required>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mb-1">
+                        <div class="form-group">
+                          <textarea id="textMessage" class="form-control" placeholder="Deixe sua mensagem*" name="message" cols="45" rows="8" required></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12 mt-3">
+                        <button type="submit" class="btn btn-a">Enviar mensagem</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>-->
+
   </nav><!-- End Header/Navbar -->
 
   <main id="main">
@@ -628,6 +1200,235 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('assets/js/property.json')
+        .then(response => response.json())
+        .then(data => {
+          // Preencher o formulário de busca
+          const types = new Set();
+          const states = new Set();
+          const cities = new Set();
+          const neighborhoods = new Set();
+          const bedrooms = new Set();
+          const garages = new Set();
+          const bathrooms = new Set();
+          const prices = [];
+  
+          data.forEach(property => {
+            types.add(property.type);
+            states.add(property.state);
+            cities.add(property.city);
+            neighborhoods.add(property.neighborhood);
+            bedrooms.add(property.bedrooms);
+            garages.add(property.garages);
+            bathrooms.add(property.bathrooms);
+            prices.push(property.minimumBid);
+          });
+  
+          const createOption = (value) => `<option value="${value}">${value}</option>`;
+  
+          document.getElementById('type').innerHTML += Array.from(types).map(createOption).join('');
+          document.getElementById('state').innerHTML += Array.from(states).map(createOption).join('');
+          document.getElementById('city').innerHTML += Array.from(cities).map(createOption).join('');
+          document.getElementById('neighborhood').innerHTML += Array.from(neighborhoods).map(createOption).join('');
+          document.getElementById('bedrooms').innerHTML += Array.from(bedrooms).map(createOption).join('');
+          document.getElementById('garages').innerHTML += Array.from(garages).map(createOption).join('');
+          document.getElementById('bathrooms').innerHTML += Array.from(bathrooms).map(createOption).join('');
+  
+          // Calcular médias ponderadas dos valores dos imóveis
+          prices.sort((a, b) => a - b);
+          const priceRanges = [];
+          const step = Math.ceil(prices.length / 4);
+          for (let i = 0; i < prices.length; i += step) {
+            const range = prices.slice(i, i + step);
+            const average = range.reduce((acc, val) => acc + val, 0) / range.length;
+            priceRanges.push(`R$ ${average.toFixed(2)}`);
+          }
+          document.getElementById('price').innerHTML += priceRanges.map(createOption).join('');
+  
+          // Preencher os detalhes do imóvel
+          const propertyId = "1134"; // Id do imóvel que você deseja exibir
+          const propertyData = data.find(property => property.propertyId === propertyId);
+          
+          const formattedDate = new Date().toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+          });
+  
+                  // Preenche os campos dinâmicos
+                  document.getElementById('title-single').innerText = propertyData.title;
+          document.getElementById('neighborhood').innerText = `${propertyData.neighborhood}, ${propertyData.city} - ${propertyData.state}`;
+          document.getElementById('breadcrumb-title').innerText = propertyData.title;
+          document.getElementById('minimum-bid').innerText = `Lance mínimo: R$ ${propertyData.minimumBid}`;
+          document.querySelector('.summary-list ul').innerHTML = `
+            <li class="d-flex justify-content-between"><strong>Código Imóvel:</strong><span>${propertyData.propertyId}</span></li>
+            <li class="d-flex justify-content-between"><strong>Última atualização:</strong><span>${formattedDate}</span></li>
+            <li class="d-flex justify-content-between"><strong>Origem:</strong><span>${propertyData.origin}</span></li>
+            <li class="d-flex justify-content-between"><strong>Bairro:</strong><span>${propertyData.neighborhood}</span></li>
+            <li class="d-flex justify-content-between"><strong>Cidade:</strong><span>${propertyData.city}</span></li>
+            <li class="d-flex justify-content-between"><strong>Estado:</strong><span>${propertyData.state}</span></li>
+            <li class="d-flex justify-content-between"><strong>Tipo de imóvel:</strong><span>${propertyData.type}</span></li>
+            <li class="d-flex justify-content-between"><strong>Aquisição:</strong><span>${propertyData.status}</span></li>
+            <li class="d-flex justify-content-between"><strong>Situação:</strong><span>${propertyData.condition}</span></li>
+            <li class="d-flex justify-content-between"><strong>Próximo leilão:</strong><span>${propertyData.nextAuction}</span></li>
+            <li class="d-flex justify-content-between"><strong>Área:</strong><span>${propertyData.area} m²</span></li>
+            <li class="d-flex justify-content-between"><strong>Nº Quartos:</strong><span>${propertyData.bedrooms}</span></li>
+            <li class="d-flex justify-content-between"><strong>Banheiros:</strong><span>${propertyData.bathrooms}</span></li>
+            <li class="d-flex justify-content-between"><strong>Vagas de garagem:</strong><span>${propertyData.garages}</span></li>
+            <li class="d-flex justify-content-between"><strong>Taxa de Condomínio:</strong><span>R$ ${propertyData.condoFee}</span></li>
+            <li class="d-flex justify-content-between"><strong>Débitos pelo arrematante:</strong><span>${propertyData.debts}</span></li>
+          `;
+          document.getElementById('property-description').innerText = propertyData.description;
+          document.getElementById('amenities-list').innerHTML = propertyData.amenities.map(amenity => `<li>${amenity}</li>`).join('');
+  
+          // Preenche o carrossel de imagens
+          const carousel = document.querySelector('.swiper-wrapper');
+          propertyData.images.forEach(image => {
+            const slide = document.createElement('div');
+            slide.className = 'carousel-item-b swiper-slide';
+            slide.innerHTML = `<img src="${image}" alt="${propertyData.title}">`;
+            carousel.appendChild(slide);
+          });
+  
+          // Preenche o vídeo
+          document.getElementById('property-video').src = propertyData.videoUrl;
+  
+          // Preenche a planta baixa
+          document.getElementById('property-floor-plan').src = propertyData.floorPlanUrl;
+  
+          // Preenche o mapa
+          document.getElementById('property-map').src = propertyData.mapUrl;
+  
+          // Preenche as informações do corretor
+          document.getElementById('agent-image').src = propertyData.agent.imageUrl;
+          document.getElementById('agent-name').innerText = propertyData.agent.name;
+          document.getElementById('agent-bio').innerText = propertyData.agent.bio;
+          document.getElementById('agent-info').innerHTML = `
+            <li class="d-flex justify-content-between"><strong>Inscrição Profissional:</strong><span>${propertyData.agent.registration}</span></li>
+            <li class="d-flex justify-content-between"><strong>CNAI:</strong><span>${propertyData.agent.cnai}</span></li>
+            <li class="d-flex justify-content-between"><strong>Agenda:</strong><span>${propertyData.agent.email}</span></li>
+          `;
+        });
+    });
+  </script>
+  
+  </script>
+<script>    
+  document.addEventListener("DOMContentLoaded", function () {
+    // Configurações dinâmicas para o imóvel
+    const propertyData = {
+      title: "304 Blaster Up",
+      address: "304 Blaster Up, Centro",
+      city: "São Paulo",
+      state: "SP",
+      neighborhood: "Centro",
+      minimumBid: "15000",
+      propertyId: "1134",
+      origin: "Justiça do Trabalho",
+      type: "Casa",
+      category:"Leilão Judicial",
+      status: "Disponível",
+      condition: "Desocupado",
+      nextAuction: "Leilão agendado",
+      area: "340m²",
+      bedrooms: 4,
+      bathrooms: 2,
+      garages: 1,
+      condoFee: "1",
+      debts: "1",
+      description: "Descrição detalhada da propriedade, incluindo informações sobre o estado, particularidades e outras características importantes.",
+      amenities: ["Varanda", "Cozinha externa", "Possui piscina", "Closets", "Piso de porcelanato"],
+      images: ["assets/img/slide-1.jpg", "assets/img/slide-2.jpg"],
+      videoUrl: "https://player.vimeo.com/video/73221098",
+      floorPlanUrl: "assets/img/plan2.jpg",
+      locationUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834",
+      agent: {
+        name: "Camila Maia",
+        bio: "Corretora e avaliadora de imóveis com mais de 10 anos de experiência, especializada em identificar oportunidades em leilões judiciais e extrajudiciais. Oferece um atendimento personalizado focado em compra, venda e locação de imóveis, sempre garantindo os melhores resultados.",
+        license: "4526/ CRECI AM 18ª Região",
+        cnai: "17638",
+        email: "camilamaia@inovahaus.com.br",
+        imageUrl: "/assets/img/agent-1.jpg"
+      }
+    };
+
+    // Função para formatar data
+    function formatDate(date) {
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+
+    // Obtém a data atual
+    const currentDate = new Date();
+    const formattedDate = formatDate(currentDate);
+
+    // Atualiza o título da página
+    document.getElementById('page-title').innerText = propertyData.title;
+
+// Preenche os campos dinâmicos
+    document.getElementById('title-single').innerText = propertyData.title;
+    document.getElementById('neighborhood').innerText = propertyData.neighborhood;
+    document.getElementById('breadcrumb-title').innerText = propertyData.title;
+    document.getElementById('minimum-bid').innerText = `Lance mínimo: R$ ${propertyData.minimumBid}`;
+    document.querySelector('.summary-list ul').innerHTML = `
+      <li class="d-flex justify-content-between"><strong>Código Imóvel:</strong><span>${propertyData.propertyId}</span></li>
+      <li class="d-flex justify-content-between"><strong>Última atualização:</strong><span>${formattedDate}</span></li>
+      <li class="d-flex justify-content-between"><strong>Origem:</strong><span>${propertyData.origin}</span></li>
+      <li class="d-flex justify-content-between"><strong>Endereço:</strong><span>${propertyData.address}</span></li>
+      <li class="d-flex justify-content-between"><strong>Tipo de imóvel:</strong><span>${propertyData.type}</span></li>
+      <li class="d-flex justify-content-between"><strong>Aquisição:</strong><span>${propertyData.status}</span></li>
+      <li class="d-flex justify-content-between"><strong>Situação:</strong><span>${propertyData.condition}</span></li>
+      <li class="d-flex justify-content-between"><strong>Próximo leilão:</strong><span>${propertyData.nextAuction}</span></li>
+      <li class="d-flex justify-content-between"><strong>Área:</strong><span>${propertyData.area}</span></li>
+      <li class="d-flex justify-content-between"><strong>Nº Quartos:</strong><span>${propertyData.bedrooms}</span></li>
+      <li class="d-flex justify-content-between"><strong>Banheiros:</strong><span>${propertyData.bathrooms}</span></li>
+      <li class="d-flex justify-content-between"><strong>Vagas de garagem:</strong><span>${propertyData.garages}</span></li>
+      <li class="d-flex justify-content-between"><strong>Taxa de Condomínio:</strong><span>${propertyData.condoFee}</span></li>
+      <li class="d-flex justify-content-between"><strong>Débitos pelo arrematante:</strong><span>${propertyData.debts}</span></li>
+    `;
+    document.getElementById('property-description').innerText = propertyData.description;
+    document.getElementById('amenities-list').innerHTML = propertyData.amenities.map(amenity => `<li>${amenity}</li>`).join('');
+
+    // Carrossel de imagens
+    const swiperWrapper = document.querySelector('.swiper-wrapper');
+    swiperWrapper.innerHTML = propertyData.images.map(image => `<div class="carousel-item-b swiper-slide"><img src="${image}" alt=""></div>`).join('');
+
+    // Vídeo
+    document.getElementById('property-video').src = propertyData.videoUrl;
+
+    // Planta baixa
+    document.getElementById('property-floor-plan').src = propertyData.floorPlanUrl;
+
+    // Localização
+    document.getElementById('property-map').src = propertyData.locationUrl;
+
+    // Informações do agente
+    document.getElementById('agent-name').innerText = propertyData.agent.name;
+    document.getElementById('agent-bio').innerText = propertyData.agent.bio;
+    document.getElementById('agent-info').innerHTML = `
+      <li class="d-flex justify-content-between"><strong>Inscrição Profissional: </strong><span class="color-text-a">${propertyData.agent.license}</span></li>
+      <li class="d-flex justify-content-between"><strong>CNAI:</strong><span class="color-text-a">${propertyData.agent.cnai}</span></li>
+      <li class="d-flex justify-content-between"><strong>Agenda:</strong><span class="color-text-a">${propertyData.agent.email}</span></li>
+    `;
+    document.getElementById('agent-image').src = propertyData.agent.imageUrl;
+
+    // Atualiza meta tags
+    document.querySelector('meta[property="og:title"]').setAttribute('content', propertyData.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', propertyData.description);
+    document.querySelector('meta[property="og:image"]').setAttribute('content', propertyData.images[0]);
+    document.querySelector('meta[id="og-url"]').setAttribute('content', window.location.href);
+    document.querySelector('meta[name="twitter:title"]').setAttribute('content', propertyData.title);
+    document.querySelector('meta[name="twitter:description"]').setAttribute('content', propertyData.description);
+    document.querySelector('meta[name="twitter:image"]').setAttribute('content', propertyData.images[0]);
+    document.querySelector('meta[name="keywords"]').setAttribute('content', 'leilão de imóveis, arrematação, investimentos imobiliários');
+  });
+
+</script>
 
 </body>
 
