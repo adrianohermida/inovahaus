@@ -1226,7 +1226,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('agent-info').innerHTML = `
               <li class="d-flex justify-content-between"><strong>Inscrição Profissional:</strong><span>${propertyData.agent.registration}</span></li>
               <li class="d-flex justify-content-between"><strong>CNAI:</strong><span>${propertyData.agent.cnai}</span></li>
-              <li class="d-flex justify-content-between"><strong>Agenda disponível:</strong><span>${propertyData.agent.email}</span></li>
+              <li class="d-flex justify-content-between"><strong>Agenda:</strong><span>${propertyData.agent.email}</span></li>
             `;
           });
       });
@@ -1330,7 +1330,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('agent-info').innerHTML = `
         <li class="d-flex justify-content-between"><strong>Inscrição Profissional: </strong><span class="color-text-a">${propertyData.agent.license}</span></li>
         <li class="d-flex justify-content-between"><strong>CNAI:</strong><span class="color-text-a">${propertyData.agent.cnai}</span></li>
-        <li class="d-flex justify-content-between"><strong>Agenda disponível:</strong><span class="color-text-a">${propertyData.agent.email}</span></li>
+        <li class="d-flex justify-content-between"><strong>Agenda:</strong><span class="color-text-a">${propertyData.agent.email}</span></li>
       `;
       document.getElementById('agent-image').src = propertyData.agent.imageUrl;
 
