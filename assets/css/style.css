@@ -2322,4 +2322,21 @@ footer .credits {
 .card-date {
   font-size: 14px;
 }
+/* Remover o efeito de movimento */
+.img-b {
+  transform: none;
+  transition: none;
+}
+.img-b:hover {
+  transform: none;
+  transition: none;
+}
 
+.news-card .news-img {
+  transform: none;
+  transition: none;
+}
+.news-card:hover .news-img {
+  transform: none;
+  transition: none;
+}
