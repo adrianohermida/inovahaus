@@ -592,10 +592,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         <strong>Taxa de Condomínio:</strong>
                         <span>1</span>
                       </li>
-                      <li class="d-flex justify-content-between">
-                        <strong>Débitos pelo arrematante:</strong>
-                        <span>1</span>
-                      </li>
                     </ul>
                   </div>
                 </div>
@@ -1194,7 +1190,6 @@ document.addEventListener("DOMContentLoaded", function() {
               <li class="d-flex justify-content-between"><strong>Banheiros:</strong><span>${propertyData.bathrooms}</span></li>
               <li class="d-flex justify-content-between"><strong>Vagas de garagem:</strong><span>${propertyData.garages}</span></li>
               <li class="d-flex justify-content-between"><strong>Taxa de Condomínio:</strong><span>R$ ${propertyData.condoFee}</span></li>
-              <li class="d-flex justify-content-between"><strong>Débitos pelo arrematante:</strong><span>${propertyData.debts}</span></li>
             `;
             document.getElementById('property-description').innerText = propertyData.description;
             document.getElementById('amenities-list').innerHTML = propertyData.amenities.map(amenity => `<li>${amenity}</li>`).join('');
@@ -1303,8 +1298,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <li class="d-flex justify-content-between"><strong>Nº Quartos:</strong><span>${propertyData.bedrooms}</span></li>
         <li class="d-flex justify-content-between"><strong>Banheiros:</strong><span>${propertyData.bathrooms}</span></li>
         <li class="d-flex justify-content-between"><strong>Vagas de garagem:</strong><span>${propertyData.garages}</span></li>
-        <li class="d-flex justify-content-between"><strong>Taxa de Condomínio:</strong><span>${propertyData.condoFee}</span></li>
-        <li class="d-flex justify-content-between"><strong>Débitos pelo arrematante:</strong><span>${propertyData.debts}</span></li>
+        <li class="d-flex justify-content-between"><strong>Taxa de Condomínio:</strong><span>${propertyData.condoFee}</span></li>        
       `;
       document.getElementById('property-description').innerText = propertyData.description;
       document.getElementById('amenities-list').innerHTML = propertyData.amenities.map(amenity => `<li>${amenity}</li>`).join('');
