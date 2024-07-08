@@ -1496,9 +1496,9 @@ a:hover {
 
 .card-header-b .category-b {
   font-size: 0.9rem;
-  background-color: #0057B7;
+  background-color: #2eca6a;
   padding: 0.3rem 0.7rem;
-  color: #ffffff;
+  color: #313131;
   letter-spacing: 0.03em;
   border-radius: 50px;
   text-decoration: none;
@@ -1570,7 +1570,7 @@ a:hover {
 
 .post-content .blockquote {
   padding: 1rem 3rem 1.7rem 3rem;
-  border-left: 3px solid #0057B7;
+  border-left: 3px solid #2eca6a;
   color: #000000;
 }
 
@@ -1639,6 +1639,104 @@ a:hover {
 .box-comments .comment-children {
   margin-left: 40px;
 }
+
+
+/*------/ News Single /------*/
+.post-information {
+  padding: 3rem 0;
+}
+
+.post-content {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.post-content .post-intro {
+  font-size: 1.7rem;
+  font-weight: 300;
+  margin-bottom: 4rem;
+  line-height: 1.6;
+  color: #000000;
+  font-weight: 400;
+}
+
+.post-content p {
+  margin-bottom: 1.7rem;
+}
+
+.post-content .blockquote {
+  padding: 1rem 3rem 1.7rem 3rem;
+  border-left: 3px solid #2eca6a;
+  color: #000000;
+}
+
+.post-content .blockquote footer {
+  text-align: left;
+  padding: 0;
+}
+
+.post-footer {
+  padding: 3rem 0 4rem;
+}
+
+.post-share .socials {
+  display: inline-block;
+}
+
+.post-share .socials li {
+  margin-left: 0.6rem;
+}
+
+/*------/ Comments /------*/
+.box-comments .list-comments li {
+  padding-bottom: 3.5rem;
+}
+
+.box-comments .list-comments .comment-avatar {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.box-comments .list-comments .comment-avatar img {
+  width: 80px;
+  height: 80px;
+}
+
+.box-comments .list-comments .comment-author {
+  font-size: 1.3rem;
+}
+
+@media (min-width: 768px) {
+  .box-comments .list-comments .comment-author {
+    font-size: 1.5rem;
+  }
+}
+
+.box-comments .list-comments .comment-details {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 25px;
+}
+
+.box-comments .list-comments .comment-description {
+  padding: 0.8rem 0 0.5rem 0;
+}
+
+.box-comments .list-comments a {
+  color: #000000;
+}
+
+.box-comments .list-comments span {
+  display: block;
+  color: #2B2A2A;
+  font-style: italic;
+}
+
+.box-comments .comment-children {
+  margin-left: 40px;
+}
+
 
 /*======================================
 //--//-->   SERVICES - CARD-C
