@@ -710,7 +710,8 @@ document.addEventListener("DOMContentLoaded", function() {
     </section>
     
   End Latest Properties Section -->
-<!-- ======= Latest Properties Section ======= -->
+
+  <!-- ======= Latest Properties Section ======= -->
 <section class="section-property section-t8">
   <div class="container">
     <div class="row">
@@ -746,14 +747,14 @@ document.addEventListener("DOMContentLoaded", function() {
                   </h2>
                 </div>
                 <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <div class="column">
+                  <div class="price-box d-flex justify-content-between">
+                    <div>
                       <span class="price-title">Lance mínimo</span>
-                      <span class="price-value">R$ 3.059.916,99</span>
+                      <span class="price-a">R$ 3.059.916,99</span>
                     </div>
-                    <div class="column">
+                    <div>
                       <span class="price-title">Avaliação Mercado</span>
-                      <span class="price-value">R$ 7.059.916,99</span>
+                      <span class="price-a">R$ 7.059.916,99</span>
                     </div>
                   </div>
                   <a href="/property/202000123164.html" class="link-a">Saiba mais
@@ -789,7 +790,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
       </div>
       <div class="propery-carousel-pagination carousel-pagination"></div>
-
     </div>
   </div>
 </section>
@@ -803,15 +803,13 @@ document.addEventListener("DOMContentLoaded", function() {
   .ribbon {
     position: absolute;
     top: 0;
-    right: 50%;
+    right: -50px;
     background-color: #2eca6a; /* Cor verde */
     color: white;
-    padding: 10px 20px; /* Dobro da largura */
+    padding: 10px 40px; /* Dobro da largura */
     font-size: 14px;
     transform: rotate(45deg);
     transform-origin: top right;
-    margin-top: 0;
-    margin-right: -10px; /* Ajustar conforme necessário */
   }
 
   .price-box {
@@ -820,18 +818,14 @@ document.addEventListener("DOMContentLoaded", function() {
     width: 100%;
   }
 
-  .price-box .column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .price-title {
     font-weight: bold;
+    display: block;
   }
 
-  .price-value {
+  .price-a {
     margin-top: 5px;
+    display: block;
   }
 </style>
 
