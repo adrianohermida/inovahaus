@@ -710,8 +710,7 @@ document.addEventListener("DOMContentLoaded", function() {
     </section>
     
   End Latest Properties Section -->
-
-  <!-- ======= Latest Properties Section ======= -->
+<!-- ======= Latest Properties Section ======= -->
 <section class="section-property section-t8">
   <div class="container">
     <div class="row">
@@ -748,8 +747,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">Lance mínimo<br>R$  3.059.916,99</span>
-                    <span class="price-a">Avaliação Mercado<br>R$ 7.059.916,99</span>
+                    <div class="column">
+                      <span class="price-title">Lance mínimo</span>
+                      <span class="price-value">R$ 3.059.916,99</span>
+                    </div>
+                    <div class="column">
+                      <span class="price-title">Avaliação Mercado</span>
+                      <span class="price-value">R$ 7.059.916,99</span>
+                    </div>
                   </div>
                   <a href="/property/202000123164.html" class="link-a">Saiba mais
                     <span class="bi bi-chevron-right"></span>
@@ -801,12 +806,32 @@ document.addEventListener("DOMContentLoaded", function() {
     right: 50%;
     background-color: #2eca6a; /* Cor verde */
     color: white;
-    padding: 5px 10px;
+    padding: 10px 20px; /* Dobro da largura */
     font-size: 14px;
     transform: rotate(45deg);
     transform-origin: top right;
-    margin-top: 10px;
-    margin-right: -50px;
+    margin-top: 0;
+    margin-right: -10px; /* Ajustar conforme necessário */
+  }
+
+  .price-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .price-box .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-title {
+    font-weight: bold;
+  }
+
+  .price-value {
+    margin-top: 5px;
   }
 </style>
 
