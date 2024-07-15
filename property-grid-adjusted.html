@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Oportunidades Imobiliárias - Camila Maia Imóveis</title>
+  <meta content="Explore as melhores oportunidades imobiliárias com Camila Maia Imóveis. Encontre imóveis de alto padrão para compra, venda e locação, além de oportunidades exclusivas em leilões judiciais e extrajudiciais." name="description"/>
+  <meta content="Camila Maia, corretora de imóveis, avaliadora de imóveis, leilões judiciais, leilões extrajudiciais, compra de imóveis, venda de imóveis, locação de imóveis, imóveis de alto padrão, investimentos imobiliários, oportunidades imobiliárias" name="keywords"/>
+  <!-- Open Graph / Facebook -->
+  <meta content="website" property="og:type"/>
+  <meta content="Oportunidades Imobiliárias - Camila Maia Imóveis" property="og:title"/>
+  <meta content="Explore as melhores oportunidades imobiliárias com Camila Maia Imóveis. Encontre imóveis de alto padrão para compra, venda e locação, além de oportunidades exclusivas em leilões judiciais e extrajudiciais." property="og:description"/>
+  <meta content="assets/img/favicon.png" rel="icon"/>
+  <meta content="assets/img/apple-touch-icon.png" rel="apple-touch-icon"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"/>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"/>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+
+<body><body>
+ <!-- ======= Property Search Section ======= -->
+ <div class="click-closed">
+ </div>
+ <div class="box-collapse">
+  <div class="title-box-d">
+   <h3 class="title-d">
+    Buscar Imóvel
+   </h3>
+  </div>
+  <span class="close-box-collapse right-boxed bi bi-x">
+  </span>
+  <div class="box-collapse-wrap form">
+   <form class="form-a" id="property-search-form">
+    <div class="row">
+     <div class="col-md-12 mb-2">
+      <div class="form-group">
+       <label class="pb-2" for="keyword">
+        Palavra-chave
+       </label>
+       <input class="form-control form-control-lg form-control-a" id="Type" placeholder="Palavra-chave" type="text"/>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="type">
+        Tipo
+       </label>
+       <select class="form-control form-select form-control-a" id="Type">
+        <option value="">
+         Todos os Tipos
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="state">
+        Estado (UF)
+       </label>
+       <select class="form-control form-select form-control-a" id="state">
+        <option value="">
+         Todos os Estados
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="city">
+        Cidade
+       </label>
+       <select class="form-control form-select form-control-a" id="city">
+        <option value="">
+         Todas as Cidades
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="neighborhood">
+        Bairro
+       </label>
+       <select class="form-control form-select form-control-a" id="neighborhood">
+        <option value="">
+         Todos os Bairros
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="bedrooms">
+        Quartos
+       </label>
+       <select class="form-control form-select form-control-a" id="bedrooms">
+        <option value="">
+         Qualquer
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="garages">
+        Garagens
+       </label>
+       <select class="form-control form-select form-control-a" id="garages">
+        <option value="">
+         Qualquer
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="bathrooms">
+        Banheiros
+       </label>
+       <select class="form-control form-select form-control-a" id="bathrooms">
+        <option value="">
+         Qualquer
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="price">
+        Preço Mínimo (R$)
+       </label>
+       <select class="form-control form-select form-control-a" id="price">
+        <option value="">
+         Sem Limite
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-6 mb-2">
+      <div class="form-group mt-3">
+       <label class="pb-2" for="category">
+        Categoria
+       </label>
+       <select class="form-control form-select form-control-a" id="category">
+        <option value="">
+         Todas as Categorias
+        </option>
+       </select>
+      </div>
+     </div>
+     <div class="col-md-12">
+      <button class="btn btn-b" type="submit">
+       Buscar Imóvel
+      </button>
+     </div>
+    </div>
+   </form>
+  </div>
+ </div>
+ <script>
+  document.addEventListener("DOMContentLoaded", function() {
+  fetch('assets/js/property.json')
+    .then(response => response.json())
+    .then(properties => {
+      properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+
+      const itemsPerPage = 6;
+      const totalPages = Math.ceil(properties.length / itemsPerPage);
+      let currentPage = 1;
+
+      const renderProperties = (page) => {
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const propertiesToShow = properties.slice(startIndex, endIndex);
+
+        const propertyGrid = document.querySelector('.property-grid');
+        propertyGrid.innerHTML = '';
+
+        propertiesToShow.forEach(property => {
+          const propertyItem = `
+            <div class="col-md-4">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
+                  <div class="ribbon">${property.state}</div>
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="${property.link[0]}">${property.title}
+                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex justify-content-between">
+                        <div>
+                          <span class="price-title">Lance mínimo</span>
+                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                        </div>
+                        <div>
+                          <span class="price-title">Avaliação Mercado</span>
+                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                        </div>
+                      </div>
+                      <a href="${property.link[0]}" class="link-a">Saiba mais
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>${property.area}m<sup>2</sup></span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>${property.bedrooms}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>${property.bathrooms}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>${property.garages}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
+        });
+
+        renderPagination();
+      };
+
+      const renderPagination = () => {
+        const paginationWrapper = document.querySelector('.pagination-wrapper');
+        paginationWrapper.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+          const pageItem = `
+            <li class="page-item ${i === currentPage ? 'active' : ''}">
+              <a class="page-link" href="#">${i}</a>
+            </li>
+          `;
+          paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
+        }
+
+        document.querySelectorAll('.page-link').forEach(link => {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            currentPage = parseInt(event.target.textContent);
+            renderProperties(currentPage);
+          });
+        });
+      };
+
+      renderProperties(currentPage);
+    })
+    .catch(error => console.error('Error fetching properties:', error));
+});
+ </script>
+ <!-- End Property Search Section -->
+ <!-- ======= Header/Navbar ======= -->
+ <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+  <div class="container">
+   <button aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler collapsed" data-bs-target="#navbarDefault" data-bs-toggle="collapse" type="button">
+    <span>
+    </span>
+    <span>
+    </span>
+    <span>
+    </span>
+   </button>
+   <a class="navbar-brand text-brand" href="/index.html">
+    CamilaMaia
+    <span class="color-b">
+     Imóveis
+    </span>
+   </a>
+   <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+    <ul class="navbar-nav">
+     <li class="nav-item">
+      <a class="nav-link active" href="/index.html">
+       Início
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="/about.html">
+       Sobre
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="/property-grid.html">
+       Oportunidades
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="/blog-grid.html">
+       Blog
+      </a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link" href="/contact.html">
+       Contato
+      </a>
+     </li>
+    </ul>
+   </div>
+   <button class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-target="#navbarTogglerDemo01" data-bs-toggle="collapse" type="button">
+    <i class="bi bi-search">
+    </i>
+   </button>
+  </div>
+ </nav>
+ <!-- End Header/Navbar -->
+ <main id="main">
+  <!-- ======= Intro Single ======= -->
+  <section class="intro-single">
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12 col-lg-8">
+      <div class="title-single-box">
+       <h1 class="title-single">
+        Imóveis disponíveis
+       </h1>
+       <span class="color-text-a">
+        Encontre as melhores oportunidades de compra, locação e oportunidades de leilões de imóveis.
+       </span>
+      </div>
+     </div>
+     <div class="col-md-12 col-lg-4">
+      <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+       <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+         <a href="#">
+          Início
+         </a>
+        </li>
+        <li aria-current="page" class="breadcrumb-item active">
+         Todos
+        </li>
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- End Intro Single-->
+  <!-- ======= Property Grid Section ======= -->
+  <!-- ======= Property Grid Section ======= -->
+  <section class="property-grid grid">
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-12">
+      <div class="grid-option">
+       <form>
+        <select class="custom-select" id="filter-category">
+         <option selected="">
+          Todos
+         </option>
+         <!-- Categories will be dynamically added here -->
+        </select>
+       </form>
+      </div>
+     </div>
+    </div>
+    <div class="row property-grid">
+     <!-- Property items will be inserted here -->
+    </div>
+    <div class="row">
+     <div class="col-sm-12">
+      <nav class="pagination-a">
+       <ul class="pagination justify-content-end pagination-wrapper">
+        <!-- Pagination items will be inserted here -->
+       </ul>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- End Property Grid Section -->
+  <script>
+   document.addEventListener("DOMContentLoaded", function() {
+    fetch('assets/js/property.json')
+      .then(response => response.json())
+      .then(properties => {
+        properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+
+        const categories = [...new Set(properties.map(property => property.category))];
+
+        const categorySelect = document.getElementById('category');
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category;
+          categorySelect.appendChild(option);
+        });
+
+        const filterCategorySelect = document.getElementById('filter-category');
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category;
+          filterCategorySelect.appendChild(option);
+        });
+
+        const itemsPerPage = 6;
+        const totalPages = Math.ceil(properties.length / itemsPerPage);
+        let currentPage = 1;
+
+        const renderProperties = (page) => {
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          const propertiesToShow = properties.slice(startIndex, endIndex);
+
+          const propertyGrid = document.querySelector('.property-grid');
+          propertyGrid.innerHTML = '';
+
+          propertiesToShow.forEach(property => {
+            const isLeilaoFinalizado = new Date(property.nextAuction) < new Date();
+            const propertyItem = `
+              <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
+                    <div class="ribbon">${isLeilaoFinalizado ? 'Finalizado' : property.state}</div>
+                  </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="${property.link[0]}">${property.title}
+                            <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex justify-content-between">
+                          <div>
+                            <span class="price-title">Lance mínimo</span>
+                            <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                          </div>
+                          <div>
+                            <span class="price-title">Avaliação Mercado</span>
+                            <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                          </div>
+                        </div>
+                        <a href="${property.link[0]}" class="link-a">Saiba mais
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Área</h4>
+                            <span>${property.area}m<sup>2</sup></span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Quartos</h4>
+                            <span>${property.bedrooms}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Banheiros</h4>
+                            <span>${property.bathrooms}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Garagem</h4>
+                            <span>${property.garages}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
+          });
+
+          renderPagination();
+        };
+
+        const renderPagination = () => {
+          const paginationWrapper = document.querySelector('.pagination-wrapper');
+          paginationWrapper.innerHTML = '';
+
+          for (let i = 1; i <= totalPages; i++) {
+            const pageItem = `
+              <li class="page-item ${i === currentPage ? 'active' : ''}">
+                <a class="page-link" href="#">${i}</a>
+              </li>
+            `;
+            paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
+          }
+
+          document.querySelectorAll('.page-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+              event.preventDefault();
+              currentPage = parseInt(event.target.textContent);
+              renderProperties(currentPage);
+            });
+          });
+        };
+
+        renderProperties(currentPage);
+      })
+      .catch(error => console.error('Error fetching properties:', error));
+  });
+  </script>
+  <!-- End Property Grid Section -->
+ </main>
+ <!-- End #main -->
+ <!-- ======= Footer ======= -->
+ <section class="section-footer">
+  <div class="container">
+   <div class="row">
+    <div class="col-sm-12 col-md-4">
+     <div class="widget-a">
+      <div class="w-header-a">
+       <h3 class="w-title-a text-brand">
+        Camila Maia Imóveis
+       </h3>
+      </div>
+      <div class="w-body-a">
+       <p class="w-text-a color-text-a">
+        Transformando seus investimentos imobiliários com segurança e excelência.
+       </p>
+      </div>
+      <div class="w-footer-a">
+       <ul class="list-unstyled">
+        <li class="color-a">
+         <span class="color-text-a">
+          Telefone:
+         </span>
+         +55 92 9497-9987
+        </li>
+        <li class="color-a">
+         <span class="color-text-a">
+          Email:
+         </span>
+         contato@camilamaiaimoveis.com.br
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="col-sm-12 col-md-4 section-md-t3">
+     <div class="widget-a">
+      <div class="w-header-a">
+       <h3 class="w-title-a text-brand">
+        Oportunidades
+       </h3>
+      </div>
+      <div class="w-body-a">
+       <ul class="list-unstyled">
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="#">
+          Leilões Judiciais
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="#">
+          Concorrências Públicas
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="#">
+          Venda Direta
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="#">
+          Alienações Particulares
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="col-sm-12 col-md-4 section-md-t3">
+     <div class="widget-a">
+      <div class="w-header-a">
+       <h3 class="w-title-a text-brand">
+        Links
+       </h3>
+      </div>
+      <div class="w-body-a">
+       <ul class="list-unstyled">
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="/docs/codigo-etica.html">
+          Código de Ética
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="/docs/prevencao-lavagem.html">
+          Prevenção à Lavagem de dinheiro
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="/docs/privacidade.html">
+          Política de Privacidade
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="/docs/termos-de-uso.html">
+          Termos de uso
+         </a>
+        </li>
+        <li class="item-list-a">
+         <i class="bi bi-chevron-right">
+         </i>
+         <a href="/docs/cookies.html">
+          Cookies
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+ <footer>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <nav class="nav-footer">
+      <ul class="list-inline">
+       <li class="list-inline-item">
+        <a href="/index.html">
+         Início
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="/about.html">
+         Sobre
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="/property-grid.html">
+         Oportunidades
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="/blog-grid.html">
+         Blog
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="/contact.html">
+         Contato
+        </a>
+       </li>
+      </ul>
+     </nav>
+     <div class="socials-a">
+      <ul class="list-inline">
+       <li class="list-inline-item">
+        <a href="#">
+         <i aria-hidden="true" class="bi bi-facebook">
+         </i>
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="#">
+         <i aria-hidden="true" class="bi bi-twitter">
+         </i>
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="#">
+         <i aria-hidden="true" class="bi bi-instagram">
+         </i>
+        </a>
+       </li>
+       <li class="list-inline-item">
+        <a href="#">
+         <i aria-hidden="true" class="bi bi-linkedin">
+         </i>
+        </a>
+       </li>
+      </ul>
+     </div>
+     <div class="copyright-footer">
+      <p class="copyright color-text-a">
+       © Copyright
+       <span class="color-a">
+        Camila Maia Imóveis
+       </span>
+       Todos os direitos reservados.
+      </p>
+     </div>
+     <div class="credits">
+      <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=EstateAgency
+          -->
+      Designed by
+      <a href="https://bootstrapmade.com/">
+       BootstrapMade
+      </a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </footer>
+ <!-- End  Footer -->
+ <div id="preloader">
+ </div>
+ <a class="back-to-top d-flex align-items-center justify-content-center" href="#">
+  <i class="bi bi-arrow-up-short">
+  </i>
+ </a>
+ <!-- Vendor JS Files -->
+ <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js">
+ </script>
+ <script src="assets/vendor/swiper/swiper-bundle.min.js">
+ </script>
+ <script src="assets/vendor/php-email-form/validate.js">
+ </script>
+ <!-- Template Main JS File -->
+ <script src="/assets/js/main.js">
+ </script>
+ <link href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css" rel="stylesheet"/>
+ <a href="https://api.whatsapp.com/send?phone=5592994979987&amp;text=Ol%C3%A1,%20quero%20falar%20com%20um%20corretor" id="robbu-whatsapp-button" target="_blank">
+  <div class="rwb-tooltip">
+   Fale com um corretor
+  </div>
+  <img src="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-icon.svg"/>
+ </a>
+</body>
+</body>
+</html>
