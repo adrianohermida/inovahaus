@@ -11,6 +11,8 @@
     "bedrooms": 4,
     "bathrooms": 3,
     "garages": 2,
+    "type": "Casa",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123164/1.png"],
     "link": ["/property/202000123164.html"]
   },
@@ -26,6 +28,8 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123599/1.png"],
     "link": ["/property/202000123599.html"]
   },
@@ -41,6 +45,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Studio",
+    "category": "À venda",
     "images": ["/assets/img/property-7.jpg"],
     "link": ["property-single.html"]
   },
@@ -56,6 +62,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Terreno",
+    "category": "Locação",
     "images": ["/assets/img/property-10.jpg"],
     "link": ["property-single.html"]
   },
@@ -71,6 +79,8 @@
     "bedrooms": 4,
     "bathrooms": 3,
     "garages": 2,
+    "type": "Duplex",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123164/1.png"],
     "link": ["/property/202000123164.html"]
   },
@@ -86,6 +96,8 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123599/1.png"],
     "link": ["/property/202000123599.html"]
   },
@@ -101,6 +113,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-7.jpg"],
     "link": ["property-single.html"]
   },
@@ -131,6 +145,8 @@
     "bedrooms": 4,
     "bathrooms": 3,
     "garages": 2,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123164/1.png"],
     "link": ["/property/202000123164.html"]
   },
@@ -146,6 +162,8 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123599/1.png"],
     "link": ["/property/202000123599.html"]
   },
@@ -161,6 +179,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-7.jpg"],
     "link": ["property-single.html"]
   },
@@ -176,6 +196,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-10.jpg"],
     "link": ["property-single.html"]
   },
@@ -191,6 +213,8 @@
     "bedrooms": 4,
     "bathrooms": 3,
     "garages": 2,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123164/1.png"],
     "link": ["/property/202000123164.html"]
   },
@@ -206,6 +230,8 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123599/1.png"],
     "link": ["/property/202000123599.html"]
   },
@@ -221,6 +247,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-7.jpg"],
     "link": ["property-single.html"]
   },
@@ -236,6 +264,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-10.jpg"],
     "link": ["property-single.html"]
   },
@@ -251,6 +281,8 @@
     "bedrooms": 4,
     "bathrooms": 3,
     "garages": 2,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123164/1.png"],
     "link": ["/property/202000123164.html"]
   },
@@ -266,6 +298,8 @@
     "bedrooms": 3,
     "bathrooms": 2,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property/202000123599/1.png"],
     "link": ["/property/202000123599.html"]
   },
@@ -281,6 +315,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-7.jpg"],
     "link": ["property-single.html"]
   },
@@ -296,6 +332,8 @@
     "bedrooms": 2,
     "bathrooms": 4,
     "garages": 1,
+    "type": "Apartamento",
+    "category": "Leilão",
     "images": ["/assets/img/property-10.jpg"],
     "link": ["property-single.html"]
   }
