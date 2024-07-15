@@ -626,8 +626,18 @@
       filters.category = event.target.value;
       renderProperties(1, filters);
     });
-  });  
-</script>
+  
+    window.addEventListener('load', () => {
+      const filters = JSON.parse(localStorage.getItem('propertyFilters')) || {};
+      renderProperties(1, filters);
+    });
+  
+    window.addEventListener('storage', () => {
+      const filters = JSON.parse(localStorage.getItem('propertyFilters')) || {};
+      renderProperties(1, filters);
+    });
+  });
+  </script>
 
     <!-- JavaScript for Pagination and Property Display 
     <script>
