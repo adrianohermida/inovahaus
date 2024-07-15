@@ -711,7 +711,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
   End Latest Properties Section -->
 
-<!-- ======= Latest Properties Section ======= -->
+<!-- ======= Latest Properties Section =======
 <section class="section-property section-t8">
   <div class="container">
     <div class="row">
@@ -736,7 +736,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
               <img src="/assets/img/property/202000123164/1.png" alt="" class="img-a img-fluid">
-              <div class="ribbon">TRT11</div> <!-- Tarja -->
+              <div class="ribbon">TRT11</div> 
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
@@ -786,14 +786,13 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
         </div>
 
-        <!-- Additional property items here -->
+        <!-- Additional property items here
 
       </div>
       <div class="propery-carousel-pagination carousel-pagination"></div>
     </div>
   </div>
 </section>
-<!-- End Latest Properties Section -->
 
 <style>
   .img-box-a {
@@ -833,8 +832,93 @@ document.addEventListener("DOMContentLoaded", function() {
     margin-top: 5px;
     display: block;
   }
-</style>
+</style>-->
 
+<!-- ======= Latest Properties Section ======= -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('assets/js/property.json')
+      .then(response => response.json())
+      .then(properties => {
+        const today = new Date();
+        const upcomingProperties = properties
+          .filter(property => new Date(property.nextAuction) > today)
+          .sort((a, b) => new Date(a.nextAuction) - new Date(b.nextAuction))
+          .slice(0, 4);
+  
+        const pastProperties = properties
+          .filter(property => new Date(property.nextAuction) <= today)
+          .sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction))
+          .slice(0, 4);
+  
+        const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
+  
+        const carouselWrapper = document.querySelector('.swiper-wrapper');
+        carouselWrapper.innerHTML = '';
+  
+        propertiesToDisplay.forEach(property => {
+          const ribbonText = upcomingProperties.includes(property) ? property.state : 'Finalizado';
+          const propertyItem = `
+            <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
+                  <div class="ribbon">${ribbonText}</div>
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="${property.link[0]}">${property.title}
+                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex justify-content-between">
+                        <div>
+                          <span class="price-title white-text">Lance mínimo</span>
+                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                        </div>
+                        <div>
+                          <span class="price-title white-text">Avaliação Mercado</span>
+                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                        </div>
+                      </div>
+                      <a href="${property.link[0]}" class="link-a">Saiba mais
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>${property.area}m<sup>2</sup></span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>${property.bedrooms}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>${property.bathrooms}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>${property.garages}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          carouselWrapper.insertAdjacentHTML('beforeend', propertyItem);
+        });
+      });
+  });
+  </script>
+  
      
     <main id="main">
 
