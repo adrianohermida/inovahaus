@@ -77,12 +77,12 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const jsonFiles = [
-                'property_1_to_50.json',
-                'property_51_to_100.json',
-                'property_101_to_150.json',
-                'property_151_to_152.json'
-            ];
+        const jsonFiles = [
+            'assets/js/property_1_to_50.json',
+            'assets/js/property_51_to_100.json',
+            'assets/js/property_101_to_150.json',
+            'assets/js/property_151_to_152.json'
+        ];
         let allProperties = [];
 
         const fetchAllJsonFiles = (files) => {
@@ -216,7 +216,7 @@
                     });
                 }
             })
-            .catch(error => console.error('Erro ao carregar o JSON:', error));
+            .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
     });
 </script>
 
