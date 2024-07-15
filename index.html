@@ -269,7 +269,6 @@
 
 
 <script>
-  
 document.addEventListener("DOMContentLoaded", function() {
   fetch('assets/js/property.json')
     .then(response => response.json())
@@ -324,34 +323,22 @@ document.addEventListener("DOMContentLoaded", function() {
         priceSelect.appendChild(option);
       });
 
-      // Filtrar imóveis com base na pesquisa
+      // Salvar filtros no localStorage e redirecionar para a página de resultados
       document.getElementById('property-search-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        const keyword = document.getElementById('keyword').value.toLowerCase();
-        const type = typeSelect.value;
-        const state = stateSelect.value;
-        const city = citySelect.value;
-        const neighborhood = neighborhoodSelect.value;
-        const bedrooms = bedroomsSelect.value;
-        const garages = garagesSelect.value;
-        const bathrooms = bathroomsSelect.value;
-        const category = categorySelect.value;
-        const price = priceSelect.value;
-
-        const filteredProperties = properties.filter(property => {
-          return (keyword === "" || property.title.toLowerCase().includes(keyword)) &&
-            (type === "" || property.type === type) &&
-            (state === "" || property.state === state) &&
-            (city === "" || property.city === city) &&
-            (neighborhood === "" || property.neighborhood === neighborhood) &&
-            (bedrooms === "" || property.bedrooms == bedrooms) &&
-            (garages === "" || property.garages == garages) &&
-            (bathrooms === "" || property.bathrooms == bathrooms) &&
-            (category === "" || property.category === category) &&
-            (price === "" || property.minimumBid <= price);
-        });
-
-        localStorage.setItem('filteredProperties', JSON.stringify(filteredProperties));
+        const filters = {
+          keyword: document.getElementById('keyword').value.toLowerCase(),
+          type: typeSelect.value,
+          state: stateSelect.value,
+          city: citySelect.value,
+          neighborhood: neighborhoodSelect.value,
+          bedrooms: bedroomsSelect.value,
+          garages: garagesSelect.value,
+          bathrooms: bathroomsSelect.value,
+          category: categorySelect.value,
+          price: priceSelect.value
+        };
+        localStorage.setItem('propertyFilters', JSON.stringify(filters));
         window.location.href = 'property-grid.html';
       });
     });
