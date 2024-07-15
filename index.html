@@ -73,6 +73,17 @@
 
   </style>-->
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          $.getJSON("property.json", function(data){
+              console.log(data);
+          }).fail(function(){
+              console.error("Error loading JSON file.");
+          });
+      });
+  </script>
+
 </head>
 
 <body>
@@ -1670,7 +1681,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-  
+
   <script>
     //Script para Preencher o Formulário e Processar Resultados
     document.addEventListener("DOMContentLoaded", function() {
