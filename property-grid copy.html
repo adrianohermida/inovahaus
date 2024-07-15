@@ -41,46 +41,6 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <style>.img-box-a {
-    position: relative;
-  }
-  
-  .ribbon {
-    position: absolute;
-    top: 120px; /* Ajuste para descer a tarja */
-    right: -60px; /* Ajustar conforme necessário */
-    background-color: #2eca6a; /* Cor verde */
-    color: white;
-    padding: 10px; /* Reduzir padding horizontal */
-    font-size: 32px; /* Aumento do tamanho da fonte */
-    font-weight: bold; /* Texto em negrito */
-    transform: rotate(45deg);
-    transform-origin: top right;
-    width: 250px; /* Largura da tarja */
-    text-align: center; /* Centralizar texto */
-    line-height: 1; /* Ajustar a altura da linha para centralizar verticalmente */
-    opacity: 0.9; /* Opacidade aumentada para mais contraste */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
-  }
-  
-  .price-box {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .price-title {
-    font-weight: bold;
-    display: block;
-    color: white; /* Cor branca */
-  }
-  
-  .price-a {
-    margin-top: 5px;
-    display: block;
-  }
-  </style>
-
   <!-- =======================================================
   * Template Name: EstateAgency
   * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
@@ -93,8 +53,9 @@
 <body>
 
 
-<!-- ======= Property Search Section =======
+<!-- ======= Property Search Section ======= -->
 <div class="click-closed"></div>
+<!--/ Form Search Star /-->
 <div class="box-collapse">
   <div class="title-box-d">
     <h3 class="title-d">Buscar Imóvel</h3>
@@ -187,7 +148,8 @@
       </div>
     </form>
   </div>
-</div>
+</div><!-- End Property Search Section -->
+
 
 <script>
   
@@ -279,36 +241,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 <!-- End Property Search Section -->
-
-<!-- ======= Property Search Section ======= -->
-<div class="click-closed"></div>
-<div class="box-collapse">
-  <div class="title-box-d">
-    <h3 class="title-d">Buscar Imóvel</h3>
-  </div>
-  <span class="close-box-collapse right-boxed bi bi-x"></span>
-  <div class="box-collapse-wrap form">
-    <form class="form-a" id="property-search-form">
-      <div class="row">
-        <!-- Other form elements -->
-        <div class="col-md-6 mb-2">
-          <div class="form-group mt-3">
-            <label class="pb-2" for="category">Categoria</label>
-            <select class="form-control form-select form-control-a" id="category">
-              <option value="">Todas as Categorias</option>
-            </select>
-          </div>
-        </div>
-        <!-- Other form elements -->
-        <div class="col-md-12">
-          <button type="submit" class="btn btn-b">Buscar Imóvel</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-<!-- End Property Search Section -->
-
 
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -709,8 +641,6 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </section>-->
 
-
-    
 <!-- ======= Property Grid ======= -->
 <section class="property-grid grid">
   <div class="container">
@@ -755,117 +685,6 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   </div>
 </section><!-- End Property Grid Single-->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    fetch('assets/js/property.json')
-      .then(response => response.json())
-      .then(properties => {
-        // Ordenar propriedades por data de postagem
-        properties.sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction));
-  
-        // Configurações de paginação
-        const itemsPerPage = 6;
-        const totalPages = Math.ceil(properties.length / itemsPerPage);
-        let currentPage = 1;
-  
-        const renderProperties = (page) => {
-          const startIndex = (page - 1) * itemsPerPage;
-          const endIndex = startIndex + itemsPerPage;
-          const propertiesToShow = properties.slice(startIndex, endIndex);
-  
-          const propertyGrid = document.querySelector('.property-grid');
-          propertyGrid.innerHTML = '';
-  
-          propertiesToShow.forEach(property => {
-            const propertyItem = `
-              <div class="col-md-4">
-                <div class="card-box-a card-shadow">
-                  <div class="img-box-a">
-                    <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                    <div class="ribbon">${property.state}</div>
-                  </div>
-                  <div class="card-overlay">
-                    <div class="card-overlay-a-content">
-                      <div class="card-header-a">
-                        <h2 class="card-title-a">
-                          <a href="${property.link[0]}">${property.title}
-                            <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
-                        </h2>
-                      </div>
-                      <div class="card-body-a">
-                        <div class="price-box d-flex justify-content-between">
-                          <div>
-                            <span class="price-title">Lance mínimo</span>
-                            <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
-                          </div>
-                          <div>
-                            <span class="price-title">Avaliação Mercado</span>
-                            <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
-                          </div>
-                        </div>
-                        <a href="${property.link[0]}" class="link-a">Saiba mais
-                          <span class="bi bi-chevron-right"></span>
-                        </a>
-                      </div>
-                      <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                          <li>
-                            <h4 class="card-info-title">Área</h4>
-                            <span>${property.area}m<sup>2</sup></span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Quartos</h4>
-                            <span>${property.bedrooms}</span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Banheiros</h4>
-                            <span>${property.bathrooms}</span>
-                          </li>
-                          <li>
-                            <h4 class="card-info-title">Garagem</h4>
-                            <span>${property.garages}</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-            propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
-          });
-  
-          renderPagination();
-        };
-  
-        const renderPagination = () => {
-          const paginationWrapper = document.querySelector('.pagination-wrapper');
-          paginationWrapper.innerHTML = '';
-  
-          for (let i = 1; i <= totalPages; i++) {
-            const pageItem = `
-              <li class="page-item ${i === currentPage ? 'active' : ''}">
-                <a class="page-link" href="#">${i}</a>
-              </li>
-            `;
-            paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
-          }
-  
-          document.querySelectorAll('.page-link').forEach(link => {
-            link.addEventListener('click', (event) => {
-              event.preventDefault();
-              currentPage = parseInt(event.target.textContent);
-              renderProperties(currentPage);
-            });
-          });
-        };
-  
-        renderProperties(currentPage);
-      })
-      .catch(error => console.error('Error fetching properties:', error));
-  });
-  </script>
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -1034,112 +853,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </section><!-- End Property Grid Single-->
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-  fetch('assets/js/property.json')
-    .then(response => response.json())
-    .then(properties => {
-      properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-
-      const itemsPerPage = 6;
-      const totalPages = Math.ceil(properties.length / itemsPerPage);
-      let currentPage = 1;
-
-      const renderProperties = (page) => {
-        const startIndex = (page - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const propertiesToShow = properties.slice(startIndex, endIndex);
-
-        const propertyGrid = document.querySelector('.property-grid');
-        propertyGrid.innerHTML = '';
-
-        propertiesToShow.forEach(property => {
-          const propertyItem = `
-            <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                  <div class="ribbon">${property.state}</div>
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="${property.link[0]}">${property.title}
-                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex justify-content-between">
-                        <div>
-                          <span class="price-title">Lance mínimo</span>
-                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
-                        </div>
-                        <div>
-                          <span class="price-title">Avaliação Mercado</span>
-                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
-                        </div>
-                      </div>
-                      <a href="${property.link[0]}" class="link-a">Saiba mais
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Área</h4>
-                          <span>${property.area}m<sup>2</sup></span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Quartos</h4>
-                          <span>${property.bedrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Banheiros</h4>
-                          <span>${property.bathrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garagem</h4>
-                          <span>${property.garages}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-          propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
-        });
-
-        renderPagination();
-      };
-
-      const renderPagination = () => {
-        const paginationWrapper = document.querySelector('.pagination-wrapper');
-        paginationWrapper.innerHTML = '';
-
-        for (let i = 1; i <= totalPages; i++) {
-          const pageItem = `
-            <li class="page-item ${i === currentPage ? 'active' : ''}">
-              <a class="page-link" href="#">${i}</a>
-            </li>
-          `;
-          paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
-        }
-
-        document.querySelectorAll('.page-link').forEach(link => {
-          link.addEventListener('click', (event) => {
-            event.preventDefault();
-            currentPage = parseInt(event.target.textContent);
-            renderProperties(currentPage);
-          });
-        });
-      };
-
-      renderProperties(currentPage);
-    })
-    .catch(error => console.error('Error fetching properties:', error));
-});
 </script>
 
   </main><!-- End #main -->
