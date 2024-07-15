@@ -429,25 +429,30 @@
 
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-        let properties = [];
+        const jsonFiles = ['assets/js/property1.json', 'assets/js/property2.json', 'assets/js/property3.json'];
+        let allProperties = [];
         const itemsPerPage = 6; // Limitar a 6 itens por página
         let currentPage = 1;
         const today = new Date();
 
-        fetch('assets/js/property.json')
-            .then(response => response.json())
-            .then(data => {
-                properties = data;
-                properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-                populateFilters(data);
-                renderProperties(1); // Carregar todas as propriedades na carga inicial
+        const fetchAllJsonFiles = (files) => {
+            return Promise.all(files.map(file => fetch(file).then(response => response.json())));
+        };
+
+        fetchAllJsonFiles(jsonFiles)
+            .then(dataArrays => {
+                dataArrays.forEach(data => allProperties = allProperties.concat(data));
+                allProperties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+                populateFilters(allProperties);
+                renderProperties(1);
             })
             .catch(error => console.error('Erro ao buscar propriedades:', error));
 
         const renderProperties = (page, filters = {}) => {
-            const filteredProperties = properties.filter(property => {
+            const filteredProperties = allProperties.filter(property => {
                 return Object.keys(filters).every(key => {
                     if (!filters[key]) return true;
                     if (key === 'keyword') {
@@ -637,6 +642,7 @@
         });
     });
 </script>
+
 <!--
   <script>document.addEventListener("DOMContentLoaded", function() {
     let properties = [];

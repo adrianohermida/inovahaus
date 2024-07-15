@@ -77,10 +77,18 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-        fetch('assets/js/property.json')
-            .then(response => response.json())
-            .then(data => {
-                // Função para preencher as opções do formulário
+        const jsonFiles = ['assets/js/property1.json', 'assets/js/property2.json', 'assets/js/property3.json'];
+        let allProperties = [];
+
+        const fetchAllJsonFiles = (files) => {
+            return Promise.all(files.map(file => fetch(file).then(response => response.json())));
+        };
+
+        fetchAllJsonFiles(jsonFiles)
+            .then(dataArrays => {
+                dataArrays.forEach(data => allProperties = allProperties.concat(data));
+                allProperties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+
                 const fillOptions = (selectId, options) => {
                     const selectElement = document.getElementById(selectId);
                     if (selectElement) {
@@ -93,15 +101,15 @@
                     }
                 };
 
-                const types = [...new Set(data.map(property => property.type))];
-                const states = [...new Set(data.map(property => property.state))];
-                const cities = [...new Set(data.map(property => property.city))];
-                const neighborhoods = [...new Set(data.map(property => property.neighborhood))];
-                const bedrooms = [...new Set(data.map(property => property.bedrooms))];
-                const garages = [...new Set(data.map(property => property.garages))];
-                const bathrooms = [...new Set(data.map(property => property.bathrooms))];
-                const prices = [...new Set(data.map(property => property.minimumBid))];
-                const categories = [...new Set(data.map(property => property.category))];
+                const types = [...new Set(allProperties.map(property => property.type))];
+                const states = [...new Set(allProperties.map(property => property.state))];
+                const cities = [...new Set(allProperties.map(property => property.city))];
+                const neighborhoods = [...new Set(allProperties.map(property => property.neighborhood))];
+                const bedrooms = [...new Set(allProperties.map(property => property.bedrooms))];
+                const garages = [...new Set(allProperties.map(property => property.garages))];
+                const bathrooms = [...new Set(allProperties.map(property => property.bathrooms))];
+                const prices = [...new Set(allProperties.map(property => property.minimumBid))];
+                const categories = [...new Set(allProperties.map(property => property.category))];
 
                 fillOptions('type', types);
                 fillOptions('state', states);
@@ -113,7 +121,6 @@
                 fillOptions('price', prices.map(price => `R$ ${price.toLocaleString()}`));
                 fillOptions('category', categories);
 
-                // Processar resultados da busca
                 const searchForm = document.getElementById('property-search-form');
                 if (searchForm) {
                     searchForm.addEventListener('submit', function(event) {
@@ -132,7 +139,7 @@
                             category: document.getElementById('category').value
                         };
 
-                        const filteredProperties = data.filter(property => {
+                        const filteredProperties = allProperties.filter(property => {
                             return (
                                 (!filters.keyword || property.title.toLowerCase().includes(filters.keyword)) &&
                                 (!filters.type || property.type === filters.type) &&
@@ -147,7 +154,6 @@
                             );
                         });
 
-                        // Exibir resultados
                         const resultsContainer = document.querySelector('.property-results');
                         if (resultsContainer) {
                             resultsContainer.innerHTML = ''; // Limpar resultados anteriores
