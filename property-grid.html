@@ -328,7 +328,6 @@
         </div>
       </div>
     </section><!-- End Intro Single-->
-
 <!-- ======= Property Grid Section ======= -->
 <section class="property-grid grid">
   <div class="container">
@@ -358,6 +357,7 @@
     </div>
   </div>
 </section>
+<!-- End Property Grid Section -->
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -366,10 +366,16 @@
       .then(properties => {
         properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
 
-        // Extract unique categories
         const categories = [...new Set(properties.map(property => property.category))];
 
-        // Fill category filter select in grid
+        const categorySelect = document.getElementById('category');
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category;
+          categorySelect.appendChild(option);
+        });
+
         const filterCategorySelect = document.getElementById('filter-category');
         categories.forEach(category => {
           const option = document.createElement('option');
@@ -391,17 +397,13 @@
           propertyGrid.innerHTML = '';
 
           propertiesToShow.forEach(property => {
-            const today = new Date();
-            const auctionDate = new Date(property.nextAuction);
-            const isAuctionFinished = auctionDate < today;
-            const ribbonText = isAuctionFinished ? 'Finalizado' : property.state;
-
+            const isLeilaoFinalizado = new Date(property.nextAuction) < new Date();
             const propertyItem = `
               <div class="col-md-4">
                 <div class="card-box-a card-shadow">
                   <div class="img-box-a">
                     <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                    <div class="ribbon">${ribbonText}</div>
+                    <div class="ribbon">${isLeilaoFinalizado ? 'Finalizado' : property.state}</div>
                   </div>
                   <div class="card-overlay">
                     <div class="card-overlay-a-content">
