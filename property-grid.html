@@ -444,7 +444,8 @@
           properties = data;
           properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
           populateFilters(data);
-          renderProperties(1);
+          const filters = JSON.parse(localStorage.getItem('propertyFilters')) || {};
+          renderProperties(1, filters);
         })
         .catch(error => console.error('Error fetching properties:', error));
 
@@ -548,7 +549,7 @@
           link.addEventListener('click', (event) => {
             event.preventDefault();
             currentPage = parseInt(event.target.textContent);
-            const filters = getFilters();
+            const filters = JSON.parse(localStorage.getItem('propertyFilters')) || {};
             renderProperties(currentPage, filters);
           });
         });
@@ -611,6 +612,7 @@
       document.getElementById('property-search-form').addEventListener('submit', (event) => {
         event.preventDefault();
         const filters = getFilters();
+        localStorage.setItem('propertyFilters', JSON.stringify(filters));
         renderProperties(1, filters);
       });
     });
