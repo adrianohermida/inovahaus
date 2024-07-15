@@ -443,8 +443,7 @@
         properties = data;
         properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
         populateFilters(data);
-        const filters = JSON.parse(localStorage.getItem('propertyFilters')) || {};
-        renderProperties(1, filters);
+        renderProperties(1); // Load all properties on initial load
       })
       .catch(error => console.error('Error fetching properties:', error));
   
@@ -474,29 +473,29 @@
           <div class="col-md-4 mb-4">
             <div class="card-box-a card-shadow">
               <div class="img-box-a">
-                <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                <div class="ribbon">${ribbonText}</div>
+                <img src="${property.images[0] || 'placeholder.jpg'}" alt="${property.title || ''}" class="img-a img-fluid">
+                <div class="ribbon">${ribbonText || ''}</div>
               </div>
               <div class="card-overlay">
                 <div class="card-overlay-a-content">
                   <div class="card-header-a">
                     <h2 class="card-title-a">
-                      <a href="${property.link[0]}">${property.title}
-                        <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                      <a href="${property.link[0] || '#'}">${property.title || ''}
+                        <br /> ${property.neighborhood || ''}, ${property.city || ''}, ${property.state || ''}</a>
                     </h2>
                   </div>
                   <div class="card-body-a">
                     <div class="price-box d-flex justify-content-between">
                       <div>
                         <span class="price-title white-text">Lance mínimo</span>
-                        <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                        <span class="price-a">R$ ${property.minimumBid ? property.minimumBid.toLocaleString('pt-BR') : 'Não há resultados'}</span>
                       </div>
                       <div>
                         <span class="price-title white-text">Avaliação Mercado</span>
-                        <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                        <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'Não há resultados'}</span>
                       </div>
                     </div>
-                    <a href="${property.link[0]}" class="link-a">Saiba mais
+                    <a href="${property.link[0] || '#'}" class="link-a">Saiba mais
                       <span class="bi bi-chevron-right"></span>
                     </a>
                   </div>
@@ -504,19 +503,19 @@
                     <ul class="card-info d-flex justify-content-around">
                       <li>
                         <h4 class="card-info-title">Área</h4>
-                        <span>${property.area}m<sup>2</sup></span>
+                        <span>${property.area ? property.area + 'm<sup>2</sup>' : 'Não há resultados'}</span>
                       </li>
                       <li>
                         <h4 class="card-info-title">Quartos</h4>
-                        <span>${property.bedrooms}</span>
+                        <span>${property.bedrooms || 'Não há resultados'}</span>
                       </li>
                       <li>
                         <h4 class="card-info-title">Banheiros</h4>
-                        <span>${property.bathrooms}</span>
+                        <span>${property.bathrooms || 'Não há resultados'}</span>
                       </li>
                       <li>
                         <h4 class="card-info-title">Garagem</h4>
-                        <span>${property.garages}</span>
+                        <span>${property.garages || 'Não há resultados'}</span>
                       </li>
                     </ul>
                   </div>
@@ -621,7 +620,13 @@
       localStorage.setItem('propertyFilters', JSON.stringify(filters));
       renderProperties(1, filters);
     });
-  });
+  
+    document.getElementById('filter-category').addEventListener('change', (event) => {
+      const filters = getFilters();
+      filters.category = event.target.value;
+      renderProperties(1, filters);
+    });
+  });  
 </script>
 
     <!-- JavaScript for Pagination and Property Display 
