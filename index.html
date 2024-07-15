@@ -320,8 +320,6 @@
     </div>
   </div><!-- End Property Search Section -->>
 
-<!-- ======= Property Search Section ======= -->
-<div class="click-closed"></div>
     <!-- ======= Property Search Section ======= -->
     <div class="click-closed"></div>
     <!--/ Form Search Star /-->
@@ -418,97 +416,104 @@
             </form>
         </div>
     </div>
+    <!-- End Property Search Section -->
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          const jsonFiles = [
-              'assets/js/property_1_to_50.json',
-              'assets/js/property_51_to_100.json',
-              'assets/js/property_101_to_150.json',
-              'assets/js/property_151_to_152.json'
-          ];
-          let allProperties = [];
+        document.addEventListener("DOMContentLoaded", function() {
+            const jsonFiles = [
+                'assets/js/property_1_to_50.json',
+                'assets/js/property_51_to_100.json',
+                'assets/js/property_101_to_150.json',
+                'assets/js/property_151_to_152.json'
+            ];
+            let allProperties = [];
 
-          const fetchAllJsonFiles = (files) => {
-              return Promise.all(files.map(file => fetch(file).then(response => response.json())));
-          };
+            const fetchAllJsonFiles = (files) => {
+                return Promise.all(files.map(file => fetch(file).then(response => response.json())));
+            };
 
-          fetchAllJsonFiles(jsonFiles)
-              .then(dataArrays => {
-                  dataArrays.forEach(data => allProperties = allProperties.concat(data));
+            fetchAllJsonFiles(jsonFiles)
+                .then(dataArrays => {
+                    dataArrays.forEach(data => allProperties = allProperties.concat(data));
 
-                  const typeSelect = document.getElementById('type');
-                  const stateSelect = document.getElementById('state');
-                  const citySelect = document.getElementById('city');
-                  const neighborhoodSelect = document.getElementById('neighborhood');
-                  const bedroomsSelect = document.getElementById('bedrooms');
-                  const garagesSelect = document.getElementById('garages');
-                  const bathroomsSelect = document.getElementById('bathrooms');
-                  const categorySelect = document.getElementById('category');
-                  const priceSelect = document.getElementById('price');
+                    const typeSelect = document.getElementById('type');
+                    const stateSelect = document.getElementById('state');
+                    const citySelect = document.getElementById('city');
+                    const neighborhoodSelect = document.getElementById('neighborhood');
+                    const bedroomsSelect = document.getElementById('bedrooms');
+                    const garagesSelect = document.getElementById('garages');
+                    const bathroomsSelect = document.getElementById('bathrooms');
+                    const categorySelect = document.getElementById('category');
+                    const priceSelect = document.getElementById('price');
 
-                  // Função para popular um select com opções únicas
-                  const populateSelect = (select, values) => {
-                      const uniqueValues = [...new Set(values.filter(v => v !== undefined && v !== null))];
-                      uniqueValues.forEach(value => {
-                          const option = document.createElement('option');
-                          option.value = value;
-                          option.textContent = value;
-                          select.appendChild(option);
-                      });
-                  };
+                    // Função para popular um select com opções únicas
+                    const populateSelect = (select, values) => {
+                        select.innerHTML = '<option value="">Todos</option>';
+                        const counts = values.reduce((acc, value) => {
+                            if (value) {
+                                acc[value] = (acc[value] || 0) + 1;
+                            }
+                            return acc;
+                        }, {});
+                        Object.keys(counts).forEach(value => {
+                            const option = document.createElement('option');
+                            option.value = value;
+                            option.textContent = `${value} (${counts[value]})`;
+                            select.appendChild(option);
+                        });
+                    };
 
-                  // Popular os selects com os dados dos imóveis
-                  populateSelect(typeSelect, allProperties.map(property => property.type));
-                  populateSelect(stateSelect, allProperties.map(property => property.state));
-                  populateSelect(citySelect, allProperties.map(property => property.city));
-                  populateSelect(neighborhoodSelect, allProperties.map(property => property.neighborhood));
-                  populateSelect(bedroomsSelect, allProperties.map(property => property.bedrooms));
-                  populateSelect(garagesSelect, allProperties.map(property => property.garages));
-                  populateSelect(bathroomsSelect, allProperties.map(property => property.bathrooms));
-                  populateSelect(categorySelect, allProperties.map(property => property.category));
+                    // Popular os selects com os dados dos imóveis
+                    populateSelect(typeSelect, allProperties.map(property => property.type));
+                    populateSelect(stateSelect, allProperties.map(property => property.state));
+                    populateSelect(citySelect, allProperties.map(property => property.city));
+                    populateSelect(neighborhoodSelect, allProperties.map(property => property.neighborhood));
+                    populateSelect(bedroomsSelect, allProperties.map(property => property.bedrooms));
+                    populateSelect(garagesSelect, allProperties.map(property => property.garages));
+                    populateSelect(bathroomsSelect, allProperties.map(property => property.bathrooms));
+                    populateSelect(categorySelect, allProperties.map(property => property.category));
 
-                  // Média ponderada dos preços mínimos
-                  const prices = allProperties.map(property => property.minimumBid);
-                  const totalPrices = prices.reduce((total, price) => total + price, 0);
-                  const averagePrice = totalPrices / prices.length;
-                  const priceRanges = [
-                      Math.floor(averagePrice * 0.5),
-                      Math.floor(averagePrice * 0.75),
-                      Math.floor(averagePrice),
-                      Math.floor(averagePrice * 1.25),
-                      Math.floor(averagePrice * 1.5)
-                  ];
+                    // Média ponderada dos preços mínimos
+                    const prices = allProperties.map(property => property.minimumBid);
+                    const totalPrices = prices.reduce((total, price) => total + price, 0);
+                    const averagePrice = totalPrices / prices.length;
+                    const priceRanges = [
+                        Math.floor(averagePrice * 0.5),
+                        Math.floor(averagePrice * 0.75),
+                        Math.floor(averagePrice),
+                        Math.floor(averagePrice * 1.25),
+                        Math.floor(averagePrice * 1.5)
+                    ];
 
-                  priceRanges.forEach(price => {
-                      const option = document.createElement('option');
-                      option.value = price;
-                      option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
-                      priceSelect.appendChild(option);
-                  });
+                    priceRanges.forEach(price => {
+                        const option = document.createElement('option');
+                        option.value = price;
+                        option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
+                        priceSelect.appendChild(option);
+                    });
 
-                  // Salvar filtros no localStorage e redirecionar para a página de resultados
-                  document.getElementById('property-search-form').addEventListener('submit', function(event) {
-                      event.preventDefault();
-                      const filters = {
-                          keyword: document.getElementById('keyword').value.toLowerCase(),
-                          type: document.getElementById('type').value,
-                          state: document.getElementById('state').value,
-                          city: document.getElementById('city').value,
-                          neighborhood: document.getElementById('neighborhood').value,
-                          bedrooms: document.getElementById('bedrooms').value,
-                          garages: document.getElementById('garages').value,
-                          bathrooms: document.getElementById('bathrooms').value,
-                          price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')) || null,
-                          category: document.getElementById('category').value
-                      };
-                      localStorage.setItem('propertyFilters', JSON.stringify(filters));
-                      window.location.href = 'property-grid.html';
-                  });
-              })
-              .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
-      });
-  </script>
+                    // Salvar filtros no localStorage e redirecionar para a página de resultados
+                    document.getElementById('property-search-form').addEventListener('submit', function(event) {
+                        event.preventDefault();
+                        const filters = {
+                            keyword: document.getElementById('keyword').value.toLowerCase(),
+                            type: document.getElementById('type').value,
+                            state: document.getElementById('state').value,
+                            city: document.getElementById('city').value,
+                            neighborhood: document.getElementById('neighborhood').value,
+                            bedrooms: document.getElementById('bedrooms').value,
+                            garages: document.getElementById('garages').value,
+                            bathrooms: document.getElementById('bathrooms').value,
+                            price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')) || null,
+                            category: document.getElementById('category').value
+                        };
+                        localStorage.setItem('propertyFilters', JSON.stringify(filters));
+                        window.location.href = 'property-grid.html';
+                    });
+                })
+                .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
+        });
+    </script>
     <!-- End Property Search Section -->
 
   <!-- ======= Header/Navbar ======= -->
