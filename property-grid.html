@@ -400,6 +400,7 @@
     display: block;
   }
 </style>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     fetch('assets/js/property.json')
@@ -428,7 +429,7 @@
           filterCategorySelect.appendChild(option);
         });
 
-        const itemsPerPage = 6;
+        const itemsPerPage = 3;
         const totalPages = Math.ceil(properties.length / itemsPerPage);
         let currentPage = 1;
 
