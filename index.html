@@ -1670,336 +1670,246 @@ document.addEventListener("DOMContentLoaded", function() {
   
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
-
   <script>
-//Script para Preencher o Formulário e Processar Resultados
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('assets/js/property.json')
-    .then(response => response.json())
-    .then(data => {
-      // Função para preencher as opções do formulário
-      const fillOptions = (selectId, options) => {
-        const selectElement = document.getElementById(selectId);
-        options.forEach(option => {
-          const optElement = document.createElement('option');
-          optElement.value = option;
-          optElement.textContent = option;
-          selectElement.appendChild(optElement);
-        });
-      };
-
-      const types = [...new Set(data.map(property => property.type))];
-      const states = [...new Set(data.map(property => property.state))];
-      const cities = [...new Set(data.map(property => property.city))];
-      const neighborhoods = [...new Set(data.map(property => property.neighborhood))];
-      const bedrooms = [...new Set(data.map(property => property.bedrooms))];
-      const garages = [...new Set(data.map(property => property.garages))];
-      const bathrooms = [...new Set(data.map(property => property.bathrooms))];
-      const prices = [...new Set(data.map(property => property.minimumBid))];
-      const categories = [...new Set(data.map(property => property.category))];
-
-      fillOptions('type', types);
-      fillOptions('state', states);
-      fillOptions('city', cities);
-      fillOptions('neighborhood', neighborhoods);
-      fillOptions('bedrooms', bedrooms);
-      fillOptions('garages', garages);
-      fillOptions('bathrooms', bathrooms);
-      fillOptions('price', prices.map(price => `R$ ${price.toLocaleString()}`));
-      fillOptions('category', categories);
-
-      // Processar resultados da busca
-      document.getElementById('property-search-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        const filters = {
-          keyword: document.getElementById('keyword').value.toLowerCase(),
-          type: document.getElementById('type').value,
-          state: document.getElementById('state').value,
-          city: document.getElementById('city').value,
-          neighborhood: document.getElementById('neighborhood').value,
-          bedrooms: document.getElementById('bedrooms').value,
-          garages: document.getElementById('garages').value,
-          bathrooms: document.getElementById('bathrooms').value,
-          price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')),
-          category: document.getElementById('category').value
-        };
-
-        const filteredProperties = data.filter(property => {
-          return (
-            (!filters.keyword || property.title.toLowerCase().includes(filters.keyword)) &&
-            (!filters.type || property.type === filters.type) &&
-            (!filters.state || property.state === filters.state) &&
-            (!filters.city || property.city === filters.city) &&
-            (!filters.neighborhood || property.neighborhood === filters.neighborhood) &&
-            (!filters.bedrooms || property.bedrooms == filters.bedrooms) &&
-            (!filters.garages || property.garages == filters.garages) &&
-            (!filters.bathrooms || property.bathrooms == filters.bathrooms) &&
-            (!filters.price || property.minimumBid <= filters.price) &&
-            (!filters.category || property.category === filters.category)
-          );
-        });
-
-        // Exibir resultados
-        const resultsContainer = document.querySelector('.property-results');
-        resultsContainer.innerHTML = ''; // Limpar resultados anteriores
-
-        filteredProperties.forEach(property => {
-          const propertyCard = `
-            <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="${property.image}" alt="" class="img-a img-fluid">
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="#">${property.title}</a>
-                      </h2>
+    //Script para Preencher o Formulário e Processar Resultados
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('assets/js/property.json')
+        .then(response => response.json())
+        .then(data => {
+          // Função para preencher as opções do formulário
+          const fillOptions = (selectId, options) => {
+            const selectElement = document.getElementById(selectId);
+            options.forEach(option => {
+              const optElement = document.createElement('option');
+              optElement.value = option;
+              optElement.textContent = option;
+              selectElement.appendChild(optElement);
+            });
+          };
+    
+          const types = [...new Set(data.map(property => property.type))];
+          const states = [...new Set(data.map(property => property.state))];
+          const cities = [...new Set(data.map(property => property.city))];
+          const neighborhoods = [...new Set(data.map(property => property.neighborhood))];
+          const bedrooms = [...new Set(data.map(property => property.bedrooms))];
+          const garages = [...new Set(data.map(property => property.garages))];
+          const bathrooms = [...new Set(data.map(property => property.bathrooms))];
+          const prices = [...new Set(data.map(property => property.minimumBid))];
+          const categories = [...new Set(data.map(property => property.category))];
+    
+          fillOptions('type', types);
+          fillOptions('state', states);
+          fillOptions('city', cities);
+          fillOptions('neighborhood', neighborhoods);
+          fillOptions('bedrooms', bedrooms);
+          fillOptions('garages', garages);
+          fillOptions('bathrooms', bathrooms);
+          fillOptions('price', prices.map(price => `R$ ${price.toLocaleString()}`));
+          fillOptions('category', categories);
+    
+          // Processar resultados da busca
+          document.getElementById('property-search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            const filters = {
+              keyword: document.getElementById('keyword').value.toLowerCase(),
+              type: document.getElementById('type').value,
+              state: document.getElementById('state').value,
+              city: document.getElementById('city').value,
+              neighborhood: document.getElementById('neighborhood').value,
+              bedrooms: document.getElementById('bedrooms').value,
+              garages: document.getElementById('garages').value,
+              bathrooms: document.getElementById('bathrooms').value,
+              price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')),
+              category: document.getElementById('category').value
+            };
+    
+            const filteredProperties = data.filter(property => {
+              return (
+                (!filters.keyword || property.title.toLowerCase().includes(filters.keyword)) &&
+                (!filters.type || property.type === filters.type) &&
+                (!filters.state || property.state === filters.state) &&
+                (!filters.city || property.city === filters.city) &&
+                (!filters.neighborhood || property.neighborhood === filters.neighborhood) &&
+                (!filters.bedrooms || property.bedrooms == filters.bedrooms) &&
+                (!filters.garages || property.garages == filters.garages) &&
+                (!filters.bathrooms || property.bathrooms == filters.bathrooms) &&
+                (!filters.price || property.minimumBid <= filters.price) &&
+                (!filters.category || property.category === filters.category)
+              );
+            });
+    
+            // Exibir resultados
+            const resultsContainer = document.querySelector('.property-results');
+            resultsContainer.innerHTML = ''; // Limpar resultados anteriores
+    
+            filteredProperties.forEach(property => {
+              const propertyCard = `
+                <div class="col-md-4">
+                  <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                      <img src="${property.image}" alt="" class="img-a img-fluid">
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex">
-                        <span class="price-a">Lance mínimo | R$ ${property.minimumBid.toLocaleString()}</span>
+                    <div class="card-overlay">
+                      <div class="card-overlay-a-content">
+                        <div class="card-header-a">
+                          <h2 class="card-title-a">
+                            <a href="#">${property.title}</a>
+                          </h2>
+                        </div>
+                        <div class="card-body-a">
+                          <div class="price-box d-flex">
+                            <span class="price-a">Lance mínimo | R$ ${property.minimumBid.toLocaleString()}</span>
+                          </div>
+                          <a href="property-single.html" class="link-a">Clique aqui para ver
+                            <span class="bi bi-chevron-right"></span>
+                          </a>
+                        </div>
+                        <div class="card-footer-a">
+                          <ul class="card-info d-flex justify-content-around">
+                            <li>
+                              <h4 class="card-info-title">Área</h4>
+                              <span>${property.area} m²</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Quartos</h4>
+                              <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Banheiros</h4>
+                              <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Garagens</h4>
+                              <span>${property.garages}</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                      <a href="property-single.html" class="link-a">Clique aqui para ver
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Área</h4>
-                          <span>${property.area} m²</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Quartos</h4>
-                          <span>${property.bedrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Banheiros</h4>
-                          <span>${property.bathrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garagens</h4>
-                          <span>${property.garages}</span>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          `;
-          resultsContainer.insertAdjacentHTML('beforeend', propertyCard);
+              `;
+              resultsContainer.insertAdjacentHTML('beforeend', propertyCard);
+            });
+          });
         });
-      });
     });
-});
-  </script>
-
-<script>
-  var swiper = new Swiper('#services-carousel', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: true,
-    pagination: {
-      el: '.services-carousel-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
+      </script>
+    
+    <script>
+      var swiper = new Swiper('#services-carousel', {
         slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 40,
-      },
-    },
-  });
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    fetch('assets/js/property.json')
-      .then(response => response.json())
-      .then(properties => {
-        const today = new Date();
-        const upcomingProperties = properties
-          .filter(property => new Date(property.nextAuction) > today)
-          .sort((a, b) => new Date(a.nextAuction) - new Date(b.nextAuction))
-          .slice(0, 4);
-  
-        const pastProperties = properties
-          .filter(property => new Date(property.nextAuction) <= today)
-          .sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction))
-          .slice(0, 4);
-  
-        const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
-  
-        const propertyGrid = document.querySelector('.property-grid');
-        propertyGrid.innerHTML = '';
-  
-        propertiesToDisplay.forEach(property => {
-          const isLeilaoFinalizado = new Date(property.nextAuction) <= today;
-          const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.state;
-          const propertyItem = `
-            <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                  <div class="ribbon">${ribbonText}</div>
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="${property.link[0]}">${property.title}
-                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
-                      </h2>
+        spaceBetween: 10,
+        loop: true,
+        pagination: {
+          el: '.services-carousel-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+        },
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch('assets/js/property.json')
+          .then(response => response.json())
+          .then(properties => {
+            const today = new Date();
+            const upcomingProperties = properties
+              .filter(property => new Date(property.nextAuction) > today)
+              .sort((a, b) => new Date(a.nextAuction) - new Date(b.nextAuction))
+              .slice(0, 4);
+      
+            const pastProperties = properties
+              .filter(property => new Date(property.nextAuction) <= today)
+              .sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction))
+              .slice(0, 4);
+      
+            const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
+      
+            const carouselWrapper = document.querySelector('.swiper-wrapper');
+            carouselWrapper.innerHTML = '';
+      
+            propertiesToDisplay.forEach(property => {
+              const ribbonText = upcomingProperties.includes(property) ? property.state : 'Finalizado';
+              const propertyItem = `
+                <div class="carousel-item-b swiper-slide">
+                  <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                      <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
+                      <div class="ribbon">${ribbonText}</div>
                     </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex justify-content-between">
-                        <div>
-                          <span class="price-title white-text">Lance mínimo</span>
-                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                    <div class="card-overlay">
+                      <div class="card-overlay-a-content">
+                        <div class="card-header-a">
+                          <h2 class="card-title-a">
+                            <a href="${property.link[0]}">${property.title}
+                              <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                          </h2>
                         </div>
-                        <div>
-                          <span class="price-title white-text">Avaliação Mercado</span>
-                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                        <div class="card-body-a">
+                          <div class="price-box d-flex justify-content-between">
+                            <div>
+                              <span class="price-title white-text">Lance mínimo</span>
+                              <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                            </div>
+                            <div>
+                              <span class="price-title white-text">Avaliação Mercado</span>
+                              <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                            </div>
+                          </div>
+                          <a href="${property.link[0]}" class="link-a">Saiba mais
+                            <span class="bi bi-chevron-right"></span>
+                          </a>
+                        </div>
+                        <div class="card-footer-a">
+                          <ul class="card-info d-flex justify-content-around">
+                            <li>
+                              <h4 class="card-info-title">Área</h4>
+                              <span>${property.area}m<sup>2</sup></span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Quartos</h4>
+                              <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Banheiros</h4>
+                              <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Garagem</h4>
+                              <span>${property.garages}</span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
-                      <a href="${property.link[0]}" class="link-a">Saiba mais
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Área</h4>
-                          <span>${property.area}m<sup>2</sup></span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Quartos</h4>
-                          <span>${property.bedrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Banheiros</h4>
-                          <span>${property.bathrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garagem</h4>
-                          <span>${property.garages}</span>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          `;
-          propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
-        });
-      })
-      .catch(error => console.error('Error fetching properties:', error));
-  });
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    fetch('assets/js/property.json')
-      .then(response => response.json())
-      .then(properties => {
-        const today = new Date();
-        const upcomingProperties = properties
-          .filter(property => new Date(property.nextAuction) > today)
-          .sort((a, b) => new Date(a.nextAuction) - new Date(b.nextAuction))
-          .slice(0, 4);
-  
-        const pastProperties = properties
-          .filter(property => new Date(property.nextAuction) <= today)
-          .sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction))
-          .slice(0, 4);
-  
-        const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
-  
-        const propertyGrid = document.querySelector('.property-grid');
-        propertyGrid.innerHTML = '';
-  
-        propertiesToDisplay.forEach(property => {
-          const isLeilaoFinalizado = new Date(property.nextAuction) <= today;
-          const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.state;
-          const propertyItem = `
-            <div class="col-md-4">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                  <div class="ribbon">${ribbonText}</div>
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="${property.link[0]}">${property.title}
-                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex justify-content-between">
-                        <div>
-                          <span class="price-title white-text">Lance mínimo</span>
-                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
-                        </div>
-                        <div>
-                          <span class="price-title white-text">Avaliação Mercado</span>
-                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
-                        </div>
-                      </div>
-                      <a href="${property.link[0]}" class="link-a">Saiba mais
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Área</h4>
-                          <span>${property.area}m<sup>2</sup></span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Quartos</h4>
-                          <span>${property.bedrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Banheiros</h4>
-                          <span>${property.bathrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garagem</h4>
-                          <span>${property.garages}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-          propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
-        });
-      })
-      .catch(error => console.error('Error fetching properties:', error));
-  });
-</script>
-
+              `;
+              carouselWrapper.insertAdjacentHTML('beforeend', propertyItem);
+            });
+          });
+      });
+      </script>
+      
 <link rel="stylesheet" href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css">
 <a id="robbu-whatsapp-button" target="_blank" href="https://api.whatsapp.com/send?phone=5592994979987&text=Ol%C3%A1,%20quero%20falar%20com%20um%20corretor">
   <div class="rwb-tooltip">Fale com um corretor</div>
