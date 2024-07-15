@@ -707,11 +707,172 @@ document.addEventListener("DOMContentLoaded", function() {
           </div>
         </div>
       </div>
+
     </section>-->
 
 
-    
-<!-- ======= Property Grid ======= -->
+<!-- ======= Property Grid Section ======= -->
+<section class="property-grid grid">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="grid-option">
+          <form>
+            <select class="custom-select" id="filter-category">
+              <option selected>All</option>
+              <!-- Categories will be dynamically added here -->
+            </select>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row property-grid">
+      <!-- Property items will be inserted here -->
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <nav class="pagination-a">
+          <ul class="pagination justify-content-end pagination-wrapper">
+            <!-- Pagination items will be inserted here -->
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Property Grid Section -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('assets/js/property.json')
+      .then(response => response.json())
+      .then(properties => {
+        properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+        
+        // Extract unique categories
+        const categories = [...new Set(properties.map(property => property.category))];
+
+        // Fill category select in search form
+        const categorySelect = document.getElementById('category');
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category;
+          categorySelect.appendChild(option);
+        });
+
+        // Fill category filter select in grid
+        const filterCategorySelect = document.getElementById('filter-category');
+        categories.forEach(category => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = category;
+          filterCategorySelect.appendChild(option);
+        });
+
+        const itemsPerPage = 6;
+        const totalPages = Math.ceil(properties.length / itemsPerPage);
+        let currentPage = 1;
+
+        const renderProperties = (page) => {
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          const propertiesToShow = properties.slice(startIndex, endIndex);
+
+          const propertyGrid = document.querySelector('.property-grid');
+          propertyGrid.innerHTML = '';
+
+          propertiesToShow.forEach(property => {
+            const propertyItem = `
+              <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                  <div class="img-box-a">
+                    <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
+                    <div class="ribbon">${property.state}</div>
+                  </div>
+                  <div class="card-overlay">
+                    <div class="card-overlay-a-content">
+                      <div class="card-header-a">
+                        <h2 class="card-title-a">
+                          <a href="${property.link[0]}">${property.title}
+                            <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                        </h2>
+                      </div>
+                      <div class="card-body-a">
+                        <div class="price-box d-flex justify-content-between">
+                          <div>
+                            <span class="price-title">Lance mínimo</span>
+                            <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                          </div>
+                          <div>
+                            <span class="price-title">Avaliação Mercado</span>
+                            <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                          </div>
+                        </div>
+                        <a href="${property.link[0]}" class="link-a">Saiba mais
+                          <span class="bi bi-chevron-right"></span>
+                        </a>
+                      </div>
+                      <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                          <li>
+                            <h4 class="card-info-title">Área</h4>
+                            <span>${property.area}m<sup>2</sup></span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Quartos</h4>
+                            <span>${property.bedrooms}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Banheiros</h4>
+                            <span>${property.bathrooms}</span>
+                          </li>
+                          <li>
+                            <h4 class="card-info-title">Garagem</h4>
+                            <span>${property.garages}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
+          });
+
+          renderPagination();
+        };
+
+        const renderPagination = () => {
+          const paginationWrapper = document.querySelector('.pagination-wrapper');
+          paginationWrapper.innerHTML = '';
+
+          for (let i = 1; i <= totalPages; i++) {
+            const pageItem = `
+              <li class="page-item ${i === currentPage ? 'active' : ''}">
+                <a class="page-link" href="#">${i}</a>
+              </li>
+            `;
+            paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
+          }
+
+          document.querySelectorAll('.page-link').forEach(link => {
+            link.addEventListener('click', (event) => {
+              event.preventDefault();
+              currentPage = parseInt(event.target.textContent);
+              renderProperties(currentPage);
+            });
+          });
+        };
+
+        renderProperties(currentPage);
+      })
+      .catch(error => console.error('Error fetching properties:', error));
+  });
+</script>
+
+<!-- ======= Property Grid ======= 
 <section class="property-grid grid">
   <div class="container">
     <div class="row">
@@ -754,7 +915,7 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
     </div>
   </div>
-</section><!-- End Property Grid Single-->
+</section>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     fetch('assets/js/property.json')
