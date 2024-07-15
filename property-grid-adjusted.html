@@ -211,77 +211,58 @@
   </section>
   <!-- End Intro Single-->
 
-  <!-- ======= Property Grid Section ======= -->
-  <section class="property-grid grid">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="grid-option">
-            <form>
-              <select class="custom-select" id="filter-category">
-                <option selected="">Todos</option>
-                <!-- Categories will be dynamically added here -->
-              </select>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="row property-grid">
-        <!-- Property items will be inserted here -->
-      </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <nav class="pagination-a">
-            <ul class="pagination justify-content-end pagination-wrapper">
-              <!-- Pagination items will be inserted here -->
-            </ul>
-          </nav>
-        </div>
-      </div>
+  <div id="property-carousel" class="swiper">
+    <div class="swiper-wrapper">
+      <!-- Os itens serão inseridos aqui pelo JavaScript -->
     </div>
-  </section>
+    <div class="propery-carousel-pagination carousel-pagination"></div>
+  </div>
+</div>
+</section>
+<!-- End Latest Properties Section -->
 
-  
 <style>
-  .img-box-a {
-    position: relative;
-  }
+.img-box-a {
+  position: relative;
+}
 
-  .ribbon {
-    position: absolute;
-    top: 120px;
-    right: -60px;
-    background-color: #2eca6a;
-    color: white;
-    padding: 10px;
-    font-size: 32px;
-    font-weight: bold;
-    transform: rotate(45deg);
-    transform-origin: top right;
-    width: 250px;
-    text-align: center;
-    line-height: 1;
-    opacity: 0.9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  }
+.ribbon {
+  position: absolute;
+  top: 120px; /* Ajuste para descer a tarja */
+  right: -60px; /* Ajustar conforme necessário */
+  background-color: #2eca6a; /* Cor verde */
+  color: white;
+  padding: 10px; /* Reduzir padding horizontal */
+  font-size: 16px; /* Aumento do tamanho da fonte */
+  font-weight: bold; /* Texto em negrito */
+  transform: rotate(45deg);
+  transform-origin: top right;
+  width: 250px; /* Largura da tarja */
+  text-align: center; /* Centralizar texto */
+  line-height: 1; /* Ajustar a altura da linha para centralizar verticalmente */
+  opacity: 0.9; /* Opacidade aumentada para mais contraste */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+}
 
-  .price-box {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
+.price-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
 
-  .price-title {
-    font-weight: bold;
-    display: block;
-    color: white; /* Cor branca */
-  }
+.price-title {
+  font-weight: bold;
+  display: block;
+  color: white; /* Cor branca */
+}
 
-  .price-a {
-    margin-top: 5px;
-    display: block;
-  }
+.price-a {
+  margin-top: 5px;
+  display: block;
+}
 </style>
+
+<!-- ======= Latest Properties Section ======= -->
 
 <!-- JavaScript for Pagination and Property Display -->
 <script>
