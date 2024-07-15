@@ -835,90 +835,75 @@ document.addEventListener("DOMContentLoaded", function() {
 </style>-->
 
 <!-- ======= Latest Properties Section ======= -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    fetch('assets/js/property.json')
-      .then(response => response.json())
-      .then(properties => {
-        const today = new Date();
-        const upcomingProperties = properties
-          .filter(property => new Date(property.nextAuction) > today)
-          .sort((a, b) => new Date(a.nextAuction) - new Date(b.nextAuction))
-          .slice(0, 4);
-  
-        const pastProperties = properties
-          .filter(property => new Date(property.nextAuction) <= today)
-          .sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction))
-          .slice(0, 4);
-  
-        const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
-  
-        const carouselWrapper = document.querySelector('.swiper-wrapper');
-        carouselWrapper.innerHTML = '';
-  
-        propertiesToDisplay.forEach(property => {
-          const ribbonText = upcomingProperties.includes(property) ? property.state : 'Finalizado';
-          const propertyItem = `
-            <div class="carousel-item-b swiper-slide">
-              <div class="card-box-a card-shadow">
-                <div class="img-box-a">
-                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
-                  <div class="ribbon">${ribbonText}</div>
-                </div>
-                <div class="card-overlay">
-                  <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                      <h2 class="card-title-a">
-                        <a href="${property.link[0]}">${property.title}
-                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
-                      </h2>
-                    </div>
-                    <div class="card-body-a">
-                      <div class="price-box d-flex justify-content-between">
-                        <div>
-                          <span class="price-title white-text">Lance mínimo</span>
-                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
-                        </div>
-                        <div>
-                          <span class="price-title white-text">Avaliação Mercado</span>
-                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
-                        </div>
-                      </div>
-                      <a href="${property.link[0]}" class="link-a">Saiba mais
-                        <span class="bi bi-chevron-right"></span>
-                      </a>
-                    </div>
-                    <div class="card-footer-a">
-                      <ul class="card-info d-flex justify-content-around">
-                        <li>
-                          <h4 class="card-info-title">Área</h4>
-                          <span>${property.area}m<sup>2</sup></span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Quartos</h4>
-                          <span>${property.bedrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Banheiros</h4>
-                          <span>${property.bathrooms}</span>
-                        </li>
-                        <li>
-                          <h4 class="card-info-title">Garagem</h4>
-                          <span>${property.garages}</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          `;
-          carouselWrapper.insertAdjacentHTML('beforeend', propertyItem);
-        });
-      });
-  });
-  </script>
-  
+
+<section class="section-property section-t8">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Imóveis</h2>
+          </div>
+          <div class="title-link">
+            <a href="property-grid.html">Ver todos
+              <span class="bi bi-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="property-carousel" class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Os itens serão inseridos aqui pelo JavaScript -->
+      </div>
+      <div class="propery-carousel-pagination carousel-pagination"></div>
+    </div>
+  </div>
+</section>
+<!-- End Latest Properties Section -->
+
+<style>
+  .img-box-a {
+    position: relative;
+  }
+
+  .ribbon {
+    position: absolute;
+    top: 20px;
+    right: -60px;
+    background-color: #2eca6a;
+    color: white;
+    padding: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    width: 250px;
+    text-align: center;
+    line-height: 1;
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .price-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .price-title {
+    font-weight: bold;
+    display: block;
+    color: white;
+  }
+
+  .price-a {
+    margin-top: 5px;
+    display: block;
+  }
+</style>
+<!-- ======= Latest Properties Section ======= -->
      
     <main id="main">
 
@@ -1855,6 +1840,92 @@ document.addEventListener("DOMContentLoaded", function() {
     },
   });
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    fetch('assets/js/property.json')
+      .then(response => response.json())
+      .then(properties => {
+        const today = new Date();
+        const upcomingProperties = properties
+          .filter(property => new Date(property.nextAuction) > today)
+          .sort((a, b) => new Date(a.nextAuction) - new Date(b.nextAuction))
+          .slice(0, 4);
+  
+        const pastProperties = properties
+          .filter(property => new Date(property.nextAuction) <= today)
+          .sort((a, b) => new Date(b.nextAuction) - new Date(a.nextAuction))
+          .slice(0, 4);
+  
+        const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
+  
+        const carouselWrapper = document.querySelector('.swiper-wrapper');
+        carouselWrapper.innerHTML = '';
+  
+        propertiesToDisplay.forEach(property => {
+          const ribbonText = upcomingProperties.includes(property) ? property.state : 'Finalizado';
+          const propertyItem = `
+            <div class="carousel-item-b swiper-slide">
+              <div class="card-box-a card-shadow">
+                <div class="img-box-a">
+                  <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
+                  <div class="ribbon">${ribbonText}</div>
+                </div>
+                <div class="card-overlay">
+                  <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                      <h2 class="card-title-a">
+                        <a href="${property.link[0]}">${property.title}
+                          <br /> ${property.neighborhood}, ${property.city}, ${property.state}</a>
+                      </h2>
+                    </div>
+                    <div class="card-body-a">
+                      <div class="price-box d-flex justify-content-between">
+                        <div>
+                          <span class="price-title white-text">Lance mínimo</span>
+                          <span class="price-a">R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                        </div>
+                        <div>
+                          <span class="price-title white-text">Avaliação Mercado</span>
+                          <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                        </div>
+                      </div>
+                      <a href="${property.link[0]}" class="link-a">Saiba mais
+                        <span class="bi bi-chevron-right"></span>
+                      </a>
+                    </div>
+                    <div class="card-footer-a">
+                      <ul class="card-info d-flex justify-content-around">
+                        <li>
+                          <h4 class="card-info-title">Área</h4>
+                          <span>${property.area}m<sup>2</sup></span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Quartos</h4>
+                          <span>${property.bedrooms}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Banheiros</h4>
+                          <span>${property.bathrooms}</span>
+                        </li>
+                        <li>
+                          <h4 class="card-info-title">Garagem</h4>
+                          <span>${property.garages}</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          carouselWrapper.insertAdjacentHTML('beforeend', propertyItem);
+        });
+      });
+  });
+  </script>
+
+
 <link rel="stylesheet" href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css">
 <a id="robbu-whatsapp-button" target="_blank" href="https://api.whatsapp.com/send?phone=5592994979987&text=Ol%C3%A1,%20quero%20falar%20com%20um%20corretor">
   <div class="rwb-tooltip">Fale com um corretor</div>
