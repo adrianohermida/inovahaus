@@ -40,46 +40,6 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-  <style>
-    .img-box-a {
-      position: relative;
-    }
-
-    .ribbon {
-      position: absolute;
-      top: 120px;
-      right: -60px;
-      background-color: #2eca6a;
-      color: white;
-      padding: 10px;
-      font-size: 32px;
-      font-weight: bold;
-      transform: rotate(45deg);
-      transform-origin: top right;
-      width: 250px;
-      text-align: center;
-      line-height: 1;
-      opacity: 0.9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .price-box {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .price-title {
-      font-weight: bold;
-      display: block;
-      color: white;
-    }
-
-    .price-a {
-      margin-top: 5px;
-      display: block;
-    }
-  </style>
 
   <!-- =======================================================
   * Template Name: EstateAgency
@@ -187,8 +147,7 @@
       </form>
     </div>
   </div>
-
-  
+ 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
   fetch('assets/js/property.json')
@@ -400,17 +359,16 @@
   </div>
 </section>
 
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     fetch('assets/js/property.json')
       .then(response => response.json())
       .then(properties => {
         properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-  
+
         // Extract unique categories
         const categories = [...new Set(properties.map(property => property.category))];
-  
+
         // Fill category filter select in grid
         const filterCategorySelect = document.getElementById('filter-category');
         categories.forEach(category => {
@@ -419,25 +377,25 @@
           option.textContent = category;
           filterCategorySelect.appendChild(option);
         });
-  
+
         const itemsPerPage = 6;
         const totalPages = Math.ceil(properties.length / itemsPerPage);
         let currentPage = 1;
-  
+
         const renderProperties = (page) => {
           const startIndex = (page - 1) * itemsPerPage;
           const endIndex = startIndex + itemsPerPage;
           const propertiesToShow = properties.slice(startIndex, endIndex);
-  
+
           const propertyGrid = document.querySelector('.property-grid');
           propertyGrid.innerHTML = '';
-  
+
           propertiesToShow.forEach(property => {
             const today = new Date();
             const auctionDate = new Date(property.nextAuction);
             const isAuctionFinished = auctionDate < today;
             const ribbonText = isAuctionFinished ? 'Finalizado' : property.state;
-  
+
             const propertyItem = `
               <div class="col-md-4">
                 <div class="card-box-a card-shadow">
@@ -495,14 +453,14 @@
             `;
             propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
           });
-  
+
           renderPagination();
         };
-  
+
         const renderPagination = () => {
           const paginationWrapper = document.querySelector('.pagination-wrapper');
           paginationWrapper.innerHTML = '';
-  
+
           for (let i = 1; i <= totalPages; i++) {
             const pageItem = `
               <li class="page-item ${i === currentPage ? 'active' : ''}">
@@ -511,7 +469,7 @@
             `;
             paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
           }
-  
+
           document.querySelectorAll('.page-link').forEach(link => {
             link.addEventListener('click', (event) => {
               event.preventDefault();
@@ -520,12 +478,12 @@
             });
           });
         };
-  
+
         renderProperties(currentPage);
       })
       .catch(error => console.error('Error fetching properties:', error));
   });
-  </script>
+</script>
 
 <!-- End Property Grid Section -->
 
