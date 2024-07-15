@@ -1845,13 +1845,14 @@ document.addEventListener("DOMContentLoaded", function() {
   
         const propertiesToDisplay = upcomingProperties.length > 0 ? upcomingProperties : pastProperties;
   
-        const carouselWrapper = document.querySelector('.swiper-wrapper');
-        carouselWrapper.innerHTML = '';
+        const propertyGrid = document.querySelector('.property-grid');
+        propertyGrid.innerHTML = '';
   
         propertiesToDisplay.forEach(property => {
-          const ribbonText = upcomingProperties.includes(property) ? property.state : 'Finalizado';
+          const isLeilaoFinalizado = new Date(property.nextAuction) <= today;
+          const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.state;
           const propertyItem = `
-            <div class="carousel-item-b swiper-slide">
+            <div class="col-md-4">
               <div class="card-box-a card-shadow">
                 <div class="img-box-a">
                   <img src="${property.images[0]}" alt="${property.title}" class="img-a img-fluid">
@@ -1905,13 +1906,12 @@ document.addEventListener("DOMContentLoaded", function() {
               </div>
             </div>
           `;
-          carouselWrapper.insertAdjacentHTML('beforeend', propertyItem);
+          propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
         });
-      });
+      })
+      .catch(error => console.error('Error fetching properties:', error));
   });
-  </script>
-  
-
+</script>
 
 <link rel="stylesheet" href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css">
 <a id="robbu-whatsapp-button" target="_blank" href="https://api.whatsapp.com/send?phone=5592994979987&text=Ol%C3%A1,%20quero%20falar%20com%20um%20corretor">
