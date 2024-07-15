@@ -48,48 +48,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-
-  <style>
-    .img-box-a {
-      position: relative;
-    }
-    
-    .ribbon {
-      position: absolute;
-      top: 120px;
-      right: -60px;
-      background-color: #2eca6a;
-      color: white;
-      padding: 10px;
-      font-size: 32px;
-      font-weight: bold;
-      transform: rotate(45deg);
-      transform-origin: top right;
-      width: 250px;
-      text-align: center;
-      line-height: 1;
-      opacity: 0.9;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-        .price-box {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-        }
-    
-        .price-title {
-          font-weight: bold;
-          display: block;
-          color: white; /* Cor branca */
-        }
-    
-        .price-a {
-          margin-top: 5px;
-          display: block;
-        }
-      </style>
-    
+   
 </head>
 
 <body>
@@ -372,7 +331,6 @@
     </section><!-- End Intro Single-->
 
 <!-- ======= Property Grid Section ======= -->
- <!-- ======= Property Grid Section ======= -->
 <section class="property-grid grid">
   <div class="container">
     <div class="row">
@@ -401,8 +359,47 @@
     </div>
   </div>
 </section>
-<!-- End Property Grid Section -->
 
+<style>
+  .img-box-a {
+    position: relative;
+  }
+
+  .ribbon {
+    position: absolute;
+    top: 120px;
+    right: -60px;
+    background-color: #2eca6a;
+    color: white;
+    padding: 10px;
+    font-size: 32px;
+    font-weight: bold;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    width: 250px;
+    text-align: center;
+    line-height: 1;
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .price-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .price-title {
+    font-weight: bold;
+    display: block;
+    color: white; /* Cor branca */
+  }
+
+  .price-a {
+    margin-top: 5px;
+    display: block;
+  }
+</style>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     fetch('assets/js/property.json')
@@ -410,8 +407,10 @@
       .then(properties => {
         properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
 
+        // Extract unique categories
         const categories = [...new Set(properties.map(property => property.category))];
 
+        // Fill category select in search form
         const categorySelect = document.getElementById('category');
         categories.forEach(category => {
           const option = document.createElement('option');
@@ -420,6 +419,7 @@
           categorySelect.appendChild(option);
         });
 
+        // Fill category filter select in grid
         const filterCategorySelect = document.getElementById('filter-category');
         categories.forEach(category => {
           const option = document.createElement('option');
