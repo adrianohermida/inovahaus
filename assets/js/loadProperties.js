@@ -1,222 +1,131 @@
-// assets/js/loadProperties.js
-// Script para carregar e renderizar propriedades na página property-grid
+document.addEventListener("DOMContentLoaded", function() {
+    const jsonFiles = [
+        'assets/js/property_1_to_50.json',
+        'assets/js/property_51_to_100.json',
+        'assets/js/property_101_to_150.json',
+        'assets/js/property_151_to_152.json'
+    ];
 
-document.addEventListener("DOMContentLoaded", async function() {
-    let allProperties = getStoredProperties();
-    if (!allProperties.length) {
-        const jsonFiles = [
-            'assets/js/property_1_to_50.json',
-            'assets/js/property_51_to_100.json',
-            'assets/js/property_101_to_150.json',
-            'assets/js/property_151_to_152.json'
-        ];
-        allProperties = await fetchAllJsonFiles(jsonFiles);
-        storeProperties(allProperties);
-    }
-
-    populateFilters(allProperties);
-    renderProperties(1);
-    setupSearch();
-});
-
-function getStoredProperties() {
-    return JSON.parse(localStorage.getItem('allProperties')) || [];
-}
-
-function storeProperties(properties) {
-    localStorage.setItem('allProperties', JSON.stringify(properties));
-}
-
-async function fetchAllJsonFiles(files) {
-    const allData = [];
-    for (const file of files) {
-        const response = await fetch(file);
-        const data = await response.json();
-        allData.push(...data);
-    }
-    return allData;
-}
-
-function renderProperties(page, filters = {}) {
+    let allProperties = [];
     const itemsPerPage = 6;
-    const properties = getStoredProperties();
-    const filteredProperties = properties.filter(property => {
-        return Object.keys(filters).every(key => {
-            if (!filters[key]) return true;
-            if (key === 'keyword') {
-                return property.title.toLowerCase().includes(filters[key].toLowerCase());
-            }
-            if (property[key] == null) return false;
-            return property[key].toString().toLowerCase().includes(filters[key].toString().toLowerCase());
+    let currentPage = 1;
+
+    const fetchAllJsonFiles = (files) => {
+        return Promise.all(files.map(file => fetch(file).then(response => response.json())));
+    };
+
+    const renderProperties = (page, filters = {}) => {
+        const filteredProperties = allProperties.filter(property => {
+            return Object.keys(filters).every(key => {
+                if (!filters[key]) return true;
+                if (key === 'keyword') {
+                    return property.title.toLowerCase().includes(filters[key].toLowerCase());
+                }
+                if (property[key] == null) return false;
+                return property[key].toString().toLowerCase().includes(filters[key].toString().toLowerCase());
+            });
         });
-    });
 
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const propertiesToShow = filteredProperties.slice(startIndex, endIndex);
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const propertiesToShow = filteredProperties.slice(startIndex, endIndex);
 
-    const propertyGrid = document.querySelector('.property-grid .row');
-    propertyGrid.innerHTML = '';
+        const propertyGrid = document.querySelector('#property-grid-results');
+        propertyGrid.innerHTML = '';
 
-    propertiesToShow.forEach(property => {
-        const isLeilaoFinalizado = new Date(property.nextAuction) <= new Date();
-        const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.state;
-        const propertyElement = createPropertyGridElement(property, ribbonText);
-        propertyGrid.appendChild(propertyElement);
-    });
-
-    renderPagination(filteredProperties.length, itemsPerPage);
-}
-
-function createPropertyGridElement(property, ribbonText) {
-    const element = document.createElement('div');
-    element.className = 'col-md-4 mb-4';
-    element.innerHTML = `
-        <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-                <img src="${property.images[0] || 'assets/img/property/600x800.png'}" alt="${property.title || ''}" class="img-a img-fluid">
-                <div class="ribbon">${ribbonText || ''}</div>
-            </div>
-            <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                        <h2 class="card-title-a">
-                            <a href="property-single.html?id=${property.id}">${property.title || ''}
-                                <br /> ${property.neighborhood || ''}, ${property.city || ''}, ${property.state || ''}</a>
-                        </h2>
+        propertiesToShow.forEach(property => {
+            const propertyItem = `
+                <div class="col-md-4">
+                  <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                      <img src="${property.image || 'assets/img/property/600x800.png'}" alt="${property.title}" class="img-a img-fluid">
                     </div>
-                    <div class="card-body-a">
-                        <div class="price-box d-flex justify-content-between">
-                            <div>
-                                <span class="price-title white-text">Lance mínimo</span>
-                                <span class="price-a">R$ ${property.minimumBid ? property.minimumBid.toLocaleString('pt-BR') : 'Não há resultados'}</span>
-                            </div>
-                            <div>
-                                <span class="price-title white-text">Avaliação Mercado</span>
-                                <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'Não há resultados'}</span>
-                            </div>
+                    <div class="card-overlay">
+                      <div class="card-overlay-a-content">
+                        <div class="card-header-a">
+                          <h2 class="card-title-a">
+                            <a href="#">${property.title}</a>
+                          </h2>
                         </div>
-                        <a href="property-single.html?id=${property.id}" class="link-a">Saiba mais
+                        <div class="card-body-a">
+                          <div class="price-box d-flex">
+                            <span class="price-a">Lance mínimo | R$ ${property.minimumBid.toLocaleString('pt-BR')}</span>
+                          </div>
+                          <div class="price-box d-flex">
+                            <span class="price-a">Avaliação de Mercado | R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                          </div>
+                          <a href="property-single.html?id=${property.id}" class="link-a">Clique aqui para ver
                             <span class="bi bi-chevron-right"></span>
-                        </a>
+                          </a>
+                        </div>
+                        <div class="card-footer-a">
+                          <ul class="card-info d-flex justify-content-around">
+                            <li>
+                              <h4 class="card-info-title">Área</h4>
+                              <span>${property.area} m²</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Quartos</h4>
+                              <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Banheiros</h4>
+                              <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                              <h4 class="card-info-title">Garagens</h4>
+                              <span>${property.garages}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <li>
-                                <h4 class="card-info-title">Área</h4>
-                                <span>${property.area ? property.area + 'm²' : 'Não há resultados'}</span>
-                            </li>
-                            <li>
-                                <h4 class="card-info-title">Quartos</h4>
-                                <span>${property.bedrooms || 'Não há resultados'}</span>
-                            </li>
-                            <li>
-                                <h4 class="card-info-title">Banheiros</h4>
-                                <span>${property.bathrooms || 'Não há resultados'}</span>
-                            </li>
-                            <li>
-                                <h4 class="card-info-title">Garagem</h4>
-                                <span>${property.garages || 'Não há resultados'}</span>
-                            </li>
-                        </ul>
-                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    `;
-    return element;
-}
-
-function renderPagination(totalItems, itemsPerPage) {
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const paginationWrapper = document.querySelector('.pagination-wrapper');
-    paginationWrapper.innerHTML = '';
-
-    for (let i = 1; i <= totalPages; i++) {
-        const pageItem = `
-            <li class="page-item ${i === currentPage ? 'active' : ''}">
-                <a class="page-link" href="#">${i}</a>
-            </li>
-        `;
-        paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
-    }
-
-    document.querySelectorAll('.page-link').forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            currentPage = parseInt(event.target.textContent);
-            const filters = getFilters();
-            renderProperties(currentPage, filters);
+            `;
+            propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
         });
-    });
-}
 
-function setupSearch() {
-    const searchForm = document.querySelector('#property-search-form');
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const filters = getFilters();
-        localStorage.setItem('propertyFilters', JSON.stringify(filters));
-        renderProperties(1, filters);
-    });
-}
+        renderPagination(filteredProperties.length);
+    };
 
-function getFilters() {
-    const keyword = document.getElementById('keyword').value;
-    const type = document.getElementById('type').value;
-    const state = document.getElementById('state').value;
-    const city = document.getElementById('city').value;
-    const neighborhood = document.getElementById('neighborhood').value;
-    const bedrooms = document.getElementById('bedrooms').value;
-    const garages = document.getElementById('garages').value;
-    const bathrooms = document.getElementById('bathrooms').value;
-    const price = document.getElementById('price').value ? parseFloat(document.getElementById('price').value.replace('R$', '').replace(/\./g, '').replace(',', '.')) : null;
-    const category = document.getElementById('category').value;
+    const renderPagination = (totalItems) => {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        const paginationWrapper = document.querySelector('.pagination-wrapper');
+        paginationWrapper.innerHTML = '';
 
-    return { keyword, type, state, city, neighborhood, bedrooms, garages, bathrooms, price, category };
-}
+        const createPageItem = (page, label = null) => {
+            const isActive = page === currentPage;
+            const itemClass = isActive ? 'page-item active' : 'page-item';
+            const labelText = label || page;
+            return `<li class="${itemClass}"><a class="page-link" href="#" data-page="${page}">${labelText}</a></li>`;
+        };
 
-function populateFilters(data) {
-    const populateSelect = (select, values) => {
-        select.innerHTML = '<option value="">Todos</option>';
-        const counts = values.reduce((acc, value) => {
-            if (value) {
-                acc[value] = (acc[value] || 0) + 1;
-            }
-            return acc;
-        }, {});
-        Object.keys(counts).forEach(value => {
-            const option = document.createElement('option');
-            option.value = value;
-            option.textContent = `${value} (${counts[value]})`;
-            select.appendChild(option);
+        if (currentPage > 1) {
+            paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(currentPage - 1, '<span class="bi bi-chevron-left"></span>'));
+        }
+
+        for (let page = 1; page <= totalPages; page++) {
+            paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(page));
+        }
+
+        if (currentPage < totalPages) {
+            paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(currentPage + 1, '<span class="bi bi-chevron-right"></span>'));
+        }
+
+        document.querySelectorAll('.pagination a.page-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = parseInt(link.getAttribute('data-page'));
+                renderProperties(currentPage);
+            });
         });
     };
 
-    populateSelect(document.getElementById('type'), data.map(property => property.type));
-    populateSelect(document.getElementById('state'), data.map(property => property.state));
-    populateSelect(document.getElementById('city'), data.map(property => property.city));
-    populateSelect(document.getElementById('neighborhood'), data.map(property => property.neighborhood));
-    populateSelect(document.getElementById('bedrooms'), data.map(property => property.bedrooms));
-    populateSelect(document.getElementById('garages'), data.map(property => property.garages));
-    populateSelect(document.getElementById('bathrooms'), data.map(property => property.bathrooms));
-    populateSelect(document.getElementById('category'), data.map(property => property.category));
-
-    const prices = data.map(property => property.minimumBid);
-    const totalPrices = prices.reduce((total, price) => total + price, 0);
-    const averagePrice = totalPrices / prices.length;
-    const priceRanges = [
-        Math.floor(averagePrice * 0.5),
-        Math.floor(averagePrice * 0.75),
-        Math.floor(averagePrice),
-        Math.floor(averagePrice * 1.25),
-        Math.floor(averagePrice * 1.5)
-    ];
-
-    priceRanges.forEach(price => {
-        const option = document.createElement('option');
-        option.value = price;
-        option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
-        document.getElementById('price').appendChild(option);
-    });
-}
+    fetchAllJsonFiles(jsonFiles)
+        .then(dataArrays => {
+            dataArrays.forEach(data => allProperties = allProperties.concat(data));
+            renderProperties(currentPage);
+        })
+        .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
+});
