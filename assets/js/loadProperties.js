@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const jsonFiles = [
         'assets/js/property_1_to_50.json',
         'assets/js/property_51_to_100.json',
@@ -113,30 +113,41 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (totalPages <= 1) return;
 
-        for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
-                const pageItem = `
-                    <li class="page-item ${i === currentPage ? 'active' : ''}">
-                        <a class="page-link" href="#">${i}</a>
-                    </li>
-                `;
-                paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
-            } else if (i === 2 || i === totalPages - 1) {
-                paginationWrapper.insertAdjacentHTML('beforeend', `<li class="page-item"><span class="page-link">...</span></li>`);
-            }
+        const createPageItem = (page, isActive = false) => {
+            const pageItem = document.createElement('li');
+            pageItem.classList.add('page-item');
+            if (isActive) pageItem.classList.add('active');
+            pageItem.innerHTML = `<a class="page-link" href="#">${page}</a>`;
+            pageItem.addEventListener('click', (event) => {
+                event.preventDefault();
+                currentPage = page;
+                const filters = getFilters();
+                renderProperties(currentPage, filters);
+            });
+            return pageItem;
+        };
+
+        paginationWrapper.appendChild(createPageItem(1, currentPage === 1));
+
+        if (currentPage > 3) {
+            const dots = document.createElement('li');
+            dots.classList.add('page-item');
+            dots.innerHTML = '<span class="page-link">...</span>';
+            paginationWrapper.appendChild(dots);
         }
 
-        document.querySelectorAll('.page-link').forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault();
-                const pageNumber = parseInt(event.target.textContent);
-                if (!isNaN(pageNumber)) {
-                    currentPage = pageNumber;
-                    const filters = getFilters();
-                    renderProperties(currentPage, filters);
-                }
-            });
-        });
+        for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+            paginationWrapper.appendChild(createPageItem(i, currentPage === i));
+        }
+
+        if (currentPage < totalPages - 2) {
+            const dots = document.createElement('li');
+            dots.classList.add('page-item');
+            dots.innerHTML = '<span class="page-link">...</span>';
+            paginationWrapper.appendChild(dots);
+        }
+
+        paginationWrapper.appendChild(createPageItem(totalPages, currentPage === totalPages));
     };
 
     const getFilters = () => {
