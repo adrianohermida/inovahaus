@@ -1,20 +1,4 @@
-// assets/js/loadProperties.js
-
-import { renderProperties, renderPagination, getFilters } from './renderProperties.js';
-
-let currentPage = 1;
-const itemsPerPage = 6;
-let allProperties = [];
-
-document.addEventListener('DOMContentLoaded', async function () {
-    allProperties = await fetchProperties();
-    localStorage.setItem('allProperties', JSON.stringify(allProperties));
-    setupSearch();
-    populateFilters(allProperties);
-    renderProperties(allProperties, currentPage, itemsPerPage);
-});
-
-async function fetchProperties() {
+document.addEventListener("DOMContentLoaded", function () {
     const jsonFiles = [
         'assets/js/property_1_to_50.json',
         'assets/js/property_51_to_100.json',
@@ -22,52 +6,63 @@ async function fetchProperties() {
         'assets/js/property_151_to_152.json'
     ];
 
+    let allProperties = [];
+    const itemsPerPage = 6;
+    let currentPage = 1;
+    let filters = {};
+
     const fetchAllJsonFiles = (files) => {
         return Promise.all(files.map(file => fetch(file).then(response => response.json())));
     };
 
-    const dataArrays = await fetchAllJsonFiles(jsonFiles);
-    let properties = [];
-    dataArrays.forEach(data => properties = properties.concat(data));
-    return properties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-}
-
-function setupSearch() {
-    const searchForm = document.querySelector('#property-search-form');
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const filters = getFilters();
-        localStorage.setItem('propertyFilters', JSON.stringify(filters));
-        renderProperties(allProperties, 1, itemsPerPage, filters);
-    });
-}
-
-function populateFilters(data) {
-    const populateSelect = (selectId, values) => {
-        const selectElement = document.getElementById(selectId);
-        selectElement.innerHTML = '<option value="">Todos</option>';
-        const counts = values.reduce((acc, value) => {
-            if (value) {
-                acc[value] = (acc[value] || 0) + 1;
-            }
-            return acc;
-        }, {});
-        Object.keys(counts).forEach(value => {
+    const updateCategoryOptions = () => {
+        const categorySelect = document.getElementById('filter-category');
+        const categories = [...new Set(allProperties.map(property => property.category))].filter(category => category);
+        categorySelect.innerHTML = '<option value="">Todos</option>';
+        categories.forEach(category => {
             const option = document.createElement('option');
-            option.value = value;
-            option.textContent = `${value} (${counts[value]})`;
-            selectElement.appendChild(option);
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
         });
     };
 
-    populateSelect('type', data.map(property => property.type));
-    populateSelect('state', data.map(property => property.state));
-    populateSelect('city', data.map(property => property.city));
-    populateSelect('neighborhood', data.map(property => property.neighborhood));
-    populateSelect('bedrooms', data.map(property => property.bedrooms));
-    populateSelect('garages', data.map(property => property.garages));
-    populateSelect('bathrooms', data.map(property => property.bathrooms));
-    populateSelect('category', data.map(property => property.category));
-}
+    const handlePageChange = (event) => {
+        event.preventDefault();
+        const pageText = event.target.textContent;
+        if (pageText === '...') return;
+        if (pageText === '') {
+            if (event.target.closest('.page-item').classList.contains('disabled')) return;
+            currentPage += event.target.closest('.page-item').querySelector('.bi').classList.contains('bi-chevron-left') ? -1 : 1;
+        } else {
+            currentPage = parseInt(pageText);
+        }
+        renderProperties(currentPage, filters);
+    };
 
-export { fetchProperties, setupSearch, populateFilters };
+    document.getElementById('property-search-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        filters = {
+            keyword: document.getElementById('keyword').value.toLowerCase(),
+            type: document.getElementById('type').value,
+            state: document.getElementById('state').value,
+            city: document.getElementById('city').value,
+            neighborhood: document.getElementById('neighborhood').value,
+            bedrooms: document.getElementById('bedrooms').value,
+            garages: document.getElementById('garages').value,
+            bathrooms: document.getElementById('bathrooms').value,
+            price: parseFloat(document.getElementById('price').value.replace('R$', '').replace(/\./g, '').replace(',', '.')),
+            category: document.getElementById('category').value
+        };
+        renderProperties(1, filters);
+    });
+
+    fetchAllJsonFiles(jsonFiles)
+        .then(dataArrays => {
+            allProperties = dataArrays.flat();
+            allProperties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+            updateCategoryOptions();
+            renderProperties(currentPage);
+        })
+        .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
+});
