@@ -48,182 +48,14 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-<!--<style>
-.img-box-b {
-  position: relative;
-  width: 100%;
-  height: 200px; /* Altura fixa para as imagens */
-  overflow: hidden;
-}
-
-.img-box-b img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  height: 100%;
-  transform: translate(-50%, -50%);
-}
-
-@media (min-width: 768px) {
-  .img-box-b {
-    height: 300px; /* Ajuste a altura para telas maiores */
-  }
-}
-
-  </style>-->
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const jsonFiles = [
-            'assets/js/property_1_to_50.json',
-            'assets/js/property_51_to_100.json',
-            'assets/js/property_101_to_150.json',
-            'assets/js/property_151_to_152.json'
-        ];
-        let allProperties = [];
 
-        const fetchAllJsonFiles = (files) => {
-            return Promise.all(files.map(file => fetch(file).then(response => response.json())));
-        };
-
-        fetchAllJsonFiles(jsonFiles)
-            .then(dataArrays => {
-                dataArrays.forEach(data => allProperties = allProperties.concat(data));
-                allProperties.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
-
-                const fillOptions = (selectId, options) => {
-                    const selectElement = document.getElementById(selectId);
-                    if (selectElement) {
-                        const uniqueOptions = [...new Set(options)].filter(option => option !== undefined && option !== null);
-                        uniqueOptions.forEach(option => {
-                            const optElement = document.createElement('option');
-                            optElement.value = option;
-                            optElement.textContent = option;
-                            selectElement.appendChild(optElement);
-                        });
-                    }
-                };
-
-                const types = allProperties.map(property => property.type);
-                const states = allProperties.map(property => property.state);
-                const cities = allProperties.map(property => property.city);
-                const neighborhoods = allProperties.map(property => property.neighborhood);
-                const bedrooms = allProperties.map(property => property.bedrooms);
-                const garages = allProperties.map(property => property.garages);
-                const bathrooms = allProperties.map(property => property.bathrooms);
-                const prices = allProperties.map(property => property.minimumBid);
-                const categories = allProperties.map(property => property.category);
-
-                fillOptions('type', types);
-                fillOptions('state', states);
-                fillOptions('city', cities);
-                fillOptions('neighborhood', neighborhoods);
-                fillOptions('bedrooms', bedrooms);
-                fillOptions('garages', garages);
-                fillOptions('bathrooms', bathrooms);
-                fillOptions('price', prices.map(price => `R$ ${price.toLocaleString('pt-BR')}`));
-                fillOptions('category', categories);
-
-                const searchForm = document.getElementById('property-search-form');
-                if (searchForm) {
-                    searchForm.addEventListener('submit', function(event) {
-                        event.preventDefault();
-
-                        const filters = {
-                            keyword: document.getElementById('keyword').value.toLowerCase(),
-                            type: document.getElementById('type').value,
-                            state: document.getElementById('state').value,
-                            city: document.getElementById('city').value,
-                            neighborhood: document.getElementById('neighborhood').value,
-                            bedrooms: document.getElementById('bedrooms').value,
-                            garages: document.getElementById('garages').value,
-                            bathrooms: document.getElementById('bathrooms').value,
-                            price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')) || null,
-                            category: document.getElementById('category').value
-                        };
-
-                        const filteredProperties = allProperties.filter(property => {
-                            return (
-                                (!filters.keyword || property.title.toLowerCase().includes(filters.keyword)) &&
-                                (!filters.type || property.type === filters.type) &&
-                                (!filters.state || property.state === filters.state) &&
-                                (!filters.city || property.city === filters.city) &&
-                                (!filters.neighborhood || property.neighborhood === filters.neighborhood) &&
-                                (!filters.bedrooms || property.bedrooms == filters.bedrooms) &&
-                                (!filters.garages || property.garages == filters.garages) &&
-                                (!filters.bathrooms || property.bathrooms == filters.bathrooms) &&
-                                (!filters.price || property.minimumBid <= filters.price) &&
-                                (!filters.category || property.category === filters.category)
-                            );
-                        });
-
-                        const resultsContainer = document.querySelector('.property-results');
-                        if (resultsContainer) {
-                            resultsContainer.innerHTML = ''; // Limpar resultados anteriores
-
-                            filteredProperties.forEach(property => {
-                                const propertyCard = `
-                                    <div class="col-md-4">
-                                        <div class="card-box-a card-shadow">
-                                            <div class="img-box-a">
-                                                <img src="${property.image || 'placeholder.jpg'}" alt="${property.title || ''}" class="img-a img-fluid">
-                                            </div>
-                                            <div class="card-overlay">
-                                                <div class="card-overlay-a-content">
-                                                    <div class="card-header-a">
-                                                        <h2 class="card-title-a">
-                                                            <a href="#">${property.title || ''}</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="card-body-a">
-                                                        <div class="price-box d-flex">
-                                                            <span class="price-a">Lance mínimo | R$ ${property.minimumBid ? property.minimumBid.toLocaleString('pt-BR') : 'N/A'}</span>
-                                                        </div>
-                                                        <a href="property-single.html" class="link-a">Clique aqui para ver
-                                                            <span class="bi bi-chevron-right"></span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="card-footer-a">
-                                                        <ul class="card-info d-flex justify-content-around">
-                                                            <li>
-                                                                <h4 class="card-info-title">Área</h4>
-                                                                <span>${property.area ? property.area + ' m²' : 'N/A'}</span>
-                                                            </li>
-                                                            <li>
-                                                                <h4 class="card-info-title">Quartos</h4>
-                                                                <span>${property.bedrooms || 'N/A'}</span>
-                                                            </li>
-                                                            <li>
-                                                                <h4 class="card-info-title">Banheiros</h4>
-                                                                <span>${property.bathrooms || 'N/A'}</span>
-                                                            </li>
-                                                            <li>
-                                                                <h4 class="card-info-title">Garagens</h4>
-                                                                <span>${property.garages || 'N/A'}</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
-                                resultsContainer.insertAdjacentHTML('beforeend', propertyCard);
-                            });
-                        }
-                    });
-                }
-            })
-            .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
-    });
-</script>
 
 <input type="text" id="property-search" placeholder="Search properties">
 <script src="assets/js/loadProperties.js"></script>
 <script src="assets/js/propertyGrid.js"></script>
+<script src="assets/js/searchProperties.js"></script>
 
 </head>
 
@@ -235,396 +67,103 @@
   </header>
 
   <main>
-  <!-- Property Search Section -->
-  <div class="click-closed"></div>
-  <!--/ Form Search Star /-->
-  <div class="box-collapse">
+    <!-- Property Search Section -->
+    <div class="click-closed"></div>
+    <div class="box-collapse">
       <div class="title-box-d">
-          <h3 class="title-d">Buscar Imóvel</h3>
+        <h3 class="title-d">Buscar Imóvel</h3>
       </div>
       <span class="close-box-collapse right-boxed bi bi-x"></span>
       <div class="box-collapse-wrap form">
-          <form class="form-a" id="property-search-form">
-              <div class="row">
-                  <div class="col-md-12 mb-2">
-                      <div class="form-group">
-                          <label class="pb-2" for="keyword">Palavra-chave</label>
-                          <input type="text" class="form-control form-control-lg form-control-a" placeholder="Palavra-chave" id="keyword">
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="type">Tipo</label>
-                          <select class="form-control form-select form-control-a" id="type">
-                              <option value="">Todos os Tipos</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="state">Estado (UF)</label>
-                          <select class="form-control form-select form-control-a" id="state">
-                              <option value="">Todos os Estados</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="city">Cidade</label>
-                          <select class="form-control form-select form-control-a" id="city">
-                              <option value="">Todas as Cidades</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="neighborhood">Bairro</label>
-                          <select class="form-control form-select form-control-a" id="neighborhood">
-                              <option value="">Todos os Bairros</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="bedrooms">Quartos</label>
-                          <select class="form-control form-select form-control-a" id="bedrooms">
-                              <option value="">Qualquer</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="garages">Garagens</label>
-                          <select class="form-control form-select form-control-a" id="garages">
-                              <option value="">Qualquer</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="bathrooms">Banheiros</label>
-                          <select class="form-control form-select form-control-a" id="bathrooms">
-                              <option value="">Qualquer</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="price">Preço Mínimo (R$)</label>
-                          <select class="form-control form-select form-control-a" id="price">
-                              <option value="">Sem Limite</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6 mb-2">
-                      <div class="form-group mt-3">
-                          <label class="pb-2" for="category">Categoria</label>
-                          <select class="form-control form-select form-control-a" id="category">
-                              <option value="">Todas as Categorias</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-12">
-                      <button type="submit" class="btn btn-b">Buscar Imóvel</button>
-                  </div>
+        <form class="form-a" id="property-search-form">
+          <div class="row">
+            <div class="col-md-12 mb-2">
+              <div class="form-group">
+                <label class="pb-2" for="keyword">Palavra-chave</label>
+                <input type="text" class="form-control form-control-lg form-control-a" placeholder="Palavra-chave" id="keyword">
               </div>
-          </form>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="type">Tipo</label>
+                <select class="form-control form-select form-control-a" id="type">
+                  <option value="">Todos os Tipos</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="state">Estado (UF)</label>
+                <select class="form-control form-select form-control-a" id="state">
+                  <option value="">Todos os Estados</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="city">Cidade</label>
+                <select class="form-control form-select form-control-a" id="city">
+                  <option value="">Todas as Cidades</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="neighborhood">Bairro</label>
+                <select class="form-control form-select form-control-a" id="neighborhood">
+                  <option value="">Todos os Bairros</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="bedrooms">Quartos</label>
+                <select class="form-control form-select form-control-a" id="bedrooms">
+                  <option value="">Qualquer</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="garages">Garagens</label>
+                <select class="form-control form-select form-control-a" id="garages">
+                  <option value="">Qualquer</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="bathrooms">Banheiros</label>
+                <select class="form-control form-select form-control-a" id="bathrooms">
+                  <option value="">Qualquer</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="price">Preço Mínimo (R$)</label>
+                <select class="form-control form-select form-control-a" id="price">
+                  <option value="">Sem Limite</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 mb-2">
+              <div class="form-group mt-3">
+                <label class="pb-2" for="category">Categoria</label>
+                <select class="form-control form-select form-control-a" id="category">
+                  <option value="">Todas as Categorias</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-b">Buscar Imóvel</button>
+            </div>
+          </div>
+        </form>
       </div>
-  </div>
-  <!-- End Property Search Section -->
-
-
+    </div>
+    <!-- End Property Search Section -->
   </main>
-
-  <!-- ======= Property Search Section
-  <div class="click-closed"></div>
-  <div class="box-collapse">
-    <div class="title-box-d">
-      <h3 class="title-d">Search Property</h3>
-    </div>
-    <span class="close-box-collapse right-boxed bi bi-x"></span>
-    <div class="box-collapse-wrap form">
-      <form class="form-a">
-        <div class="row">
-          <div class="col-md-12 mb-2">
-            <div class="form-group">
-              <label class="pb-2" for="Type">Keyword</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="Type">Type</label>
-              <select class="form-control form-select form-control-a" id="Type">
-                <option>All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="city">City</label>
-              <select class="form-control form-select form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="bedrooms">Bedrooms</label>
-              <select class="form-control form-select form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="garages">Garages</label>
-              <select class="form-control form-select form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="bathrooms">Bathrooms</label>
-              <select class="form-control form-select form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group mt-3">
-              <label class="pb-2" for="price">Min Price</label>
-              <select class="form-control form-select form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Search Property</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div><!-- End Property Search Section -->>
-
-    <!-- ======= Property Search Section =======
-    <div class="click-closed"></div>
-  
-    <div class="box-collapse">
-        <div class="title-box-d">
-            <h3 class="title-d">Buscar Imóvel</h3>
-        </div>
-        <span class="close-box-collapse right-boxed bi bi-x"></span>
-        <div class="box-collapse-wrap form">
-            <form class="form-a" id="property-search-form">
-                <div class="row">
-                    <div class="col-md-12 mb-2">
-                        <div class="form-group">
-                            <label class="pb-2" for="keyword">Palavra-chave</label>
-                            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Palavra-chave" id="keyword">
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="type">Tipo</label>
-                            <select class="form-control form-select form-control-a" id="type">
-                                <option value="">Todos os Tipos</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="state">Estado (UF)</label>
-                            <select class="form-control form-select form-control-a" id="state">
-                                <option value="">Todos os Estados</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="city">Cidade</label>
-                            <select class="form-control form-select form-control-a" id="city">
-                                <option value="">Todas as Cidades</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="neighborhood">Bairro</label>
-                            <select class="form-control form-select form-control-a" id="neighborhood">
-                                <option value="">Todos os Bairros</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="bedrooms">Quartos</label>
-                            <select class="form-control form-select form-control-a" id="bedrooms">
-                                <option value="">Qualquer</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="garages">Garagens</label>
-                            <select class="form-control form-select form-control-a" id="garages">
-                                <option value="">Qualquer</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="bathrooms">Banheiros</label>
-                            <select class="form-control form-select form-control-a" id="bathrooms">
-                                <option value="">Qualquer</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="price">Preço Mínimo (R$)</label>
-                            <select class="form-control form-select form-control-a" id="price">
-                                <option value="">Sem Limite</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-2">
-                        <div class="form-group mt-3">
-                            <label class="pb-2" for="category">Categoria</label>
-                            <select class="form-control form-select form-control-a" id="category">
-                                <option value="">Todas as Categorias</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="btn btn-b">Buscar Imóvel</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const jsonFiles = [
-                'assets/js/property_1_to_50.json',
-                'assets/js/property_51_to_100.json',
-                'assets/js/property_101_to_150.json',
-                'assets/js/property_151_to_152.json'
-            ];
-            let allProperties = [];
-
-            const fetchAllJsonFiles = (files) => {
-                return Promise.all(files.map(file => fetch(file).then(response => response.json())));
-            };
-
-            fetchAllJsonFiles(jsonFiles)
-                .then(dataArrays => {
-                    dataArrays.forEach(data => allProperties = allProperties.concat(data));
-
-                    const typeSelect = document.getElementById('type');
-                    const stateSelect = document.getElementById('state');
-                    const citySelect = document.getElementById('city');
-                    const neighborhoodSelect = document.getElementById('neighborhood');
-                    const bedroomsSelect = document.getElementById('bedrooms');
-                    const garagesSelect = document.getElementById('garages');
-                    const bathroomsSelect = document.getElementById('bathrooms');
-                    const categorySelect = document.getElementById('category');
-                    const priceSelect = document.getElementById('price');
-
-                    // Função para popular um select com opções únicas
-                    const populateSelect = (select, values) => {
-                        select.innerHTML = '<option value="">Todos</option>';
-                        const counts = values.reduce((acc, value) => {
-                            if (value) {
-                                acc[value] = (acc[value] || 0) + 1;
-                            }
-                            return acc;
-                        }, {});
-                        Object.keys(counts).forEach(value => {
-                            const option = document.createElement('option');
-                            option.value = value;
-                            option.textContent = `${value} (${counts[value]})`;
-                            select.appendChild(option);
-                        });
-                    };
-
-                    // Popular os selects com os dados dos imóveis
-                    populateSelect(typeSelect, allProperties.map(property => property.type));
-                    populateSelect(stateSelect, allProperties.map(property => property.state));
-                    populateSelect(citySelect, allProperties.map(property => property.city));
-                    populateSelect(neighborhoodSelect, allProperties.map(property => property.neighborhood));
-                    populateSelect(bedroomsSelect, allProperties.map(property => property.bedrooms));
-                    populateSelect(garagesSelect, allProperties.map(property => property.garages));
-                    populateSelect(bathroomsSelect, allProperties.map(property => property.bathrooms));
-                    populateSelect(categorySelect, allProperties.map(property => property.category));
-
-                    // Média ponderada dos preços mínimos
-                    const prices = allProperties.map(property => property.minimumBid);
-                    const totalPrices = prices.reduce((total, price) => total + price, 0);
-                    const averagePrice = totalPrices / prices.length;
-                    const priceRanges = [
-                        Math.floor(averagePrice * 0.5),
-                        Math.floor(averagePrice * 0.75),
-                        Math.floor(averagePrice),
-                        Math.floor(averagePrice * 1.25),
-                        Math.floor(averagePrice * 1.5)
-                    ];
-
-                    priceRanges.forEach(price => {
-                        const option = document.createElement('option');
-                        option.value = price;
-                        option.textContent = `R$ ${price.toLocaleString('pt-BR')}`;
-                        priceSelect.appendChild(option);
-                    });
-
-                    // Salvar filtros no localStorage e redirecionar para a página de resultados
-                    document.getElementById('property-search-form').addEventListener('submit', function(event) {
-                        event.preventDefault();
-                        const filters = {
-                            keyword: document.getElementById('keyword').value.toLowerCase(),
-                            type: document.getElementById('type').value,
-                            state: document.getElementById('state').value,
-                            city: document.getElementById('city').value,
-                            neighborhood: document.getElementById('neighborhood').value,
-                            bedrooms: document.getElementById('bedrooms').value,
-                            garages: document.getElementById('garages').value,
-                            bathrooms: document.getElementById('bathrooms').value,
-                            price: parseFloat(document.getElementById('price').value.replace('R$', '').replace('.', '').replace(',', '')) || null,
-                            category: document.getElementById('category').value
-                        };
-                        localStorage.setItem('propertyFilters', JSON.stringify(filters));
-                        window.location.href = 'property-grid.html';
-                    });
-                })
-                .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
-        });
-    </script>
-End Property Search Section -->
-
-
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
@@ -667,94 +206,34 @@ End Property Search Section -->
     </div>
   </nav><!-- End Header/Navbar -->
 
-
-
-  <!-- ======= Intro Section ======= -->
-  <!--
-  <div class="intro intro-carousel swiper position-relative">
-
-    <div class="swiper-wrapper">
-
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-1.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p>
-                    <h1 class="intro-title mb-4 ">
-                      <span class="color-b">204 </span> Mount
-                      <br> Olive Road Two
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
-                  </div>
-                </div>
+    <!-- Latest Properties Section -->
+    <section class="section-property section-t8">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="title-wrap d-flex justify-content-between">
+              <div class="title-box">
+                <h2 class="title-a">Imóveis</h2>
+              </div>
+              <div class="title-link">
+                <a href="property-grid.html">Ver todos
+                  <span class="bi bi-chevron-right"></span>
+                </a>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-2.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Rino
-                      <br> Venda Road Five
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+        <div id="property-carousel" class="swiper">
+          <div class="swiper-wrapper">
+            <!-- Os itens serão inseridos aqui pelo JavaScript -->
           </div>
+          <div class="property-carousel-pagination carousel-pagination"></div>
         </div>
       </div>
-      <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(assets/img/slide-3.jpg)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top">Doral, Florida
-                      <br> 78345
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <span class="color-b">204 </span> Alira
-                      <br> Roan Road One
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a">rent | $ 12.000</span></a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-  ->
-  <!-- End Intro Section -->
+    </section>
+    <!-- End Latest Properties Section -->
+
 
     <!-- ======= Latest Properties Section ======= 
 
