@@ -11,6 +11,17 @@ document.addEventListener("DOMContentLoaded", async function() {
     displayLatestProperties(allProperties);
 });
 
+async function fetchAllJsonFiles(files) {
+    const allData = [];
+    for (const file of files) {
+        const response = await fetch(file);
+        const data = await response.json();
+        allData.push(...data);
+    }
+    allData.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
+    return allData;
+}
+
 function displayLatestProperties(properties) {
     const latestPropertiesSection = document.querySelector('#property-carousel .swiper-wrapper');
     latestPropertiesSection.innerHTML = '';
