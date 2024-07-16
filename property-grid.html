@@ -48,7 +48,8 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <script>
+  
+  <!--<script>
     document.addEventListener("DOMContentLoaded", function() {
         const jsonFiles = [
             'assets/js/property_1_to_50.json',
@@ -179,12 +180,20 @@
             })
             .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
     });
-</script>
+</script>-->
+
+<script src="assets/js/loadProperties.js"></script>
+<script src="assets/js/propertyGrid.js"></script>
 
 </head>
 
 <body>
-  <!-- Property Search Section -->
+
+  <header>
+    <!-- Header content -->
+  </header>
+
+  <!-- Property Search Section
   <div class="click-closed"></div>
   <div class="box-collapse">
     <div class="title-box-d">
@@ -279,8 +288,7 @@
       </form>
     </div>
   </div>    
-    
-  <!-- End Property Search Section -->
+   End Property Search Section -->
 
 
   <!-- ======= Header/Navbar ======= -->
@@ -327,7 +335,7 @@
 
   <main id="main">
 
-<!-- Property Grid Section -->
+<!-- Property Grid Section 
 <section class="intro-single">
   <div class="container">
     <div class="row">
@@ -341,20 +349,20 @@
             <label class="me-2" for="filter-category">Categorias:</label>
             <select class="custom-select" id="filter-category">
               <option selected="">Todos</option>
-              <!-- Categories will be dynamically added here -->
+              
             </select>
           </form>
         </div>
       </div>
     </div>
     <div class="row property-grid">
-      <!-- Property items will be inserted here -->
+      
     </div>
     <div class="row mt-3">
       <div class="col-sm-12">
         <nav class="pagination-a">
           <ul class="pagination justify-content-center pagination-wrapper">
-            <!-- Pagination items will be inserted here -->
+            
           </ul>
         </nav>
       </div>
@@ -403,7 +411,99 @@
   }
 </style>
 
-  </main><!-- End #main -->
+ <main>
+    <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option">
+              <form class="form-a">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <input type="text" id="property-search" class="form-control" placeholder="Search properties">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="property-grid-results" class="row">
+          <!-- Search results will be appended here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const filters = JSON.parse(localStorage.getItem('propertyFilters') || '{}');
+      const properties = await fetchProperties(propertyFiles);
+      const filteredProperties = properties.filter(property => {
+        // Apply filters
+        return (!filters.keyword || property.name.toLowerCase().includes(filters.keyword)) &&
+               (!filters.type || property.type === filters.type) &&
+               // Add other filter conditions here
+               true;
+      });
+
+      const propertyGridResults = document.getElementById('property-grid-results');
+      filteredProperties.forEach(property => {
+        const propertyElement = createPropertyGridElement(property);
+        propertyGridResults.appendChild(propertyElement);
+      });
+    });
+
+    function createPropertyGridElement(property) {
+      const element = document.createElement('div');
+      element.className = 'col-md-4';
+      element.innerHTML = `
+        <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+                <img src="${property.image}" alt="${property.name}" class="img-a img-fluid">
+                <div class="ribbon">Novo</div>
+            </div>
+            <div class="card-overlay">
+                <div class="card-overlay-content">
+                    <div class="card-header-a">
+                        <h2 class="card-title-a">
+                            <a href="property-single.html?id=${property.id}">${property.name}</a>
+                        </h2>
+                    </div>
+                    <div class="card-body-a">
+                        <div class="price-box">
+                            <span class="price-a">R$ ${property.price}</span>
+                        </div>
+                        <a href="property-single.html?id=${property.id}" class="link-a">Ver Detalhes
+                            <span class="bi bi-chevron-right"></span>
+                        </a>
+                    </div>
+                    <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                            <li>
+                                <h4 class="price-title">Quartos</h4>
+                                <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="price-title">Banheiros</h4>
+                                <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="price-title">Garagens</h4>
+                                <span>${property.garages}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      `;
+      return element;
+    }
+  </script>
+  
+  </main>
 
      
   <!-- ======= Footer ======= -->
