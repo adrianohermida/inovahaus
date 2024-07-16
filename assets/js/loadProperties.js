@@ -105,8 +105,20 @@ document.addEventListener("DOMContentLoaded", function() {
             paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(currentPage - 1, '<span class="bi bi-chevron-left"></span>'));
         }
 
-        for (let page = 1; page <= totalPages; page++) {
-            paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(page));
+        if (currentPage > 2) {
+            paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(1));
+            if (currentPage > 3) {
+                paginationWrapper.insertAdjacentHTML('beforeend', `<li class="page-item"><span class="page-link">...</span></li>`);
+            }
+        }
+
+        paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(currentPage));
+
+        if (currentPage < totalPages - 1) {
+            if (currentPage < totalPages - 2) {
+                paginationWrapper.insertAdjacentHTML('beforeend', `<li class="page-item"><span class="page-link">...</span></li>`);
+            }
+            paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(totalPages));
         }
 
         if (currentPage < totalPages) {
