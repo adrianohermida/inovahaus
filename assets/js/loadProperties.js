@@ -69,3 +69,5 @@ function populateFilters(data) {
     populateSelect('bathrooms', data.map(property => property.bathrooms));
     populateSelect('category', data.map(property => property.category));
 }
+
+export { fetchProperties, setupSearch, populateFilters };

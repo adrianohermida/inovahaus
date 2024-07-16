@@ -77,7 +77,7 @@ function renderProperties(properties, page, itemsPerPage, filters = {}) {
     const endIndex = startIndex + itemsPerPage;
     const propertiesToShow = filteredProperties.slice(startIndex, endIndex);
 
-    const propertyGrid = document.querySelector('.property-grid .row');
+    const propertyGrid = document.querySelector('#property-grid-results');
     propertyGrid.innerHTML = '';
 
     propertiesToShow.forEach(property => {
@@ -103,6 +103,8 @@ function renderPagination(totalItems, itemsPerPage) {
         `;
     };
 
+    if (totalPages <= 1) return;
+
     paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(1, 1, currentPage === 1));
     if (currentPage > 3) {
         paginationWrapper.insertAdjacentHTML('beforeend', '<li class="page-item"><span class="page-link">...</span></li>');
@@ -113,9 +115,7 @@ function renderPagination(totalItems, itemsPerPage) {
     if (currentPage < totalPages - 2) {
         paginationWrapper.insertAdjacentHTML('beforeend', '<li class="page-item"><span class="page-link">...</span></li>');
     }
-    if (totalPages > 1) {
-        paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(totalPages, totalPages, currentPage === totalPages));
-    }
+    paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(totalPages, totalPages, currentPage === totalPages));
 
     document.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', (event) => {
