@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const populateCategories = (data) => {
         const categorySelect = document.getElementById('filter-category');
+        categorySelect.innerHTML = '<option value="">Todos</option>'; // Clear existing options and add default
         const categories = [...new Set(data.map(property => property.category))];
         categories.forEach(category => {
             const option = document.createElement('option');
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             categorySelect.appendChild(option);
         });
     };
+    
 
     const renderProperties = (page, filters = {}) => {
         const filteredProperties = allProperties.filter(property => {
@@ -110,9 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const totalPages = Math.ceil(totalItems / itemsPerPage);
         const paginationWrapper = document.querySelector('.pagination-wrapper');
         paginationWrapper.innerHTML = '';
-
+    
         if (totalPages <= 1) return;
-
+    
         const createPageItem = (page, isActive = false) => {
             const pageItem = document.createElement('li');
             pageItem.classList.add('page-item');
@@ -126,29 +128,30 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             return pageItem;
         };
-
+    
         paginationWrapper.appendChild(createPageItem(1, currentPage === 1));
-
+    
         if (currentPage > 3) {
             const dots = document.createElement('li');
             dots.classList.add('page-item');
             dots.innerHTML = '<span class="page-link">...</span>';
             paginationWrapper.appendChild(dots);
         }
-
+    
         for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
             paginationWrapper.appendChild(createPageItem(i, currentPage === i));
         }
-
+    
         if (currentPage < totalPages - 2) {
             const dots = document.createElement('li');
             dots.classList.add('page-item');
             dots.innerHTML = '<span class="page-link">...</span>';
             paginationWrapper.appendChild(dots);
         }
-
+    
         paginationWrapper.appendChild(createPageItem(totalPages, currentPage === totalPages));
     };
+   
 
     const getFilters = () => {
         const keyword = document.getElementById('keyword').value;
