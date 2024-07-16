@@ -10,7 +10,7 @@ async function loadProperties() {
 }
 
 function displayLatestProperties() {
-    const latestPropertiesSection = document.querySelector('#latest-properties');
+    const latestPropertiesSection = document.querySelector('#property-carousel .swiper-wrapper');
     const latestProperties = allProperties.slice(-5).reverse(); // Get the last 5 properties
     latestProperties.forEach(property => {
         const propertyElement = createPropertyElement(property);
@@ -19,7 +19,7 @@ function displayLatestProperties() {
 }
 
 function setupSearch() {
-    const searchInput = document.querySelector('#property-search');
+    const searchInput = document.querySelector('#keyword');
     searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
         const filteredProperties = allProperties.filter(property => property.name.toLowerCase().includes(searchTerm));
@@ -38,11 +38,47 @@ function displaySearchResults(properties) {
 
 function createPropertyElement(property) {
     const element = document.createElement('div');
-    element.className = 'property';
+    element.className = 'swiper-slide';
     element.innerHTML = `
-        <h2>${property.name}</h2>
-        <p>${property.description}</p>
-        <p>Price: ${property.price}</p>
+        <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+                <img src="${property.image}" alt="${property.name}" class="img-a img-fluid">
+                <div class="ribbon">Novo</div>
+            </div>
+            <div class="card-overlay">
+                <div class="card-overlay-content">
+                    <div class="card-header-a">
+                        <h2 class="card-title-a">
+                            <a href="property-single.html?id=${property.id}">${property.name}</a>
+                        </h2>
+                    </div>
+                    <div class="card-body-a">
+                        <div class="price-box">
+                            <span class="price-a">R$ ${property.price}</span>
+                        </div>
+                        <a href="property-single.html?id=${property.id}" class="link-a">Ver Detalhes
+                            <span class="bi bi-chevron-right"></span>
+                        </a>
+                    </div>
+                    <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                            <li>
+                                <h4 class="price-title">Quartos</h4>
+                                <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="price-title">Banheiros</h4>
+                                <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="price-title">Garagens</h4>
+                                <span>${property.garages}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     `;
     return element;
 }
