@@ -201,41 +201,36 @@
           <!-- End Property Search Section -->
 
    <!-- Property Grid Section -->
-   <section class="property-grid grid">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="grid-option d-flex justify-content-between align-items-center mb-4">
-            <div class="title-single-box">
-              <h1 class="title-single">Lista de Imóveis</h1>
-              <span class="color-text-a">Encontre as melhores oportunidades de compra, locação e oportunidades de leilões de imóveis.</span>
+  
+       <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option d-flex justify-content-between align-items-center mb-4">
+              <div class="title-single-box">
+                <h1 class="title-single">Lista de Imóveis</h1>
+                <span class="color-text-a">Encontre as melhores oportunidades de compra, locação e oportunidades de leilões de imóveis.</span>
+              </div>
+              <form class="d-flex align-items-center" id="property-search-form">
+                <label class="me-2" for="filter-category">Categorias:</label>
+                <select class="custom-select" id="filter-category">
+                  <option selected="">Todos</option>
+                </select>
+              </form>
             </div>
-            <form class="d-flex align-items-center" id="property-search-form">
-              <label class="me-2" for="filter-category">Categorias:</label>
-              <select class="custom-select" id="filter-category">
-                <option selected="">Todos</option>
-                
-              </select>
-            </form>
+          </div>
+        </div>
+        <div id="property-grid-results" class="row"></div>
+        <div class="row mt-3">
+          <div class="col-sm-12">
+            <nav class="pagination-a">
+              <ul class="pagination justify-content-center pagination-wrapper"></ul>
+            </nav>
           </div>
         </div>
       </div>
-      <div id="property-grid-results" class="row"></div>
-      <div class="row mt-3">
-        <div class="col-sm-12">
-          <nav class="pagination-a">
-            <ul class="pagination justify-content-center pagination-wrapper">
-              
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Property Grid Section -->
-
+    </section>
   </main>
-
      
   <!-- ======= Footer ======= -->
   <section class="section-footer">
