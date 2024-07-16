@@ -333,8 +333,127 @@
     </div>
   </nav><!-- End Header/Navbar -->
 
-  <main id="main">
+  <header>
+    <!-- Header content -->
+  </header>
+  <main>
+    <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option">
+              <form class="form-a">
+                <select id="category-select" class="custom-select">
+                  <!-- Categories will be populated here -->
+                </select>
+              </form>
+            </div>
+          </div>
+          <div id="property-grid-results" class="row">
+            <!-- Search results will be appended here -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <nav class="pagination-wrapper pagination-a">
+              <ul class="pagination justify-content-end">
+                <!-- Pagination items will be appended here -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const filters = JSON.parse(localStorage.getItem('searchResults') || '[]');
+      const propertyGridResults = document.getElementById('property-grid-results');
+      filters.forEach(property => {
+        const propertyElement = createPropertyGridElement(property);
+        propertyGridResults.appendChild(propertyElement);
+      });
+    });
+
+    function createPropertyGridElement(property) {
+      const element = document.createElement('div');
+      element.className = 'col-md-4';
+      element.innerHTML = `
+        <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+                <img src="${property.image}" alt="${property.name}" class="img-a img-fluid">
+                <div class="ribbon">Novo</div>
+            </div>
+            <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                        <h2 class="card-title-a">
+                            <a href="property-single.html?id=${property.id}">${property.name}</a>
+                        </h2>
+                    </div>
+                    <div class="card-body-a">
+                        <div class="price-box">
+                            <span class="price-a">R$ ${property.price}</span>
+                        </div>
+                        <a href="property-single.html?id=${property.id}" class="link-a">Ver Detalhes
+                            <span class="bi bi-chevron-right"></span>
+                        </a>
+                    </div>
+                    <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                            <li>
+                                <h4 class="card-info-title">Área</h4>
+                                <span>${property.area}m<sup>2</sup></span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Quartos</h4>
+                                <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Banheiros</h4>
+                                <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Garagem</h4>
+                                <span>${property.garages}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      `;
+      return element;
+    }
+
+    function populateFilters(data) {
+      const populateSelect = (select, values) => {
+        select.innerHTML = '<option value="">Todos</option>';
+        const counts = values.reduce((acc, value) => {
+          if (value) {
+            acc[value] = (acc[value] || 0) + 1;
+          }
+          return acc;
+        }, {});
+        Object.keys(counts).forEach(value => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = `${value} (${counts[value]})`;
+          select.appendChild(option);
+        });
+      };
+
+      const categories = [...new Set(data.map(property => property.category))];
+      populateSelect(document.getElementById('category-select'), categories);
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      const properties = await fetchProperties(propertyFiles);
+      populateFilters(properties);
+    });
+  </script>
+  
 <!-- Property Grid Section 
 <section class="intro-single">
   <div class="container">
@@ -430,13 +549,12 @@
           </div>
         </div>
         <div id="property-grid-results" class="row">
-          <!-- Search results will be appended here -->
         </div>
       </div>
     </section>
   </main>
 
-  <script>
+   <script>
     document.addEventListener('DOMContentLoaded', async function() {
       const filters = JSON.parse(localStorage.getItem('propertyFilters') || '{}');
       const properties = await fetchProperties(propertyFiles);
@@ -502,7 +620,7 @@
       return element;
     }
   </script>
-  
+
   </main>
 
      
