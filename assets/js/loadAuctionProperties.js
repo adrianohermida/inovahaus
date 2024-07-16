@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
         auctionProperties.forEach((property) => {
           const isLeilaoFinalizado = new Date(property.nextAuction) <= today;
-          const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.category;
+          const ribbonText = isLeilaoFinalizado ? 'Finalizado' : 'Leilão';
   
           const propertyItem = `
             <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(${property.image});">
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
                 </div>
               </div>
+              <div class="ribbon">${ribbonText}</div>
             </div>
           `;
           propertyCarousel.insertAdjacentHTML("beforeend", propertyItem);
