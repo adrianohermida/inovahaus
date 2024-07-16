@@ -14,7 +14,7 @@ const propertyFiles = [
     'assets/js/property_151_to_152.json'
 ];
 
-fetchProperties(propertyFiles).then(properties => {
-    console.log('Loaded properties:', properties);
-    // You can now use `properties` for further processing
+document.addEventListener('DOMContentLoaded', async function() {
+    const properties = await fetchProperties(propertyFiles);
+    localStorage.setItem('allProperties', JSON.stringify(properties));
 });
