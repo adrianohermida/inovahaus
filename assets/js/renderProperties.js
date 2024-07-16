@@ -1,3 +1,4 @@
+
 const renderProperties = (page, filters = {}) => {
     const filteredProperties = allProperties.filter(property => {
         return Object.keys(filters).every(key => {
@@ -77,10 +78,10 @@ const renderProperties = (page, filters = {}) => {
         propertyGrid.insertAdjacentHTML('beforeend', propertyCard);
     });
 
-    renderPagination(filteredProperties.length);
+    renderPagination(filteredProperties.length, page);
 };
 
-const renderPagination = (totalItems) => {
+const renderPagination = (totalItems, currentPage) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const paginationWrapper = document.querySelector('.pagination-wrapper');
     paginationWrapper.innerHTML = '';
@@ -95,7 +96,7 @@ const renderPagination = (totalItems) => {
 
     paginationWrapper.insertAdjacentHTML('beforeend', `
         <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-            <a class="page-link" href="#"><span class="bi bi-chevron-left"></span></a>
+            <a class="page-link" href="#" data-page="${currentPage - 1}"><span class="bi bi-chevron-left"></span></a>
         </li>
     `);
 
@@ -119,11 +120,22 @@ const renderPagination = (totalItems) => {
 
     paginationWrapper.insertAdjacentHTML('beforeend', `
         <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
-            <a class="page-link" href="#"><span class="bi bi-chevron-right"></span></a>
+            <a class="page-link" href="#" data-page="${currentPage + 1}"><span class="bi bi-chevron-right"></span></a>
         </li>
     `);
 
     document.querySelectorAll('.page-link').forEach(link => {
-        link.addEventListener('click', handlePageChange);
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const page = parseInt(event.target.dataset.page);
+            if (page && !isNaN(page)) {
+                renderProperties(page, currentFilters);
+            }
+        });
     });
 };
+
+// Initial call to render properties
+document.addEventListener('DOMContentLoaded', () => {
+    renderProperties(1);
+});
