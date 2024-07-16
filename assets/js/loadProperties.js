@@ -1,3 +1,4 @@
+// loadProperties.js
 document.addEventListener("DOMContentLoaded", function () {
     const jsonFiles = [
         'assets/js/property_1_to_50.json',
@@ -25,19 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
             option.textContent = category;
             categorySelect.appendChild(option);
         });
-    };
-
-    const handlePageChange = (event) => {
-        event.preventDefault();
-        const pageText = event.target.textContent;
-        if (pageText === '...') return;
-        if (pageText === '') {
-            if (event.target.closest('.page-item').classList.contains('disabled')) return;
-            currentPage += event.target.closest('.page-item').querySelector('.bi').classList.contains('bi-chevron-left') ? -1 : 1;
-        } else {
-            currentPage = parseInt(pageText);
-        }
-        renderProperties(currentPage, filters);
     };
 
     document.getElementById('property-search-form').addEventListener('submit', (event) => {

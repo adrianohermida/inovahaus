@@ -1,4 +1,4 @@
-
+// renderProperties.js
 const renderProperties = (page, filters = {}) => {
     const filteredProperties = allProperties.filter(property => {
         return Object.keys(filters).every(key => {
@@ -89,7 +89,7 @@ const renderPagination = (totalItems, currentPage) => {
     const createPageItem = (page, isActive = false) => {
         return `
             <li class="page-item ${isActive ? 'active' : ''}">
-                <a class="page-link" href="#">${page}</a>
+                <a class="page-link" href="#" data-page="${page}">${page}</a>
             </li>
         `;
     };
