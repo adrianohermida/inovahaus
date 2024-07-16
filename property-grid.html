@@ -189,9 +189,270 @@
 
 <body>
 
+  
   <header>
     <!-- Header content -->
   </header>
+
+  
+  <!-- ======= Header/Navbar ======= -->
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="/index.html">CamilaMaia<span class="color-b">Imóveis</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="/index.html">Início</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/about.html">Sobre</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/property-grid.html">Oportunidades</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="/blog-grid.html">Blog</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " href="/contact.html">Contato</a>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav><!-- End Header/Navbar -->
+
+  <main>
+    <!-- Property Search Section -->
+    <div class="click-closed"></div>
+    <!--/ Form Search Star /-->
+    <div class="box-collapse">
+        <div class="title-box-d">
+            <h3 class="title-d">Buscar Imóvel</h3>
+        </div>
+        <span class="close-box-collapse right-boxed bi bi-x"></span>
+        <div class="box-collapse-wrap form">
+            <form class="form-a" id="property-search-form">
+                <div class="row">
+                    <div class="col-md-12 mb-2">
+                        <div class="form-group">
+                            <label class="pb-2" for="keyword">Palavra-chave</label>
+                            <input type="text" class="form-control form-control-lg form-control-a" placeholder="Palavra-chave" id="keyword">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="type">Tipo</label>
+                            <select class="form-control form-select form-control-a" id="type">
+                                <option value="">Todos os Tipos</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="state">Estado (UF)</label>
+                            <select class="form-control form-select form-control-a" id="state">
+                                <option value="">Todos os Estados</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="city">Cidade</label>
+                            <select class="form-control form-select form-control-a" id="city">
+                                <option value="">Todas as Cidades</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="neighborhood">Bairro</label>
+                            <select class="form-control form-select form-control-a" id="neighborhood">
+                                <option value="">Todos os Bairros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="bedrooms">Quartos</label>
+                            <select class="form-control form-select form-control-a" id="bedrooms">
+                                <option value="">Qualquer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="garages">Garagens</label>
+                            <select class="form-control form-select form-control-a" id="garages">
+                                <option value="">Qualquer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="bathrooms">Banheiros</label>
+                            <select class="form-control form-select form-control-a" id="bathrooms">
+                                <option value="">Qualquer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="price">Preço Mínimo (R$)</label>
+                            <select class="form-control form-select form-control-a" id="price">
+                                <option value="">Sem Limite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <div class="form-group mt-3">
+                            <label class="pb-2" for="category">Categoria</label>
+                            <select class="form-control form-select form-control-a" id="category">
+                                <option value="">Todas as Categorias</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-b">Buscar Imóvel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End Property Search Section -->
+
+    <!-- Property Grid Section -->
+    <section class="property-grid grid">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="grid-option">
+              <form class="form-a">
+                <select id="category-select" class="custom-select">
+                  <!-- Categories will be populated here -->
+                </select>
+              </form>
+            </div>
+          </div>
+          <div id="property-grid-results" class="row">
+            <!-- Search results will be appended here -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <nav class="pagination-wrapper pagination-a">
+              <ul class="pagination justify-content-end">
+                <!-- Pagination items will be appended here -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Property Grid Section -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const filters = JSON.parse(localStorage.getItem('searchResults') || '[]');
+      const propertyGridResults = document.getElementById('property-grid-results');
+      filters.forEach(property => {
+        const propertyElement = createPropertyGridElement(property);
+        propertyGridResults.appendChild(propertyElement);
+      });
+    });
+
+    function createPropertyGridElement(property) {
+      const element = document.createElement('div');
+      element.className = 'col-md-4';
+      element.innerHTML = `
+        <div class="card-box-a card-shadow">
+            <div class="img-box-a">
+                <img src="${property.image}" alt="${property.name}" class="img-a img-fluid">
+                <div class="ribbon">Novo</div>
+            </div>
+            <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                    <div class="card-header-a">
+                        <h2 class="card-title-a">
+                            <a href="property-single.html?id=${property.id}">${property.name}</a>
+                        </h2>
+                    </div>
+                    <div class="card-body-a">
+                        <div class="price-box">
+                            <span class="price-a">R$ ${property.price}</span>
+                        </div>
+                        <a href="property-single.html?id=${property.id}" class="link-a">Ver Detalhes
+                            <span class="bi bi-chevron-right"></span>
+                        </a>
+                    </div>
+                    <div class="card-footer-a">
+                        <ul class="card-info d-flex justify-content-around">
+                            <li>
+                                <h4 class="card-info-title">Área</h4>
+                                <span>${property.area}m<sup>2</sup></span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Quartos</h4>
+                                <span>${property.bedrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Banheiros</h4>
+                                <span>${property.bathrooms}</span>
+                            </li>
+                            <li>
+                                <h4 class="card-info-title">Garagem</h4>
+                                <span>${property.garages}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      `;
+      return element;
+    }
+
+    function populateFilters(data) {
+      const populateSelect = (select, values) => {
+        select.innerHTML = '<option value="">Todos</option>';
+        const counts = values.reduce((acc, value) => {
+          if (value) {
+            acc[value] = (acc[value] || 0) + 1;
+          }
+          return acc;
+        }, {});
+        Object.keys(counts).forEach(value => {
+          const option = document.createElement('option');
+          option.value = value;
+          option.textContent = `${value} (${counts[value]})`;
+          select.appendChild(option);
+        });
+      };
+
+      const categories = [...new Set(data.map(property => property.category))];
+      populateSelect(document.getElementById('category-select'), categories);
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      const properties = await fetchProperties(propertyFiles);
+      populateFilters(properties);
+    });
+  </script>
 
   <!-- Property Search Section
   <div class="click-closed"></div>
@@ -291,169 +552,6 @@
    End Property Search Section -->
 
 
-  <!-- ======= Header/Navbar ======= -->
-  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a class="navbar-brand text-brand" href="/index.html">CamilaMaia<span class="color-b">Imóveis</span></a>
-
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
-
-          <li class="nav-item">
-            <a class="nav-link active" href="/index.html">Início</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="/about.html">Sobre</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="/property-grid.html">Oportunidades</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="/blog-grid.html">Blog</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link " href="/contact.html">Contato</a>
-          </li>
-        </ul>
-      </div>
-
-      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-        <i class="bi bi-search"></i>
-      </button>
-
-    </div>
-  </nav><!-- End Header/Navbar -->
-
-  <header>
-    <!-- Header content -->
-  </header>
-  <main>
-    <section class="property-grid grid">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="grid-option">
-              <form class="form-a">
-                <select id="category-select" class="custom-select">
-                  <!-- Categories will be populated here -->
-                </select>
-              </form>
-            </div>
-          </div>
-          <div id="property-grid-results" class="row">
-            <!-- Search results will be appended here -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <nav class="pagination-wrapper pagination-a">
-              <ul class="pagination justify-content-end">
-                <!-- Pagination items will be appended here -->
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-      const filters = JSON.parse(localStorage.getItem('searchResults') || '[]');
-      const propertyGridResults = document.getElementById('property-grid-results');
-      filters.forEach(property => {
-        const propertyElement = createPropertyGridElement(property);
-        propertyGridResults.appendChild(propertyElement);
-      });
-    });
-
-    function createPropertyGridElement(property) {
-      const element = document.createElement('div');
-      element.className = 'col-md-4';
-      element.innerHTML = `
-        <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-                <img src="${property.image}" alt="${property.name}" class="img-a img-fluid">
-                <div class="ribbon">Novo</div>
-            </div>
-            <div class="card-overlay">
-                <div class="card-overlay-a-content">
-                    <div class="card-header-a">
-                        <h2 class="card-title-a">
-                            <a href="property-single.html?id=${property.id}">${property.name}</a>
-                        </h2>
-                    </div>
-                    <div class="card-body-a">
-                        <div class="price-box">
-                            <span class="price-a">R$ ${property.price}</span>
-                        </div>
-                        <a href="property-single.html?id=${property.id}" class="link-a">Ver Detalhes
-                            <span class="bi bi-chevron-right"></span>
-                        </a>
-                    </div>
-                    <div class="card-footer-a">
-                        <ul class="card-info d-flex justify-content-around">
-                            <li>
-                                <h4 class="card-info-title">Área</h4>
-                                <span>${property.area}m<sup>2</sup></span>
-                            </li>
-                            <li>
-                                <h4 class="card-info-title">Quartos</h4>
-                                <span>${property.bedrooms}</span>
-                            </li>
-                            <li>
-                                <h4 class="card-info-title">Banheiros</h4>
-                                <span>${property.bathrooms}</span>
-                            </li>
-                            <li>
-                                <h4 class="card-info-title">Garagem</h4>
-                                <span>${property.garages}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-      `;
-      return element;
-    }
-
-    function populateFilters(data) {
-      const populateSelect = (select, values) => {
-        select.innerHTML = '<option value="">Todos</option>';
-        const counts = values.reduce((acc, value) => {
-          if (value) {
-            acc[value] = (acc[value] || 0) + 1;
-          }
-          return acc;
-        }, {});
-        Object.keys(counts).forEach(value => {
-          const option = document.createElement('option');
-          option.value = value;
-          option.textContent = `${value} (${counts[value]})`;
-          select.appendChild(option);
-        });
-      };
-
-      const categories = [...new Set(data.map(property => property.category))];
-      populateSelect(document.getElementById('category-select'), categories);
-    }
-
-    document.addEventListener('DOMContentLoaded', async function() {
-      const properties = await fetchProperties(propertyFiles);
-      populateFilters(properties);
-    });
-  </script>
-  
 <!-- Property Grid Section 
 <section class="intro-single">
   <div class="container">
