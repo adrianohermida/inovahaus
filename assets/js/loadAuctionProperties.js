@@ -1,19 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     fetch("assets/js/property.json")
       .then((response) => response.json())
       .then((data) => {
         const today = new Date();
         const propertyCarousel = document.querySelector(".intro .swiper-wrapper");
-  
+
         const auctionProperties = data.filter(property => {
           const nextAuctionDate = new Date(property.nextAuction);
           return property.category === 'Leilão' && nextAuctionDate >= today;
         });
-  
+
         auctionProperties.forEach((property) => {
           const isLeilaoFinalizado = new Date(property.nextAuction) <= today;
           const ribbonText = isLeilaoFinalizado ? 'Finalizado' : 'Leilão';
-  
+
           const propertyItem = `
             <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(${property.image});">
               <div class="overlay overlay-a"></div>
@@ -44,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
           `;
           propertyCarousel.insertAdjacentHTML("beforeend", propertyItem);
         });
-  
+
         new Swiper(".intro-carousel", {
           speed: 600,
           loop: true,
@@ -62,4 +63,24 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => console.error("Error fetching properties:", error));
   });
-  
+</script>
+
+<style>
+  .ribbon {
+    position: absolute;
+    top: 15px;
+    right: -15px;
+    background-color: #2eca6a;
+    color: white;
+    padding: 5px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    transform: rotate(45deg);
+    transform-origin: top right;
+    width: 250px;
+    text-align: center;
+    line-height: 1;
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+</style>
