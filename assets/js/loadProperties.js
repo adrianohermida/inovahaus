@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     let allProperties = [];
+    let categories = new Set();
     const itemsPerPage = 6;
     let currentPage = 1;
 
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="col-md-4">
                   <div class="card-box-a card-shadow">
                     <div class="img-box-a">
-                      <img src="${property.image || 'assets/img/property/600x800.png'}" alt="${property.title}" class="img-a img-fluid">
+                      <img src="${property.images && property.images.length > 0 ? property.images[0] : 'assets/img/property/600x800.png'}" alt="${property.title}" class="img-a img-fluid">
                     </div>
                     <div class="card-overlay">
                       <div class="card-overlay-a-content">
@@ -134,9 +135,34 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     };
 
+    const populateCategoryFilter = () => {
+        const categorySelect = document.getElementById('filter-category');
+        categorySelect.innerHTML = '<option value="">Todos</option>';
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categorySelect.appendChild(option);
+        });
+
+        categorySelect.addEventListener('change', () => {
+            const selectedCategory = categorySelect.value;
+            const filters = { category: selectedCategory };
+            renderProperties(1, filters);
+        });
+    };
+
     fetchAllJsonFiles(jsonFiles)
         .then(dataArrays => {
-            dataArrays.forEach(data => allProperties = allProperties.concat(data));
+            dataArrays.forEach(data => {
+                allProperties = allProperties.concat(data);
+                data.forEach(property => {
+                    if (property.category) {
+                        categories.add(property.category);
+                    }
+                });
+            });
+            populateCategoryFilter();
             renderProperties(currentPage);
         })
         .catch(error => console.error('Erro ao carregar os arquivos JSON:', error));
