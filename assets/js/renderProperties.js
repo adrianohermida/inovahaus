@@ -1,38 +1,4 @@
-// assets/js/renderProperties.js
-// Render properties and handle search functionality
-
-let currentPage = 1;
-
-function renderProperties(page, filters = {}) {
-    const itemsPerPage = 6;
-    const properties = JSON.parse(localStorage.getItem('allProperties')) || [];
-    const filteredProperties = properties.filter(property => {
-        return Object.keys(filters).every(key => {
-            if (!filters[key]) return true;
-            if (key === 'keyword') {
-                return property.title.toLowerCase().includes(filters[key].toLowerCase());
-            }
-            if (property[key] == null) return false;
-            return property[key].toString().toLowerCase().includes(filters[key].toString().toLowerCase());
-        });
-    });
-
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const propertiesToShow = filteredProperties.slice(startIndex, endIndex);
-
-    const propertyGrid = document.querySelector('.property-grid .row');
-    propertyGrid.innerHTML = '';
-
-    propertiesToShow.forEach(property => {
-        const isLeilaoFinalizado = new Date(property.nextAuction) <= new Date();
-        const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.state;
-        const propertyElement = createPropertyGridElement(property, ribbonText);
-        propertyGrid.appendChild(propertyElement);
-    });
-
-    renderPagination(filteredProperties.length, itemsPerPage);
-}
+// renderProperties.js
 
 function createPropertyGridElement(property, ribbonText) {
     const element = document.createElement('div');
@@ -93,37 +59,71 @@ function createPropertyGridElement(property, ribbonText) {
     return element;
 }
 
+function renderProperties(properties, page, itemsPerPage, filters = {}) {
+    const filteredProperties = properties.filter(property => {
+        return Object.keys(filters).every(key => {
+            if (!filters[key]) return true;
+            if (key === 'keyword') {
+                return Object.values(property).some(value => 
+                    value.toString().toLowerCase().includes(filters[key].toLowerCase())
+                );
+            }
+            if (property[key] == null) return false;
+            return property[key].toString().toLowerCase().includes(filters[key].toString().toLowerCase());
+        });
+    });
+
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const propertiesToShow = filteredProperties.slice(startIndex, endIndex);
+
+    const propertyGrid = document.querySelector('.property-grid .row');
+    propertyGrid.innerHTML = '';
+
+    propertiesToShow.forEach(property => {
+        const isLeilaoFinalizado = new Date(property.nextAuction) <= new Date();
+        const ribbonText = isLeilaoFinalizado ? 'Finalizado' : property.state;
+        const propertyElement = createPropertyGridElement(property, ribbonText);
+        propertyGrid.appendChild(propertyElement);
+    });
+
+    renderPagination(filteredProperties.length, itemsPerPage);
+}
+
 function renderPagination(totalItems, itemsPerPage) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const paginationWrapper = document.querySelector('.pagination-wrapper');
     paginationWrapper.innerHTML = '';
 
-    for (let i = 1; i <= totalPages; i++) {
-        const pageItem = `
-            <li class="page-item ${i === currentPage ? 'active' : ''}">
-                <a class="page-link" href="#">${i}</a>
+    const createPageItem = (page, label, isActive = false) => {
+        return `
+            <li class="page-item ${isActive ? 'active' : ''}">
+                <a class="page-link" href="#" data-page="${page}">${label}</a>
             </li>
         `;
-        paginationWrapper.insertAdjacentHTML('beforeend', pageItem);
+    };
+
+    paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(1, 1, currentPage === 1));
+    if (currentPage > 3) {
+        paginationWrapper.insertAdjacentHTML('beforeend', '<li class="page-item"><span class="page-link">...</span></li>');
+    }
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+        paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(i, i, currentPage === i));
+    }
+    if (currentPage < totalPages - 2) {
+        paginationWrapper.insertAdjacentHTML('beforeend', '<li class="page-item"><span class="page-link">...</span></li>');
+    }
+    if (totalPages > 1) {
+        paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(totalPages, totalPages, currentPage === totalPages));
     }
 
     document.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
-            currentPage = parseInt(event.target.textContent);
+            currentPage = parseInt(event.target.dataset.page);
             const filters = getFilters();
-            renderProperties(currentPage, filters);
+            renderProperties(properties, currentPage, itemsPerPage, filters);
         });
-    });
-}
-
-function setupSearch() {
-    const searchForm = document.querySelector('#property-search-form');
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const filters = getFilters();
-        localStorage.setItem('propertyFilters', JSON.stringify(filters));
-        renderProperties(1, filters);
     });
 }
 
@@ -142,8 +142,4 @@ function getFilters() {
     return { keyword, type, state, city, neighborhood, bedrooms, garages, bathrooms, price, category };
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const properties = JSON.parse(localStorage.getItem('allProperties')) || [];
-    setupSearch();
-    renderProperties(1);
-});
+export { renderProperties, renderPagination, getFilters };
