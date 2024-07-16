@@ -7,16 +7,24 @@ document.addEventListener("DOMContentLoaded", async function() {
         'assets/js/property_101_to_150.json',
         'assets/js/property_151_to_152.json'
     ];
-    let allProperties = await fetchAllJsonFiles(jsonFiles);
-    displayLatestProperties(allProperties);
+    try {
+        let allProperties = await fetchAllJsonFiles(jsonFiles);
+        displayLatestProperties(allProperties);
+    } catch (error) {
+        console.error('Erro ao carregar os arquivos JSON:', error);
+    }
 });
 
 async function fetchAllJsonFiles(files) {
     const allData = [];
     for (const file of files) {
-        const response = await fetch(file);
-        const data = await response.json();
-        allData.push(...data);
+        try {
+            const response = await fetch(file);
+            const data = await response.json();
+            allData.push(...data);
+        } catch (error) {
+            console.error('Erro ao carregar o arquivo JSON:', error);
+        }
     }
     allData.sort((a, b) => new Date(b.postedDate) - new Date(a.postedDate));
     return allData;
@@ -37,14 +45,21 @@ function displayLatestProperties(properties) {
                         <div class="card-overlay-a-content">
                             <div class="card-header-a">
                                 <h2 class="card-title-a">
-                                    <a href="#">${property.title || ''}</a>
+                                    <a href="property-single.html?id=${property.id}">${property.title || ''}</a>
                                 </h2>
                             </div>
                             <div class="card-body-a">
-                                <div class="price-box d-flex">
-                                    <span class="price-a">Lance mínimo | R$ ${property.minimumBid ? property.minimumBid.toLocaleString('pt-BR') : 'N/A'}</span>
+                                <div class="price-box d-flex justify-content-between">
+                                    <div>
+                                        <span class="price-title white-text">Lance mínimo</span>
+                                        <span class="price-a">R$ ${property.minimumBid ? property.minimumBid.toLocaleString('pt-BR') : 'N/A'}</span>
+                                    </div>
+                                    <div>
+                                        <span class="price-title white-text">Avaliação Mercado</span>
+                                        <span class="price-a">R$ ${property.marketValue ? property.marketValue.toLocaleString('pt-BR') : 'N/A'}</span>
+                                    </div>
                                 </div>
-                                <a href="property-single.html" class="link-a">Clique aqui para ver
+                                <a href="property-single.html?id=${property.id}" class="link-a">Clique aqui para ver
                                     <span class="bi bi-chevron-right"></span>
                                 </a>
                             </div>
