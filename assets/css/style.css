@@ -2120,6 +2120,38 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+/* CSS for Light/Dark Mode */
+:root {
+  --background-color: #fff;
+  --text-color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #000;
+    --text-color: #fff;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.card-box-a {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.pagination .page-link {
+  color: var(--text-color);
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  color: var(--background-color);
+}
 
 /*--------------------------------------------------------------
 # Footer
