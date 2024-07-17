@@ -2121,139 +2121,94 @@ a:hover {
   }
 }
 
-/* CSS for Light/Dark Mode */
-:root {
-  --background-color: #fff;
-  --text-color: #000;
-  --link-color: #000;
-  --link-hover-color: #2eca6a;
-  --nav-link-color: #000;
-  --price-box-background: #ffffff;
-  --price-box-border: #2eca6a;
-  --card-overlay-background: rgba(0, 0, 0, 0.2);
-  --breadcrumb-active-color: #000;
-}
-
+/* CSS para aplicar estilo somente no modo escuro */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #000;
-    --text-color: #fff;
-    --link-color: #555555;
-    --link-hover-color: #2eca6a;
-    --nav-link-color: #555555;
-    --price-box-background: #000;
-    --price-box-border: #2eca6a;
-    --card-overlay-background: rgba(255, 255, 255, 0.2);
-    --breadcrumb-active-color: #2eca6a;
+  body {
+    background-color: #000;
+    color: #fff;
   }
-}
-/* Aplicando variáveis às classes CSS existentes */
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color);
-}
+  h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
 
-a {
-  color: var(--link-color);
-  text-decoration: none;
-  transition: all 0.5s ease;
-}
+  a {
+    color: #555555;
+    text-decoration: none;
+    transition: all 0.5s ease;
+  }
 
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: none;
-}
+  a:hover {
+    color: #2eca6a;
+    text-decoration: none;
+  }
 
-.navbar-default .nav-link {
-  color: var(--nav-link-color);
-}
+  .navbar-default .nav-link {
+    color: #555555;
+  }
 
-.navbar-default .nav-link:hover,
-.navbar-default .nav-link:active,
-.navbar-default .nav-link:focus {
-  color: var(--link-hover-color);
-}
+  .navbar-default .nav-link:hover,
+  .navbar-default .nav-link:active,
+  .navbar-default .nav-link:focus {
+    color: #2eca6a;
+  }
 
-.card-box-a,
-.card-box-b,
-.card-box-d {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
+  .card-box-a,
+  .card-box-b,
+  .card-box-d {
+    background-color: #000;
+    color: #fff;
+  }
 
-.price-a {
-  background-color: var(--price-box-background);
-  border: 2px solid var(--price-box-border);
-}
+  .price-a {
+    background-color: #000;
+    border: 2px solid #2eca6a;
+  }
 
-.card-overlay {
-  background: var(--card-overlay-background);
-}
+  .card-overlay {
+    background: rgba(255, 255, 255, 0.2);
+  }
 
-.breadcrumb-item.active {
-  color: var(--breadcrumb-active-color);
-}
+  .breadcrumb-item.active {
+    color: #2eca6a;
+  }
 
-.color-text-a {
-  color: var(--text-color);
-}
+  .color-text-a {
+    color: #fff;
+  }
 
-.pagination-a .pagination .page-link {
-  color: var(--text-color);
-}
+  .pagination-a .pagination .page-link {
+    color: #555555;
+  }
 
-.pagination-a .pagination .page-link:hover,
-.pagination-a .pagination .page-link:active,
-.pagination-a .pagination .page-link:focus {
-  background-color: var(--link-hover-color);
-}
+  .pagination-a .pagination .page-link:hover,
+  .pagination-a .pagination .page-link:active,
+  .pagination-a .pagination .page-link:focus {
+    background-color: #2eca6a;
+  }
 
-.pagination-a .pagination .page-item.active .page-link {
-  background-color: var(--link-hover-color);
-  border-color: var(--link-hover-color);
-  color: var(--background-color);
-}
+  .pagination-a .pagination .page-item.active .page-link {
+    background-color: #2eca6a;
+    border-color: #2eca6a;
+    color: #000;
+  }
 
-.color-a {
-  color: var(--link-color);
-}
+  footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+  }
 
-.color-b {
-  color: var(--link-hover-color);
-}
+  footer .copyright-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+  }
 
-.color-d {
-  color: var(--text-color);
-}
-
-.no-margin {
-  margin: 0;
-}
-
-.breadcrumb {
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-footer {
-  background: var(--background-color);
-  color: var(--text-color);
-  text-align: center;
-  padding: 30px 0;
-}
-
-footer .copyright-footer {
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
-}
-
-footer .credits {
-  font-size: 14px;
-  color: var(--text-color);
+  footer .credits {
+    font-size: 14px;
+    color: #fff;
+  }
 }
 
 
