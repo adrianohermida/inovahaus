@@ -2120,16 +2120,29 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
 /* CSS for Light/Dark Mode */
 :root {
   --background-color: #fff;
   --text-color: #000;
+  --link-color: #000;
+  --link-hover-color: #2eca6a;
+  --nav-link-color: #000;
+  --price-box-background: #ffffff;
+  --price-box-border: #2eca6a;
+  --card-overlay-background: rgba(0, 0, 0, 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #000;
     --text-color: #fff;
+    --link-color: #fff;
+    --link-hover-color: #2eca6a;
+    --nav-link-color: #fff;
+    --price-box-background: #000;
+    --price-box-border: #2eca6a;
+    --card-overlay-background: rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -2138,18 +2151,69 @@ body {
   color: var(--text-color);
 }
 
-.card-box-a {
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 0.5s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.link-a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.link-a:hover {
+  color: var(--link-hover-color);
+}
+
+.navbar-default .nav-link {
+  color: var(--nav-link-color);
+}
+
+.navbar-default .nav-link:hover,
+.navbar-default .nav-link:active,
+.navbar-default .nav-link:focus {
+  color: var(--link-hover-color);
+}
+
+.card-box-a,
+.card-box-b,
+.card-box-d {
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
-.pagination .page-link {
+.price-a {
+  background-color: var(--price-box-background);
+  border: 2px solid var(--price-box-border);
+}
+
+.card-overlay {
+  background: var(--card-overlay-background);
+}
+
+.pagination-a .pagination .page-link {
   color: var(--text-color);
 }
 
-.pagination .page-item.active .page-link {
-  background-color: var(--text-color);
-  border-color: var(--text-color);
+.pagination-a .pagination .page-link:hover,
+.pagination-a .pagination .page-link:active,
+.pagination-a .pagination .page-link:focus {
+  background-color: var(--link-hover-color);
+}
+
+.pagination-a .pagination .page-item.active .page-link {
+  background-color: var(--link-hover-color);
+  border-color: var(--link-hover-color);
   color: var(--background-color);
 }
 
