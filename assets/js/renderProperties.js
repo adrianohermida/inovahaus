@@ -1,3 +1,4 @@
+
 // renderProperties.js
 const renderProperties = (page, filters = {}) => {
     const filteredProperties = allProperties.filter(property => {
@@ -107,13 +108,13 @@ const renderPagination = (totalItems, currentPage) => {
     } else {
         paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(1, currentPage === 1));
         if (currentPage > 2) {
-            paginationWrapper.insertAdjacentHTML('beforeend', `<li class="page-item disabled"><a class="page-link">...</a></li>`);
+            paginationWrapper.insertAdjacentHTML('beforeend', '<li class="page-item disabled"><span class="page-link">...</span></li>');
         }
         if (currentPage > 1 && currentPage < totalPages) {
             paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(currentPage, true));
         }
         if (currentPage < totalPages - 1) {
-            paginationWrapper.insertAdjacentHTML('beforeend', `<li class="page-item disabled"><a class="page-link">...</a></li>`);
+            paginationWrapper.insertAdjacentHTML('beforeend', '<li class="page-item disabled"><span class="page-link">...</span></li>');
         }
         paginationWrapper.insertAdjacentHTML('beforeend', createPageItem(totalPages, currentPage === totalPages));
     }
@@ -124,18 +125,14 @@ const renderPagination = (totalItems, currentPage) => {
         </li>
     `);
 
-    document.querySelectorAll('.page-link').forEach(link => {
+    paginationWrapper.querySelectorAll('.page-link').forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
-            const page = parseInt(event.target.dataset.page);
-            if (page && !isNaN(page)) {
-                renderProperties(page, currentFilters);
+            const page = parseInt(event.target.getAttribute('data-page'));
+            if (!isNaN(page) && page > 0 && page <= totalPages) {
+                currentPage = page;
+                renderProperties(currentPage, filters);
             }
         });
     });
 };
-
-// Initial call to render properties
-document.addEventListener('DOMContentLoaded', () => {
-    renderProperties(1);
-});
