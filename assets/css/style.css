@@ -2138,9 +2138,9 @@ a:hover {
   :root {
     --background-color: #000;
     --text-color: #fff;
-    --link-color: #fff;
+    --link-color: #555555;
     --link-hover-color: #2eca6a;
-    --nav-link-color: #fff;
+    --nav-link-color: #555555;
     --price-box-background: #000;
     --price-box-border: #2eca6a;
     --card-overlay-background: rgba(255, 255, 255, 0.2);
