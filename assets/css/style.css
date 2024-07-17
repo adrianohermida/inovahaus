@@ -2216,6 +2216,23 @@ a:hover {
   border-color: var(--link-hover-color);
   color: var(--background-color);
 }
+.pagination-wrapper .page-item.disabled .page-link {
+  color: #ddd;
+}
+
+.pagination-wrapper .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.pagination-wrapper .page-link {
+  color: #007bff;
+}
+
+.pagination-wrapper .page-link:hover {
+  background-color: #e9ecef;
+}
 
 /*--------------------------------------------------------------
 # Footer
