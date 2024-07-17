@@ -2279,6 +2279,11 @@ a:hover {
   .list-inline-item a:hover {
     color: #2eca6a;
   }
+
+  /* Estilo específico para o copyright no modo escuro */
+  .copyright-footer .color-a {
+    color: #2eca6a;
+  }
 }
 
 /*--------------------------------------------------------------
