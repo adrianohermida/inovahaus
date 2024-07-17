@@ -2231,12 +2231,52 @@ a:hover {
     color: #2eca6a;
   }
 
-  /* Ajuste para o nome CamilaMaiaImóveis no modo escuro */
-  .logo-darkmode {
+  .w-text-a.color-text-a {
+    color: #fff !important;
+  }
+
+  .w-header-a .w-title-a {
     color: #fff;
   }
 
-  .logo-darkmode .imoveis {
+  .w-footer-a .color-text-a {
+    color: #fff !important;
+  }
+
+  .w-footer-a .color-a {
+    color: #fff;
+  }
+
+  .item-list-a a {
+    color: #fff;
+  }
+
+  .item-list-a a:hover {
+    color: #2eca6a;
+  }
+
+  .socials-a .list-inline-item a {
+    color: #fff;
+  }
+
+  .socials-a .list-inline-item a:hover {
+    color: #2eca6a;
+  }
+
+  /* Ajuste para o nome CamilaMaiaImóveis no modo escuro */
+  .text-brand {
+    color: #fff;
+  }
+
+  .text-brand .imoveis {
+    color: #2eca6a;
+  }
+
+  .list-inline-item a {
+    color: #fff;
+  }
+
+  .list-inline-item a:hover {
     color: #2eca6a;
   }
 }
