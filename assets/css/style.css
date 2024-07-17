@@ -2131,6 +2131,7 @@ a:hover {
   --price-box-background: #ffffff;
   --price-box-border: #2eca6a;
   --card-overlay-background: rgba(0, 0, 0, 0.2);
+  --breadcrumb-active-color: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2143,9 +2144,10 @@ a:hover {
     --price-box-background: #000;
     --price-box-border: #2eca6a;
     --card-overlay-background: rgba(255, 255, 255, 0.2);
+    --breadcrumb-active-color: #2eca6a;
   }
 }
-
+/* Aplicando variáveis às classes CSS existentes */
 body {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -2164,15 +2166,6 @@ a {
 a:hover {
   color: var(--link-hover-color);
   text-decoration: none;
-}
-
-.link-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-.link-a:hover {
-  color: var(--link-hover-color);
 }
 
 .navbar-default .nav-link {
@@ -2201,6 +2194,14 @@ a:hover {
   background: var(--card-overlay-background);
 }
 
+.breadcrumb-item.active {
+  color: var(--breadcrumb-active-color);
+}
+
+.color-text-a {
+  color: var(--text-color);
+}
+
 .pagination-a .pagination .page-link {
   color: var(--text-color);
 }
@@ -2216,22 +2217,26 @@ a:hover {
   border-color: var(--link-hover-color);
   color: var(--background-color);
 }
-.pagination-wrapper .page-item.disabled .page-link {
-  color: #ddd;
+
+.color-a {
+  color: var(--link-color);
 }
 
-.pagination-wrapper .page-item.active .page-link {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
+.color-b {
+  color: var(--link-hover-color);
 }
 
-.pagination-wrapper .page-link {
-  color: #007bff;
+.color-d {
+  color: var(--text-color);
 }
 
-.pagination-wrapper .page-link:hover {
-  background-color: #e9ecef;
+.no-margin {
+  margin: 0;
+}
+
+.breadcrumb {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 /*--------------------------------------------------------------
@@ -2258,8 +2263,40 @@ a:hover {
 }
 
 footer {
-  background: #f3f3f3;
+footer {
+  background: var(--background-color);
+  color: var(--text-color);
   text-align: center;
+  padding: 30px 0;
+}
+
+footer .copyright-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+footer .credits {
+  font-size: 14px;
+  color: var(--text-color);
+}
+;
+footer {
+  background: var(--background-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 30px 0;
+}
+
+footer .copyright-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+footer .credits {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
   padding: 30px 0;
 }
 
