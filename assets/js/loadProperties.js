@@ -119,10 +119,10 @@ function renderProperties(page, filters = {}) {
         propertyGrid.insertAdjacentHTML('beforeend', propertyItem);
     });
 
-    renderPagination(filteredProperties.length);
+    renderPagination(filteredProperties.length, page);
 }
 
-function renderPagination(totalItems) {
+function renderPagination(totalItems, currentPage) {
     const itemsPerPage = 6;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const paginationWrapper = document.querySelector('.pagination-wrapper');
@@ -137,9 +137,7 @@ function renderPagination(totalItems) {
         pageItem.innerHTML = `<a class="page-link" href="#">${page}</a>`;
         pageItem.addEventListener('click', (event) => {
             event.preventDefault();
-            currentPage = page;
-            const filters = getFilters();
-            renderProperties(currentPage, filters);
+            renderProperties(page, getFilters());
         });
         return pageItem;
     };
@@ -243,4 +241,3 @@ function fillOptions(selectId, options) {
         selectElement.appendChild(optElement);
     });
 }
-
