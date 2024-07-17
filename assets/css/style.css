@@ -2122,6 +2122,7 @@ a:hover {
 }
 
 /* CSS para aplicar estilo somente no modo escuro */
+/* CSS to apply style only in dark mode */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #000;
@@ -2267,24 +2268,7 @@ a:hover {
     color: #2eca6a;
   }
 
-  /* Ajuste para o nome CamilaMaiaImóveis no modo escuro */
-  .text-brand {
-    color: #fff;
-  }
-
-  .text-brand .imoveis {
-    color: #2eca6a;
-  }
-
-  .list-inline-item a {
-    color: #fff;
-  }
-
-  .list-inline-item a:hover {
-    color: #2eca6a;
-  }
-
-  /* Ajustes específicos para section.footer no modo escuro */
+  /* Specific adjustments for section.footer in dark mode */
   .section-footer {
     background: #000;
     color: #fff;
