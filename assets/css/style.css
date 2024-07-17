@@ -2205,6 +2205,10 @@ a:hover {
     padding-top: 20px;
   }
 
+  footer .copyright-footer .color-a {
+    color: #2eca6a;
+  }
+
   footer .credits {
     color: #fff;
   }
@@ -2213,12 +2217,12 @@ a:hover {
     color: #2eca6a;
   }
 
-  footer .social-icons a {
+  footer .socials-a .list-inline-item a {
     color: #fff;
     transition: color 0.5s ease;
   }
 
-  footer .social-icons a:hover {
+  footer .socials-a .list-inline-item a:hover {
     color: #2eca6a;
   }
 
@@ -2280,8 +2284,43 @@ a:hover {
     color: #2eca6a;
   }
 
-  /* Estilo específico para o copyright no modo escuro */
-  .copyright-footer .color-a {
+  /* Ajustes específicos para section.footer no modo escuro */
+  .section-footer {
+    background: #000;
+    color: #fff;
+  }
+
+  .section-footer .w-header-a .w-title-a {
+    color: #fff;
+  }
+
+  .section-footer .w-body-a .w-text-a,
+  .section-footer .w-footer-a .color-text-a,
+  .section-footer .w-footer-a .color-a {
+    color: #fff;
+  }
+
+  .section-footer .item-list-a a {
+    color: #fff;
+  }
+
+  .section-footer .item-list-a a:hover {
+    color: #2eca6a;
+  }
+
+  .section-footer .socials-a .list-inline-item a {
+    color: #fff;
+  }
+
+  .section-footer .socials-a .list-inline-item a:hover {
+    color: #2eca6a;
+  }
+
+  .section-footer .footer-logo .imoveis {
+    color: #2eca6a;
+  }
+
+  .section-footer .copyright-footer .color-a {
     color: #2eca6a;
   }
 }
