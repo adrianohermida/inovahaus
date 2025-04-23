@@ -48,17 +48,12 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
-<input type="text" id="property-search" placeholder="Search properties">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/loadProperties.js"></script>
 <script src="assets/js/propertyGrid.js"></script>
 <script src="assets/js/searchProperties.js"></script>
 <script src="loadAuctionProperties.js"></script>
 <script src="loadRecentProperties.js"></script>
-<script src="searchProperties.js"></script>
 <script src="filters.js"></script>
 
 </head>
@@ -465,37 +460,6 @@
     </div>
   </div>
 </section><!-- End Services Section -->
-
-
-<script>
-  var swiper = new Swiper('#services-carousel', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: true,
-    pagination: {
-      el: '.services-carousel-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      768: {
-        slidesPerView: 2,
-        spaceBetween: 30,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 40,
-      },
-    },
-  });
-</script>
 
     </main>
     
@@ -1050,6 +1014,35 @@
   <!-- Vendor JS Files -->
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script>
+  var swiper = new Swiper('#services-carousel', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    loop: true,
+    pagination: {
+      el: '.services-carousel-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+    },
+  });
+</script>
   <script src="/assets/vendor/php-email-form/validate.js"></script>
   
   <!-- Template Main JS File -->
